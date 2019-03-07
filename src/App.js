@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 
-const KEY = "d6mY22OiqYwdUPIGhf9ZIZH6gnOeLI8MTWET8EEK";
+// const KEY = "d6mY22OiqYwdUPIGhf9ZIZH6gnOeLI8MTWET8EEK";
 const ROOT_URL = `https://api.open.fec.gov/v1/`;
 
 const CANDIDATES = [
@@ -63,8 +63,6 @@ class App extends Component {
       });
       this.setState({ candidates: updatedCandidates });
     });
-
-
   }
 
   render() {
