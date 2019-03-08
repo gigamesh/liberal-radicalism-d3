@@ -1,6 +1,6 @@
 export const totals = [
   {
-    _id: "Bernie Sanders",
+    name: "Bernie Sanders",
     zeroTo50Count: 2800231,
     fiftyTo200Count: 1080427,
     twoHundredTo500Count: 109474,
@@ -18,7 +18,7 @@ export const totals = [
     grandTotalAmount: 192290392.36
   },
   {
-    _id: "Hillary Clinton",
+    name: "Hillary Clinton",
     zeroTo50Count: 1208768,
     fiftyTo200Count: 632106,
     twoHundredTo500Count: 161547,
@@ -36,7 +36,7 @@ export const totals = [
     grandTotalAmount: 420056804.96
   },
   {
-    _id: "Martin OMalley",
+    name: "Martin OMalley",
     zeroTo50Count: 1414,
     fiftyTo200Count: 1978,
     twoHundredTo500Count: 2134,
