@@ -7,6 +7,13 @@ body {
   --max-width: 1600px;
 }
 
+::selection {
+  background: #93aa78;
+  color: #fff;
+  stroke: transparent;
+  fill: #fff;
+}
+
 a,
 a:visited,
 a:active {

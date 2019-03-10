@@ -54,8 +54,7 @@ class App extends Component {
   componentDidUpdate() {
     const { windowWidth, windowHeight } = this.state;
     const width = Math.min(windowWidth, 1600);
-    const height =
-      windowHeight > 375 ? windowHeight * 0.9 : windowHeight * 0.86;
+    const height = windowHeight > 375 ? windowHeight * 0.9 : windowHeight;
     const mychart = bubbleChart(width, height);
     mychart.chart("#vis", primaryDATA);
     setupButtons(mychart);
@@ -69,7 +68,7 @@ class App extends Component {
     return (
       <Container width={windowWidth}>
         <Toolbar height={headerHeight}>
-          <h1 className="header-main">Liberal Radicalism</h1>
+          <h1 className="header-main">liberal radicalism</h1>
         </Toolbar>
         <div id="vis" ref={this.vis} />
         <Toolbar id="toolbar" height={footerHeight}>

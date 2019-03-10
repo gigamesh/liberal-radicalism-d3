@@ -1,4 +1,6 @@
 import { totals } from "./data/2016_primary_data";
+const windowHeight = document.documentElement.clientHeight;
+const windowWidth = document.documentElement.clientWidth;
 
 const max = 10000000;
 
@@ -40,13 +42,18 @@ export const buildDataArray = () => {
         // console.log(candidate.name, prop, num, amount);
 
         for (let i = 0; i < num; i++) {
+          let a = Math.random() * 2 * Math.PI;
+          let r = Math.sqrt(~~(Math.random() * windowHeight ** 2));
+
           dataArray.push({
             id: count,
             name: candidate.name,
             tier: prop,
             text: tierReference[prop].text,
             size: 2700 * tierReference[prop].ratio,
-            amount: Math.round(amount / 100000) * 100000
+            amount: Math.round(amount / 100000) * 100000,
+            initX: (windowWidth / 2) * Math.cos(a),
+            initY: windowHeight / 2 + r * Math.sin(a)
           });
           count++;
         }

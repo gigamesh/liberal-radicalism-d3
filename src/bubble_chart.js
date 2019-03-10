@@ -20,6 +20,8 @@ function bubbleChart(width, height) {
     .domain([0, 5])
     .range([0, height - tierPad * 2]);
 
+  const radiusScale = d3.scaleSqrt();
+
   const tierLevels = {
     twoThouToLimitAmount: {
       text: "$2k - $2,700 (limit)"
@@ -56,9 +58,11 @@ function bubbleChart(width, height) {
   const forceStrength = 0.03;
 
   // These will be set in create_nodes and create_vis
-  let svg = null;
-  let bubbles = null;
-  let nodes = [];
+  let svg = null,
+    bubbles = null,
+    allBubblesGroup = null,
+    nodes = [],
+    maxAmount = 0;
 
   // Charge function that is called for each node.
   // As part of the ManyBody force.
@@ -83,10 +87,11 @@ function bubbleChart(width, height) {
     .domain(["high", "medium", "low"])
     .range(["#e7f7d4", "#a3bc85", "#5a823d"]);
 
+  // generates force simulator based on x & y position
   const simulationFactory = center => {
     const sim = d3
       .forceSimulation()
-      .velocityDecay(0.15)
+      .velocityDecay(0.16)
       .force(
         "x",
         d3
@@ -122,29 +127,29 @@ function bubbleChart(width, height) {
     // Use the max amount in the data as the max in the scale's domain
     // note we have to ensure the amount is a number.
 
-    const maxAmount = d3.max(rawData, function(d) {
+    maxAmount = d3.max(rawData, function(d) {
       return +d.size;
     });
 
     // Sizes bubbles based on area.
     // @v4: new flattened scale names.
-    const radiusScale = d3
-      .scaleSqrt()
-      .domain([0, maxAmount])
-      .range([0, height * 0.016]);
+    radiusScale.domain([0, maxAmount]).range([0, height * 0.022]);
 
     // Use map() to convert raw data into node data.
     // Checkout http://learnjsdata.com/ for more on
     // working with data.
-    const myNodes = rawData.map(function(d) {
+    const myNodes = rawData.map(function(d, i) {
+      let a = Math.random() * 2 * Math.PI;
+      let r = Math.sqrt(~~(Math.random() * windowHeight ** 2));
       return {
         id: d.id,
         radius: radiusScale(+d.size),
+        size: +d.size,
         name: d.name,
         text: tierLevels[d.tier].text,
         tier: d.tier,
-        x: Math.random() * 900,
-        y: Math.random() * 800
+        x: center.x + r * Math.cos(a),
+        y: center.y + r * Math.sin(a)
       };
     });
 
@@ -173,30 +178,12 @@ function bubbleChart(width, height) {
       });
   }
 
-  function groupBubbles(xPos) {
-    hideTierLabels();
+  // function shrinkBubbles(){
+  //   radiusScale.range([0, height * 0.016]);
 
-    simulation
-      .force(
-        "y",
-        d3
-          .forceY()
-          .strength(forceStrength)
-          .y(center.y)
-      )
-      .force(
-        "x",
-        d3
-          .forceX()
-          .strength(forceStrength)
-          .x(xPos)
-      );
+  // }
 
-    // @v4 We can reset the alpha value and restart the simulation
-    simulation.alpha(1).restart();
-  }
-
-  function groupBubbles() {
+  function groupBubbles(alpha) {
     hideTierLabels();
 
     simulation.force(
@@ -208,11 +195,16 @@ function bubbleChart(width, height) {
     );
 
     // @v4 We can reset the alpha value and restart the simulation
-    simulation.alpha(1).restart();
+    simulation.alpha(alpha).restart();
   }
 
   function splitBubbles() {
     showTierLabels();
+
+    allBubblesGroup
+      .transition()
+      .duration(200)
+      .attr("transform", scaleString(1));
 
     simulation
       .force(
@@ -261,8 +253,13 @@ function bubbleChart(width, height) {
     if (displayName === "donation_tiers") {
       splitBubbles();
     } else {
-      groupBubbles();
+      groupBubbles(1);
     }
+  }
+
+  function scaleString(s) {
+    return `matrix(${s}, 0, 0, ${s}, ${center.x - s * center.x}, ${center.y -
+      s * center.y})`;
   }
 
   /*
@@ -291,9 +288,14 @@ function bubbleChart(width, height) {
       .attr("height", height);
 
     // Bind nodes data to what will become DOM elements to represent them.
-    bubbles = svg.selectAll(".bubble").data(nodes, function(d) {
-      return d.id;
-    });
+    allBubblesGroup = svg.append("g");
+
+    bubbles = allBubblesGroup
+      .attr("transform", scaleString(1.7))
+      .selectAll("circle")
+      .data(nodes, function(d) {
+        return d.id;
+      });
 
     // Create new circle elements each with class `bubble`.
     // There will be one circle.bubble for each object in the nodes array.
@@ -303,7 +305,6 @@ function bubbleChart(width, height) {
     const bubblesE = bubbles
       .enter()
       .append("circle")
-      .classed("bubble", true)
       .attr("r", 0)
       .attr("fill", function(d) {
         return fillColor(d.text);
@@ -320,7 +321,7 @@ function bubbleChart(width, height) {
     // correct radius
     bubbles
       .transition()
-      .duration(2000)
+      .duration(1200)
       .attr("r", function(d) {
         return d.radius;
       });
@@ -345,7 +346,7 @@ function bubbleChart(width, height) {
       });
 
     // Set initial layout to single group.
-    groupBubbles(center.x);
+    groupBubbles(0.5);
   }
 
   // return the chart function from closure.
