@@ -1,38 +1,59 @@
-import { floatingTooltip } from "./tooltip";
 import * as d3 from "d3";
 
+const windowWidth = document.documentElement.clientWidth;
+const windowHeight = document.documentElement.clientHeight;
 /*
  * Code adapted from:
  * http://vallandingham.me/gates_bubbles/
  *
  */
 
-function bubbleChart(el) {
-  const width = el.clientWidth;
-  const height = width * 0.6;
-  const topPadding = height * 0.03;
-
-  // tooltip for mouseover functionality
-  const tooltip = floatingTooltip("gates_tooltip", 240);
+function bubbleChart(width, height) {
+  const tierPad = height * 0.2;
 
   // Locations to move bubbles towards, depending
   // on which view mode is selected.
   const center = { x: width / 2, y: height / 2 };
 
+  const tierScale = d3
+    .scaleLinear()
+    .domain([0, 5])
+    .range([0, height - tierPad * 2]);
+
   const tierLevels = {
-    2008: { x: width / 2, y: topPadding + height / 3 },
-    2009: { x: width / 2, y: topPadding + height / 2 },
-    2010: { x: width / 2, y: topPadding + (2 * height) / 3 }
+    twoThouToLimitAmount: {
+      text: "$2k - $2,700 (limit)"
+    },
+    oneThouTo2000Amount: {
+      text: "$1k - $1999.99"
+    },
+    fiveHundredTo1000Amount: {
+      text: "$500 - 999.99"
+    },
+    twoHundredTo500Amount: {
+      text: "$200 - 499.99"
+    },
+    fiftyTo200Amount: {
+      text: "$50 - 199.99"
+    },
+    zeroTo50Amount: {
+      text: "$0 - 49.99"
+    }
   };
 
-  const candidateTitleX = {
-    "Bernie Sanders": 160,
-    "Hillary Clinton": width / 2,
-    "Martin O'Malley": width - 160
+  let tierLevelKeys = Object.keys(tierLevels);
+  tierLevelKeys.forEach((k, i) => {
+    tierLevels[k].y = tierScale(i) + tierPad;
+  });
+
+  const candidates = {
+    "Bernie Sanders": { x: center.x - width / 4 },
+    "Hillary Clinton": { x: center.x },
+    "Martin O'Malley": { x: center.x + width / 4 }
   };
 
   // @v4 strength to apply to the position forces
-  const forceStrength = 0.05;
+  const forceStrength = 0.03;
 
   // These will be set in create_nodes and create_vis
   let svg = null;
@@ -57,39 +78,33 @@ function bubbleChart(el) {
     return -Math.pow(d.radius, 2) * forceStrength;
   }
 
-  // Here we create a force layout and
-  // @v4 We create a force simulation now and
-  //  add forces to it.
-  var simulation = d3
-    .forceSimulation()
-    .velocityDecay(0.15)
-    .force(
-      "x",
-      d3
-        .forceX()
-        .strength(forceStrength)
-        .x(center.x)
-    )
-    .force(
-      "y",
-      d3
-        .forceY()
-        .strength(forceStrength)
-        .y(center.y)
-    )
-    .force("charge", d3.forceManyBody().strength(charge))
-    .on("tick", ticked);
-
-  // @v4 Force starts up automatically,
-  //  which we don't want as there aren't any nodes yet.
-  simulation.stop();
-
-  // Nice looking colors - no reason to buck the trend
-  // @v4 scales now have a flattened naming scheme
-  var fillColor = d3
+  const fillColor = d3
     .scaleOrdinal()
     .domain(["high", "medium", "low"])
     .range(["#e7f7d4", "#a3bc85", "#5a823d"]);
+
+  const simulationFactory = center => {
+    const sim = d3
+      .forceSimulation()
+      .velocityDecay(0.15)
+      .force(
+        "x",
+        d3
+          .forceX()
+          .strength(forceStrength)
+          .x(center.x)
+      )
+      .force("charge", d3.forceManyBody().strength(charge))
+      .on("tick", ticked);
+
+    // @v4 Force starts up automatically,
+    //  which we don't want as there aren't any nodes yet.
+    sim.stop();
+
+    return sim;
+  };
+
+  const simulation = simulationFactory(center);
 
   /*
    * This data manipulation function takes the raw data from
@@ -104,32 +119,30 @@ function bubbleChart(el) {
    * array for each element in the rawData input.
    */
   function createNodes(rawData) {
-    // Use the max total_amount in the data as the max in the scale's domain
-    // note we have to ensure the total_amount is a number.
+    // Use the max amount in the data as the max in the scale's domain
+    // note we have to ensure the amount is a number.
 
-    var maxAmount = d3.max(rawData, function(d) {
-      return +d.total_amount;
+    const maxAmount = d3.max(rawData, function(d) {
+      return +d.size;
     });
 
     // Sizes bubbles based on area.
     // @v4: new flattened scale names.
-    var radiusScale = d3
-      .scalePow()
-      .exponent(0.5)
-      .range([2, width * 0.045])
-      .domain([0, maxAmount]);
+    const radiusScale = d3
+      .scaleSqrt()
+      .domain([0, maxAmount])
+      .range([0, height * 0.016]);
 
     // Use map() to convert raw data into node data.
     // Checkout http://learnjsdata.com/ for more on
     // working with data.
-    var myNodes = rawData.map(function(d) {
+    const myNodes = rawData.map(function(d) {
       return {
         id: d.id,
-        radius: radiusScale(+d.total_amount),
-        value: +d.total_amount,
-        name: d.grant_title,
-        group: d.group,
-        year: d.start_year,
+        radius: radiusScale(+d.size),
+        name: d.name,
+        text: tierLevels[d.tier].text,
+        tier: d.tier,
         x: Math.random() * 900,
         y: Math.random() * 800
       };
@@ -137,7 +150,7 @@ function bubbleChart(el) {
 
     // sort them to prevent occlusion of smaller nodes.
     myNodes.sort(function(a, b) {
-      return b.value - a.value;
+      return b.radius - a.radius;
     });
 
     return myNodes;
@@ -160,14 +173,32 @@ function bubbleChart(el) {
       });
   }
 
-  function nodeTierPos(d) {
-    return tierLevels[d.year].y;
+  function groupBubbles(xPos) {
+    hideTierLabels();
+
+    simulation
+      .force(
+        "y",
+        d3
+          .forceY()
+          .strength(forceStrength)
+          .y(center.y)
+      )
+      .force(
+        "x",
+        d3
+          .forceX()
+          .strength(forceStrength)
+          .x(xPos)
+      );
+
+    // @v4 We can reset the alpha value and restart the simulation
+    simulation.alpha(1).restart();
   }
 
   function groupBubbles() {
     hideTierLabels();
 
-    // @v4 Reset the 'x' force to draw the bubbles to the center.
     simulation.force(
       "y",
       d3
@@ -183,13 +214,25 @@ function bubbleChart(el) {
   function splitBubbles() {
     showTierLabels();
 
-    simulation.force(
-      "y",
-      d3
-        .forceY()
-        .strength(forceStrength)
-        .y(nodeTierPos)
-    );
+    simulation
+      .force(
+        "y",
+        d3
+          .forceY()
+          .strength(forceStrength)
+          .y(d => {
+            return tierLevels[d.tier].y;
+          })
+      )
+      .force(
+        "x",
+        d3
+          .forceX()
+          .strength(forceStrength)
+          .x(d => {
+            return candidates[d.name].x;
+          })
+      );
 
     // @v4 We can reset the alpha value and restart the simulation
     simulation.alpha(1).restart();
@@ -202,45 +245,16 @@ function bubbleChart(el) {
   function showTierLabels() {
     const tierLabels = d3.keys(tierLevels);
     const tierTitle = svg.selectAll(".tier-label").data(tierLabels);
+    const tierX = width * 0.15;
 
     tierTitle
       .enter()
       .append("text")
       .attr("class", "tier-label")
       .attr("y", key => tierLevels[key].y)
-      .attr("font-size", 20)
-      .attr("x", 40)
-      .attr("text-anchor", "middle")
-      .text(d => d);
-  }
-
-  /*
-   * Function called on mouseover to display the
-   * details of a bubble in the tooltip.
-   */
-  function showDetail(d) {
-    // change outline to indicate hover state.
-    d3.select(this).attr("stroke", "black");
-
-    // var content =
-    //   '<span class="name">Title: </span><span class="value">' +
-    //   d.name +
-    //   "</span><br/>" +
-    //   '<span class="name">Amount: </span><span class="value">$' +
-    //   addCommas(d.value) +
-    //   "</span><br/>" +
-    //   '<span class="name">Year: </span><span class="value">' +
-    //   d.year +
-    //   "</span>";
-
-    // tooltip.showTooltip(content, d3.event);
-  }
-
-  function hideDetail(d) {
-    // reset outline
-    d3.select(this).attr("stroke", d3.rgb(fillColor(d.group)).darker());
-
-    // tooltip.hideTooltip();
+      .attr("x", tierX)
+      .attr("text-anchor", "end")
+      .text(d => tierLevels[d].text);
   }
 
   function toggleDisplay(displayName) {
@@ -286,20 +300,18 @@ function bubbleChart(el) {
     // Initially, their radius (r attribute) will be 0.
     // @v4 Selections are immutable, so lets capture the
     //  enter selection to apply our transtition to below.
-    var bubblesE = bubbles
+    const bubblesE = bubbles
       .enter()
       .append("circle")
       .classed("bubble", true)
       .attr("r", 0)
       .attr("fill", function(d) {
-        return fillColor(d.group);
+        return fillColor(d.text);
       })
       .attr("stroke", function(d) {
-        return d3.rgb(fillColor(d.group)).darker([3]);
+        return d3.rgb(fillColor(d.text)).darker([3]);
       })
-      .attr("stroke-width", 0.5)
-      .on("mouseover", showDetail)
-      .on("mouseout", hideDetail);
+      .attr("stroke-width", 0.5);
 
     // @v4 Merge the original empty selection and the enter selection
     bubbles = bubbles.merge(bubblesE);
@@ -313,12 +325,10 @@ function bubbleChart(el) {
         return d.radius;
       });
 
-    // Set the simulation's nodes to our newly created nodes array.
-    // @v4 Once we set the nodes, the simulation will start running automatically!
     simulation.nodes(nodes);
 
     // Add the candidate names
-    const candidateTitleData = d3.keys(candidateTitleX);
+    const candidateTitleData = Object.keys(candidates);
     const candidateTitle = svg.selectAll(".candidate").data(candidateTitleData);
 
     candidateTitle
@@ -326,32 +336,21 @@ function bubbleChart(el) {
       .append("text")
       .attr("class", "candidate")
       .attr("x", function(d) {
-        return candidateTitleX[d];
+        return candidates[d].x;
       })
-      .attr("font-size", 20)
-      .attr("y", 40)
+      .attr("y", 20)
       .attr("text-anchor", "middle")
       .text(function(d) {
         return d;
       });
 
     // Set initial layout to single group.
-    groupBubbles();
+    groupBubbles(center.x);
   }
 
   // return the chart function from closure.
   return { chart, toggleDisplay };
 }
-
-/*
- * Below is the initialization code as well as some helper functions
- * to create a new bubble chart instance, load the data, and display it.
- */
-
-// var myBubbleChart = bubbleChart();
-/*
- * Sets up the layout buttons to allow for toggling between view modes.
- */
 
 function setupButtons(chart) {
   d3.select("#toolbar")
@@ -372,23 +371,6 @@ function setupButtons(chart) {
       // the currently clicked button.
       chart.toggleDisplay(buttonId);
     });
-}
-
-/*
- * Helper function to convert a number into a string
- * and add commas to it to improve presentation.
- */
-function addCommas(nStr) {
-  nStr += "";
-  var x = nStr.split(".");
-  var x1 = x[0];
-  var x2 = x.length > 1 ? "." + x[1] : "";
-  var rgx = /(\d+)(\d{3})/;
-  while (rgx.test(x1)) {
-    x1 = x1.replace(rgx, "$1" + "," + "$2");
-  }
-
-  return x1 + x2;
 }
 
 export { bubbleChart, setupButtons };

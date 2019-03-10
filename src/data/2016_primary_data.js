@@ -36,7 +36,7 @@ export const totals = [
     grandTotalAmount: 420056804.96
   },
   {
-    name: "Martin OMalley",
+    name: "Martin O'Malley",
     zeroTo50Count: 1414,
     fiftyTo200Count: 1978,
     twoHundredTo500Count: 2134,

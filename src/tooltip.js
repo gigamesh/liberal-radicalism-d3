@@ -14,12 +14,8 @@ export function floatingTooltip(tooltipId, width) {
     .append("div")
     .attr("class", "tooltip")
     .attr("id", tooltipId)
-    .style("pointer-events", "none");
-
-  // Set a width if it is provided.
-  if (width) {
-    tt.style("width", width);
-  }
+    .style("pointer-events", "none")
+    .style("width", width);
 
   // Initially it is hidden.
   hideTooltip();
