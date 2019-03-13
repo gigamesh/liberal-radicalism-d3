@@ -8,8 +8,8 @@ const windowHeight = window.innerHeight;
  *
  */
 
-function bubbleChart(width, height) {
-  const tierPad = height * 0.2;
+function bubbleChart(width, height, rawData) {
+  const chartPad = height * 0.2;
 
   // Locations to move bubbles towards, depending
   // on which view mode is selected.
@@ -18,7 +18,7 @@ function bubbleChart(width, height) {
   const tierScale = d3
     .scaleLinear()
     .domain([0, 5])
-    .range([0, height - tierPad * 2]);
+    .range([0, height - chartPad * 2]);
 
   const radiusScale = d3.scaleSqrt();
 
@@ -45,7 +45,7 @@ function bubbleChart(width, height) {
 
   let tierLevelKeys = Object.keys(tierLevels);
   tierLevelKeys.forEach((k, i) => {
-    tierLevels[k].y = tierScale(i) + tierPad;
+    tierLevels[k].y = tierScale(i) + chartPad;
   });
 
   const candidates = {
@@ -61,8 +61,7 @@ function bubbleChart(width, height) {
   let svg = null,
     bubbles = null,
     allBubblesGroup = null,
-    nodes = [],
-    maxAmount = 0;
+    nodes = createNodes(rawData);
 
   // Charge function that is called for each node.
   // As part of the ManyBody force.
@@ -82,10 +81,7 @@ function bubbleChart(width, height) {
     return -Math.pow(d.radius, 2) * forceStrength;
   }
 
-  const fillColor = d3
-    .scaleOrdinal()
-    .domain(["high", "medium", "low"])
-    .range(["#e7f7d4", "#a3bc85", "#5a823d"]);
+  const fillColor = d3.scaleOrdinal().range(d3.schemeGreens[6]);
 
   // generates force simulator based on x & y position
   const simulation = d3
@@ -104,6 +100,16 @@ function bubbleChart(width, height) {
   //  which we don't want as there aren't any nodes yet.
   simulation.stop();
 
+  function ticked() {
+    bubbles
+      .attr("cx", function(d) {
+        return d.x;
+      })
+      .attr("cy", function(d) {
+        return d.y;
+      });
+  }
+
   /*
    * This data manipulation function takes the raw data from
    * the CSV file and converts it into an array of node objects.
@@ -120,7 +126,7 @@ function bubbleChart(width, height) {
     // Use the max amount in the data as the max in the scale's domain
     // note we have to ensure the amount is a number.
 
-    maxAmount = d3.max(rawData, function(d) {
+    const maxAmount = d3.max(rawData, function(d) {
       return +d.size;
     });
 
@@ -152,23 +158,6 @@ function bubbleChart(width, height) {
     });
 
     return myNodes;
-  }
-
-  /*
-   * Callback function that is called after every tick of the
-   * force simulation.
-   * Here we do the acutal repositioning of the SVG circles
-   * based on the current x and y values of their bound node data.
-   * These x and y values are modified by the force simulation.
-   */
-  function ticked() {
-    bubbles
-      .attr("cx", function(d) {
-        return d.x;
-      })
-      .attr("cy", function(d) {
-        return d.y;
-      });
   }
 
   // function shrinkBubbles(){
@@ -269,10 +258,7 @@ function bubbleChart(width, height) {
    * rawData is expected to be an array of data objects as provided by
    * a d3 loading function like d3.csv.
    */
-  function chart(selector, rawData) {
-    // convert raw data into nodes data
-    nodes = createNodes(rawData);
-
+  function chart(selector) {
     // Create a SVG element inside the provided selector
     // with desired size.
     svg = d3
@@ -301,10 +287,10 @@ function bubbleChart(width, height) {
       .append("circle")
       .attr("r", 0)
       .attr("fill", function(d) {
-        return fillColor(d.text);
+        return fillColor(+d.size);
       })
       .attr("stroke", function(d) {
-        return d3.rgb(fillColor(d.text)).darker([3]);
+        return d3.rgb(fillColor(+d.size)).darker([3]);
       })
       .attr("stroke-width", 0.5);
 
@@ -320,6 +306,7 @@ function bubbleChart(width, height) {
         return d.radius;
       });
 
+    // console.log(bubbles);
     simulation.nodes(nodes);
 
     // Add the candidate names

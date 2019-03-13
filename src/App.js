@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { bubbleChart, setupButtons } from "./d3/bubbleChart";
+import Chart from "./components/Chart";
+import chart from "./d3/chart";
 import styled from "@emotion/styled";
-import primaryDATA from "./data/2016_primary_json";
+import chartData from "./data/2016_primary_json";
 import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
+import DonationsButtons from "./components/DonationsButtons";
 
 const Container = styled.div`
   width: ${({ width }) => width};
@@ -11,36 +14,16 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const Toolbar = styled.div`
-  height: ${({ height }) => height};
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  .header-main {
-    align-self: center;
-    color: #999;
-    width: 100%;
-    font-size: 28px;
-    text-align: right;
-    margin: 0 auto;
-    padding: 0 0.5em;
-    font-weight: 300;
-    max-width: var(--max-width);
-  }
-  @media (max-width: 768px) {
-    .header-main {
-      font-size: 16px;
-    }
-  }
-`;
-
 class App extends Component {
   state = {
     windowWidth: 0,
-    windowHeight: 0
+    windowHeight: 0,
+    activeDonationBtn: "donation_all"
   };
 
   componentDidMount() {
+    // storing window dimensions in state to trigger update
+
     this.setState({
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight
@@ -53,12 +36,14 @@ class App extends Component {
 
   componentDidUpdate() {
     const { windowWidth, windowHeight } = this.state;
+
     const width = Math.min(windowWidth, 1600);
     const height = windowHeight > 375 ? windowHeight * 0.9 : windowHeight;
-    const mychart = bubbleChart(width, height);
-    mychart.chart("#vis", primaryDATA);
-    setupButtons(mychart);
   }
+
+  donationButtonHandler = e => {
+    chart.toggleDisplay(e.target.id);
+  };
 
   render() {
     const { windowWidth, windowHeight } = this.state;
@@ -66,20 +51,17 @@ class App extends Component {
     const footerHeight = windowHeight > 375 ? "6vh" : "8vh";
 
     return (
-      <Container width={windowWidth}>
-        <Toolbar height={headerHeight}>
+      <React.Fragment>
+        <Container width={windowWidth}>
           <h1 className="header-main">liberal radicalism</h1>
-        </Toolbar>
-        <div id="vis" ref={this.vis} />
-        <Toolbar id="toolbar" height={footerHeight}>
-          <a href="#" id="donation_all" className="button active">
-            All Donations
-          </a>
-          <a href="#" id="donation_tiers" className="button">
-            Donations By Tier
-          </a>
-        </Toolbar>
-      </Container>
+
+          <Chart chartData={chartData} />
+        </Container>
+        <DonationsButtons
+          footerHeight={footerHeight}
+          donationButtonHandler={this.donationButtonHandler}
+        />
+      </React.Fragment>
     );
   }
 }
