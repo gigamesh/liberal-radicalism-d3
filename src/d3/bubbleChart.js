@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
-const windowWidth = document.documentElement.clientWidth;
-const windowHeight = document.documentElement.clientHeight;
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
 /*
  * Code adapted from:
  * http://vallandingham.me/gates_bubbles/
@@ -88,28 +88,21 @@ function bubbleChart(width, height) {
     .range(["#e7f7d4", "#a3bc85", "#5a823d"]);
 
   // generates force simulator based on x & y position
-  const simulationFactory = center => {
-    const sim = d3
-      .forceSimulation()
-      .velocityDecay(0.16)
-      .force(
-        "x",
-        d3
-          .forceX()
-          .strength(forceStrength)
-          .x(center.x)
-      )
-      .force("charge", d3.forceManyBody().strength(charge))
-      .on("tick", ticked);
+  const simulation = d3
+    .forceSimulation()
+    .force(
+      "x",
+      d3
+        .forceX()
+        .strength(forceStrength)
+        .x(center.x)
+    )
+    .force("charge", d3.forceManyBody().strength(charge))
+    .on("tick", ticked);
 
-    // @v4 Force starts up automatically,
-    //  which we don't want as there aren't any nodes yet.
-    sim.stop();
-
-    return sim;
-  };
-
-  const simulation = simulationFactory(center);
+  // @v4 Force starts up automatically,
+  //  which we don't want as there aren't any nodes yet.
+  simulation.stop();
 
   /*
    * This data manipulation function takes the raw data from
@@ -183,10 +176,10 @@ function bubbleChart(width, height) {
 
   // }
 
-  function groupBubbles(alpha) {
+  function groupBubbles(alpha, decay) {
     hideTierLabels();
 
-    simulation.force(
+    simulation.velocityDecay(decay).force(
       "y",
       d3
         .forceY()
@@ -207,6 +200,7 @@ function bubbleChart(width, height) {
       .attr("transform", scaleString(1));
 
     simulation
+      .velocityDecay(0.2)
       .force(
         "y",
         d3
@@ -253,7 +247,7 @@ function bubbleChart(width, height) {
     if (displayName === "donation_tiers") {
       splitBubbles();
     } else {
-      groupBubbles(1);
+      groupBubbles(1, 0.12);
     }
   }
 
@@ -346,7 +340,7 @@ function bubbleChart(width, height) {
       });
 
     // Set initial layout to single group.
-    groupBubbles(0.5);
+    groupBubbles(0.5, 0.17);
   }
 
   // return the chart function from closure.

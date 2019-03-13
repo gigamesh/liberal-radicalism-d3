@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { bubbleChart, setupButtons } from "./bubble_chart";
+import { bubbleChart, setupButtons } from "./d3/bubbleChart";
 import styled from "@emotion/styled";
 import primaryDATA from "./data/2016_primary_json";
 import { buildDataArray } from "./dataBuilder";
@@ -42,8 +42,8 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      windowWidth: document.documentElement.clientWidth,
-      windowHeight: document.documentElement.clientHeight
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
     });
 
     // const dataAray = buildDataArray();
