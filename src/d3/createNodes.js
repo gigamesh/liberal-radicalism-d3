@@ -1,18 +1,14 @@
-import {
-  maxAmount,
-  chartHeight,
-  screenHeight,
-  tierLevels,
-  center
-} from "./config";
-
 import { scaleSqrt } from "d3-scale";
+import chart from "./chart";
+import { chartHeight, screenHeight, tierLevels } from "./config";
 
 function createNodes(rawData) {
-  const max = maxAmount(rawData);
+  const centerX = chart.width / 2;
+  const centerY = chart.height / 2;
 
+  console.log(centerY);
   const radiusScale = scaleSqrt()
-    .domain([0, max])
+    .domain([0, chart.maxAmount])
     .range([0, chartHeight * 0.022]);
 
   const myNodes = rawData.map(function(d, i) {
@@ -25,8 +21,8 @@ function createNodes(rawData) {
       name: d.name,
       text: tierLevels[d.tier].text,
       tier: d.tier,
-      x: center.x + r * Math.cos(a),
-      y: center.y + r * Math.sin(a)
+      x: centerX + r * Math.cos(a),
+      y: centerY + r * Math.sin(a)
     };
   });
 

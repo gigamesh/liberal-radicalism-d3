@@ -4,23 +4,29 @@
  *
  */
 import { select } from "d3-selection";
-import { chartWidth, chartHeight } from "./config";
+import { scaleOrdinal } from "d3-scale";
 import createNodes from "./createNodes";
-import { toggleDisplay } from "./bubbleHandlers";
+import initSimulation from "./simulation";
+import { maxAmount, donationColors } from "./config";
 import render from "./render";
 
 const chart = {
   init: function(domNode, rawData) {
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    this.maxAmount = maxAmount(rawData);
+    this.fillColor = scaleOrdinal()
+      .domain([2700, 2000, 1000, 500, 200, 50])
+      .range(donationColors);
+    this.simulation = initSimulation();
     this.domNode = domNode;
     this.nodes = createNodes(rawData);
-    this.svg = select(this.domNode)
-      .append("svg")
-      .attr("width", chartWidth)
-      .attr("height", chartHeight);
-    this.allBubblesGroup = this.svg.append("g");
+    this.chartContext = select(this.domNode);
+    this.allBubblesGroup = this.chartContext.append("g");
     this.bubbles = null;
-    this.toggleDisplay = toggleDisplay;
-    this.render();
+
+    console.log(this.maxAmount);
+    this.render(0);
   },
   render
 };

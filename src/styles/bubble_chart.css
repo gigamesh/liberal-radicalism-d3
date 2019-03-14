@@ -1,10 +1,15 @@
-body {
-  font-family: "Questrial", sans-serif;
-  color: #444;
-}
-
 :root {
   --max-width: 1600px;
+  --lightest-green: #efffe2;
+  --lighter-green: #c4e7a8;
+  --dark-green: #335618;
+  --text-color: #444;
+}
+
+body {
+  font-family: "Questrial", sans-serif;
+  color: var(--text-color);
+  line-height: 150%;
 }
 
 ::selection {
@@ -14,10 +19,8 @@ body {
   fill: #fff;
 }
 
-a,
-a:visited,
-a:active {
-  color: #444;
+button {
+  outline-width: 0;
 }
 
 .button {
@@ -35,16 +38,15 @@ a:active {
 }
 
 #vis {
-  width: 100%;
-  clear: both;
-  margin-bottom: 10px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
-svg {
-  /* background: pink; */
-}
+
+/* .chart-context {
+  background: pink;
+} */
 
 .candidate {
   font-size: 22px;
@@ -52,11 +54,38 @@ svg {
 
 @media (max-height: 375px) {
   body {
-    font-size: 10px;
+    font-size: 14px;
   }
   .candidate {
     font-size: 16px;
   }
+}
+
+.modal-appear {
+  opacity: 0;
+}
+
+.modal-appear.modal-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.modal-enter {
+  opacity: 0.01;
+}
+
+.modal-enter.modal-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.modal-leave {
+  opacity: 1;
+}
+
+.modal-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 /* 

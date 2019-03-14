@@ -1,22 +1,25 @@
 import { forceSimulation, forceX, forceManyBody } from "d3-force";
-import { center, forceStrength, charge } from "./config";
 import chart from "./chart";
+import { forceStrength, charge } from "./config";
 
 // generates force simulator based on x & y position
 
-const simulation = forceSimulation()
-  .force(
-    "x",
-    forceX()
-      .strength(forceStrength)
-      .x(center.x)
-  )
-  .force("charge", forceManyBody().strength(charge))
-  .on("tick", frame);
+function initSimulation() {
+  const sim = forceSimulation()
+    .force(
+      "x",
+      forceX()
+        .strength(forceStrength)
+        .x(chart.width / 2)
+    )
+    .force("charge", forceManyBody().strength(charge))
+    .on("tick", frame);
 
-// @v4 Force starts up automatically,
-//  which we don't want as there aren't any nodes yet.
-simulation.stop();
+  // @v4 Force starts up automatically,
+  //  which we don't want as there aren't any nodes yet.
+  sim.stop();
+  return sim;
+}
 
 function frame() {
   chart.bubbles
@@ -28,4 +31,4 @@ function frame() {
     });
 }
 
-export default simulation;
+export default initSimulation;

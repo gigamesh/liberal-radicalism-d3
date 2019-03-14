@@ -1,8 +1,6 @@
 import { forceX, forceY } from "d3-force";
-import simulation from "./simulation";
 import chart from "./chart";
 import {
-  center,
   forceStrength,
   chartWidth,
   tierLevels,
@@ -11,17 +9,19 @@ import {
 } from "./config";
 
 export function groupBubbles(alpha, decay) {
+  const centerY = chart.height / 2;
+
   hideTierLabels();
 
-  simulation.velocityDecay(decay).force(
+  chart.simulation.velocityDecay(decay).force(
     "y",
     forceY()
       .strength(forceStrength)
-      .y(center.y)
+      .y(centerY)
   );
 
   // @v4 We can reset the alpha value and restart the simulation
-  simulation.alpha(alpha).restart();
+  chart.simulation.alpha(alpha).restart();
 }
 
 export function splitBubbles() {
@@ -32,7 +32,7 @@ export function splitBubbles() {
     .duration(200)
     .attr("transform", scaleString(1));
 
-  simulation
+  chart.simulation
     .velocityDecay(0.2)
     .force(
       "y",
@@ -52,16 +52,18 @@ export function splitBubbles() {
     );
 
   // @v4 We can reset the alpha value and restart the simulation
-  simulation.alpha(1).restart();
+  chart.simulation.alpha(1).restart();
 }
 
 export function hideTierLabels() {
-  chart.svg.selectAll(".tier-label").remove();
+  chart.chartContext.selectAll(".tier-label").remove();
 }
 
 export function showTierLabels() {
   const tierLabels = Object.keys(tierLevels);
-  const tierTitle = chart.svg.selectAll(".tier-label").data(tierLabels);
+  const tierTitle = chart.chartContext
+    .selectAll(".tier-label")
+    .data(tierLabels);
   const tierX = chartWidth * 0.15;
 
   tierTitle
@@ -74,8 +76,8 @@ export function showTierLabels() {
     .text(d => tierLevels[d].text);
 }
 
-export function toggleDisplay(display) {
-  if (display === "donation_tiers") {
+export function toggleDonationGroups(activeDonationBtn) {
+  if (activeDonationBtn === "donation_tiers") {
     splitBubbles();
   } else {
     groupBubbles(1, 0.12);

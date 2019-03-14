@@ -1,24 +1,19 @@
 import React, { Component } from "react";
-import { bubbleChart, setupButtons } from "./d3/bubbleChart";
 import Chart from "./components/Chart";
+import Modal from "./components/Modal";
 import chart from "./d3/chart";
-import styled from "@emotion/styled";
 import chartData from "./data/2016_primary_json";
 import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
-import DonationsButtons from "./components/DonationsButtons";
-
-const Container = styled.div`
-  width: ${({ width }) => width};
-  max-width: var(--max-width);
-  margin: auto;
-`;
+import Buttons from "./components/Buttons";
 
 class App extends Component {
   state = {
     windowWidth: 0,
     windowHeight: 0,
-    activeDonationBtn: "donation_all"
+    activeDonationBtn: "donation_all",
+    currentView: 0,
+    modalEnter: false
   };
 
   componentDidMount() {
@@ -29,37 +24,52 @@ class App extends Component {
       windowHeight: window.innerHeight
     });
 
+    setTimeout(() => {
+      this.setState({ modalEnter: true });
+    }, 1200);
+
     // const dataAray = buildDataArray();
     // console.log(dataAray);
     // console.log(JSON.stringify(dataAray));
   }
 
   componentDidUpdate() {
-    const { windowWidth, windowHeight } = this.state;
+    const { currentView, activeDonationBtn } = this.state;
 
-    const width = Math.min(windowWidth, 1600);
-    const height = windowHeight > 375 ? windowHeight * 0.9 : windowHeight;
+    chart.render(currentView, activeDonationBtn);
   }
 
   donationButtonHandler = e => {
-    chart.toggleDisplay(e.target.id);
+    this.setState({ activeDonationBtn: e.target.id });
+  };
+
+  continueHandler = e => {
+    console.log("continue clicked");
+    this.setState({
+      currentView: this.state.currentView + 1
+    });
   };
 
   render() {
-    const { windowWidth, windowHeight } = this.state;
-    const headerHeight = windowHeight > 375 ? "4vh" : "6vh";
+    const { windowHeight, currentView, modalEnter } = this.state;
     const footerHeight = windowHeight > 375 ? "6vh" : "8vh";
-
+    console.log(modalEnter);
     return (
       <React.Fragment>
-        <Container width={windowWidth}>
-          <h1 className="header-main">liberal radicalism</h1>
+        <h1 className="header-main">liberal radicalism</h1>
 
-          <Chart chartData={chartData} />
-        </Container>
-        <DonationsButtons
+        <Chart chartData={chartData} currentView={currentView} />
+
+        <Buttons
           footerHeight={footerHeight}
           donationButtonHandler={this.donationButtonHandler}
+          continueHandler={this.continueHandler}
+          currentView={this.currentView}
+        />
+        <Modal
+          in={modalEnter}
+          currentView={currentView}
+          continueHandler={this.continueHandler}
         />
       </React.Fragment>
     );

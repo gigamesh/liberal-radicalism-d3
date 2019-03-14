@@ -3,30 +3,34 @@ import styled from "@emotion/styled";
 
 const Toolbar = styled.div`
   height: ${({ height }) => height};
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 `;
 
-export default function DonationsButtons(props) {
-  return (
+export default function Buttons(props) {
+  return props.currentView > -1 ? (
     <Toolbar id="donations-buttons" height={props.footerHeight}>
-      <a
-        href="#"
+      <button id="continue" onClick={props.continueHandler}>
+        Continue
+      </button>
+      <button
         id="donation_all"
         onClick={props.donationButtonHandler}
         className="button active"
       >
         All Donations
-      </a>
-      <a
-        href="#"
+      </button>
+      <button
         id="donation_tiers"
         onClick={props.donationButtonHandler}
         className="button"
       >
         Donations By Tier
-      </a>
+      </button>
     </Toolbar>
-  );
+  ) : null;
 }

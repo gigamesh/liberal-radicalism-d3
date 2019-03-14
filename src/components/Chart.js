@@ -11,6 +11,6 @@ export default class Chart extends Component {
   }
 
   render() {
-    return <div id="vis" />;
+    return <svg id="vis" />;
   }
 }

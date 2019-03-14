@@ -1,9 +1,13 @@
-Liberal Radicalism (a.k.a. Quadratic Finance) is a new mechanism for optimally funding of public goods & services. Developed by Vitalik Buterin,  Zoë Hitzig and E. Glen Weyl, it is an elegant method of incentivizing distributed financing of valuable public goods like infrastructure, open-source software, scientific research, journalism, and political campaigns. It acheives this through a simple formula that naturally amplifies democratic values. This presentation is an attempt to explain its power using data from the United States 2016 Democratic Primary for President.
+Liberal Radicalism (a.k.a. Quadratic Finance) is a new mechanism for optimally funding of public goods & services. Developed by Vitalik Buterin,  Zoë Hitzig and E. Glen Weyl, it is an elegant method of incentivizing distributed financing of vital goods like infrastructure, open-source software, scientific research, journalism, and political campaigns. It acheives this through a simple formula that naturally amplifies democratic values. This presentation is an attempt to explain its power using data from the United States 2016 Democratic Primary for President.
 
 CONTINUE...
 
 
 An ongoing debate in the U.S.A. is over money's influence in politics. While quid-pro-quo corruption is illegal, analysis of congressional voting patterns show the government is far more responsive to the preferences of the wealthy.
+
+"the preferences of the average american appear to have only a miniscule, near-zero, statistically non-significant impact upon public policy"
+
+https://www.cambridge.org/core/services/aop-cambridge-core/content/view/62327F513959D0A304D4893B382B992B/S1537592714001595a.pdf/testing_theories_of_american_politics_elites_interest_groups_and_average_citizens.pdf
 
 **Show chart directly?
 http://time.com/3534117/the-incredible-rise-in-campaign-spending/
