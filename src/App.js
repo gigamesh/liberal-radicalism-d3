@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import Chart from "./components/Chart";
 import Modal from "./components/Modal";
+import styled from "@emotion/styled";
 import chart from "./d3/chart";
+import { wait } from "./d3/config";
 import chartData from "./data/2016_primary_json";
 import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
 import Buttons from "./components/Buttons";
+
+const MainTitle = styled.h1`
+  position: absolute;
+  top: 0;
+  padding-left: 1rem;
+  opacity: ${({ opacity }) => opacity};
+  transition: 500ms ease-in-out;
+`;
 
 class App extends Component {
   state = {
@@ -13,10 +23,11 @@ class App extends Component {
     windowHeight: 0,
     activeDonationBtn: "donation_all",
     currentView: 0,
-    modalEnter: false
+    modalShowing: false,
+    animDelay: 0
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     // storing window dimensions in state to trigger update
 
     this.setState({
@@ -24,19 +35,24 @@ class App extends Component {
       windowHeight: window.innerHeight
     });
 
-    setTimeout(() => {
-      this.setState({ modalEnter: true });
-    }, 1200);
+    await wait(1200);
+
+    this.setState({ modalShowing: true });
 
     // const dataAray = buildDataArray();
     // console.log(dataAray);
     // console.log(JSON.stringify(dataAray));
   }
 
-  componentDidUpdate() {
-    const { currentView, activeDonationBtn } = this.state;
+  async componentDidUpdate() {
+    const { currentView, activeDonationBtn, animDelay } = this.state;
 
-    chart.render(currentView, activeDonationBtn);
+    if (!animDelay) {
+      chart.render(currentView, activeDonationBtn);
+    } else {
+      await wait(500);
+      chart.render(currentView, activeDonationBtn);
+    }
   }
 
   donationButtonHandler = e => {
@@ -44,19 +60,32 @@ class App extends Component {
   };
 
   continueHandler = e => {
-    console.log("continue clicked");
+    const { currentView } = this.state;
+    const newView = currentView + 1;
     this.setState({
-      currentView: this.state.currentView + 1
+      currentView: newView
     });
+
+    if (newView === 2) {
+      this.setState({
+        animDelay: 1500,
+        modalShowing: false,
+        activeDonationBtn: "donation_tiers"
+      });
+    }
   };
 
   render() {
-    const { windowHeight, currentView, modalEnter } = this.state;
+    const { windowHeight, currentView, modalShowing } = this.state;
     const footerHeight = windowHeight > 375 ? "6vh" : "8vh";
-    console.log(modalEnter);
+    console.log(currentView);
     return (
       <React.Fragment>
-        <h1 className="header-main">liberal radicalism</h1>
+        {windowHeight > 375 && (
+          <MainTitle className="header-main" opacity={currentView < 2 ? 0 : 1}>
+            liberal radicalism
+          </MainTitle>
+        )}
 
         <Chart chartData={chartData} currentView={currentView} />
 
@@ -64,13 +93,19 @@ class App extends Component {
           footerHeight={footerHeight}
           donationButtonHandler={this.donationButtonHandler}
           continueHandler={this.continueHandler}
-          currentView={this.currentView}
+          currentView={currentView}
         />
         <Modal
-          in={modalEnter}
+          in={modalShowing}
           currentView={currentView}
           continueHandler={this.continueHandler}
         />
+        <button
+          onClick={this.continueHandler}
+          style={{ position: "absolute", left: 0, bottom: 0 }}
+        >
+          continue
+        </button>
       </React.Fragment>
     );
   }

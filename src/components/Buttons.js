@@ -14,9 +14,6 @@ const Toolbar = styled.div`
 export default function Buttons(props) {
   return props.currentView > -1 ? (
     <Toolbar id="donations-buttons" height={props.footerHeight}>
-      <button id="continue" onClick={props.continueHandler}>
-        Continue
-      </button>
       <button
         id="donation_all"
         onClick={props.donationButtonHandler}

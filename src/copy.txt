@@ -1,52 +1,73 @@
 Liberal Radicalism (a.k.a. Quadratic Finance) is a new mechanism for optimally funding of public goods & services. Developed by Vitalik Buterin,  Zoë Hitzig and E. Glen Weyl, it is an elegant method of incentivizing distributed financing of vital goods like infrastructure, open-source software, scientific research, journalism, and political campaigns. It acheives this through a simple formula that naturally amplifies democratic values. This presentation is an attempt to explain its power using data from the United States 2016 Democratic Primary for President.
 
 CONTINUE...
+[trigger split bubbles]
 
+In national party primary races, the U.S. government makes public financing available to candidates who meet certain guidelines. After a donation period, a portion of a public fund is offered to candidates based on each candidate's total receipts. 
 
-An ongoing debate in the U.S.A. is over money's influence in politics. While quid-pro-quo corruption is illegal, analysis of congressional voting patterns show the government is far more responsive to the preferences of the wealthy.
+CONTINUE...
+[trigger non-LR matching funds]
 
-"the preferences of the average american appear to have only a miniscule, near-zero, statistically non-significant impact upon public policy"
+In the 2016 primary, Hillary Clinton received the largest total funding while Bernie Sanders received the most individual donations. The yellow dots in the chart represent the portion of public funds each candidate had access to under the current system.
 
-https://www.cambridge.org/core/services/aop-cambridge-core/content/view/62327F513959D0A304D4893B382B992B/S1537592714001595a.pdf/testing_theories_of_american_politics_elites_interest_groups_and_average_citizens.pdf
+CONTINUE....
 
-**Show chart directly?
-http://time.com/3534117/the-incredible-rise-in-campaign-spending/
-
-As the cost of conducting a national campaign for federal office has skyrocked over 500% in the past several decades, an industry of influential intermediaries has benefited enormously. Meanwhile, the public has become increasingly distrustful of democratic instutions and in some cases, supportive of authoritarinism.
-
-[chart on decreased interest in democracy]
+[MODAL: ]
+The problem with this system is that it doesn't account for how many donations contributed to each candidate's total. For example, if a million individual donors each contribute a dollar to one candidate, and a single donor contributes a million dollars to a different candidate, both candidates would receive the same amount of public funds. 
 
 CONTINUE...
 
-The USA's 2016 Democratic Primary for President serves as a good example of LR's power. In that election, Hillary Clinton received the largest total funding while Bernie Sanders received the most individual donations. 
+This problem is currently counteracted by enforcing a $2700 cap individual donor, per candidate - intended to guard against wealthy donors exerting too much influence. While well-intentioned, this design pushes those donors into a relatively unrestricted and opague industry of indepedent campaign commitees (Super PACs).
 
-In U.S. federal elections, public financing is available to candidates who meet certain criteria. After a donation period, public funds are apportioned to candidates based on each candidate's total receipts. 
-
-CONTINUE....
-[trigger non-LR matching funds]
-
-The problem with this is that it doesn't account for how many donations contributed to each candidate's total. ex: If a million donors each contribute a dollar to one candidate, and a single donor contributes a million dollars to a competing candidate, each candidate will receive the exact same amount of public funds. 
-
-This problem is currently counteracted by enforcing an arbitary cap on individual contributions - $2700 per candidate for presidential elections - so that wealthy donors don't exert too much influence. While well-intentioned, this design pushes those donors into a relatively unrestricted and opague industry of indepedent campaign commitees (Super PACs).
+CONTINUE...
 
 Liberal radicalism could alleviate this problem and reenergize democracy. 
 
 [LR formula]
 [square of the sum of the square roots of all donations]
 
+CONTINUE...
+
 In an LR campaign funding scheme, donations can be thought of as a "pre-election" whereby each contribution represents a vote on how the matching fund will be distributed amongst the candidates. All candidates still keep all donations from supporters, but candidates who receive a larger number of donations would benefit from a greater portion of the public matching fund. 
 
-[trigger LR public funds]
+[Close modal and trigger LR public funds]
 
 In the 2016 Democratic Primary, an LR funding mechanism would have had a significant impact on each candidate's total budget, potentially altering the final outcome of that race. 
 
-**Please note: this is not an endorsement of Bernie Sanders. It just serves as an example of LR's power to democratize the financing of shared public goods & services.
-
+**Please note: this is not an endorsement of Bernie Sanders. It only serves as an example of LR's power to democratize the financing of shared public goods.
 
 CONTINUE...
 
+[MODAL:]
 As technology exponentially advances and networks become more complex, social institutions will become increasingly vital. While this presentation focused on campaign finance, other applications are almost equally important: investigative journalism, medical research, open-source software, public transportation, and many more.
+
+CONTINUE...
 
 To learn more about Liberal Radicalism and similar ideas, please check out RadicalxChange. 
 
 (social links, etc)
+
+
+
+
+
+...................................
+
+
+
+
+
+
+An ongoing debate in the U.S.A. is over money's influence in politics. While quid-pro-quo corruption is illegal, analysis of congressional voting patterns show the government is far more responsive to the preferences of the wealthy.
+
+**Show chart directly?
+http://time.com/3534117/the-incredible-rise-in-campaign-spending/
+
+As the cost of conducting a national campaign for federal office has skyrocked over 500% in the past several decades, an industry of influential intermediaries has reaped rewards while the public has become increasingly partisan and distrustful of democratic instutions.
+
+[chart on decreased interest in democracy]
+
+CONTINUE...
+
+
+

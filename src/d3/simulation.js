@@ -1,6 +1,6 @@
 import { forceSimulation, forceX, forceManyBody } from "d3-force";
 import chart from "./chart";
-import { forceStrength, charge } from "./config";
+import { forceStrength, charge, chartWidth } from "./config";
 
 // generates force simulator based on x & y position
 
@@ -10,7 +10,7 @@ function initSimulation() {
       "x",
       forceX()
         .strength(forceStrength)
-        .x(chart.width / 2)
+        .x(chartWidth / 2)
     )
     .force("charge", forceManyBody().strength(charge))
     .on("tick", frame);

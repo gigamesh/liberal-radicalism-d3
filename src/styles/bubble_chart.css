@@ -9,7 +9,8 @@
 body {
   font-family: "Questrial", sans-serif;
   color: var(--text-color);
-  line-height: 150%;
+  line-height: 1.5rem;
+  overflow: hidden;
 }
 
 ::selection {
@@ -17,6 +18,15 @@ body {
   color: #fff;
   stroke: transparent;
   fill: #fff;
+}
+
+text {
+  fill: var(--text-color);
+}
+
+h1 {
+  font-size: 2.3rem;
+  margin: 1rem 0 1rem;
 }
 
 button {
@@ -37,28 +47,13 @@ button {
   color: #fff;
 }
 
-#vis {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-/* .chart-context {
-  background: pink;
-} */
-
 .candidate {
-  font-size: 22px;
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
-@media (max-height: 375px) {
-  body {
-    font-size: 14px;
-  }
-  .candidate {
-    font-size: 16px;
-  }
+.tier-label {
+  font-size: 1rem;
 }
 
 .modal-appear {
@@ -86,6 +81,49 @@ button {
 .modal-leave.example-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+blockquote:before {
+  z-index: 4;
+  content: "\201C";
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  position: absolute;
+  left: -40px;
+  top: 5px;
+}
+
+blockquote:after {
+  z-index: 4;
+  content: "";
+}
+
+svg {
+  position: absolute;
+  /* background: pink */
+  transform: translateX(-50%) scale(2.5);
+  left: 50%;
+}
+
+svg.downscale {
+  transform: translateX(-50%) scale(1);
+  transition: all 1500ms ease-in-out;
+}
+
+svg.left-side {
+  left: 0;
+  transform: translate(0);
+}
+
+@media (max-height: 450px) {
+  html {
+    font-size: 12px;
+  }
+  .candidate {
+    font-size: 16px;
+  }
 }
 
 /* 

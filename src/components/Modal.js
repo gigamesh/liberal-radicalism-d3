@@ -7,6 +7,8 @@ import View0 from "./View0";
 import View1 from "./View1";
 import View2 from "./View2";
 
+const Views = [View0, View1, View2];
+
 const transitionStyles = {
   entering: { opacity: 0 },
   entered: { opacity: 1 }
@@ -35,38 +37,35 @@ const InnerWrap = styled.div`
 `;
 
 const WithBtnWrap = styled.div`
-  height: 95vh;
+  overflow: hidden;
+  height: 75vh;
   max-height: 500px;
-  max-width: 650px;
+  max-width: 60%;
   width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `;
 
 const ContentWrap = styled.div`
-  display: ${({ display }) => (display ? "block" : "none")};
+  display: ${({ display }) => display};
   width: 100%;
   h1 {
-    font-size: 3em;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 2.5rem;
   }
   h2 {
     margin-bottom: 30px;
   }
   p {
     text-align: justify;
-    font-size: 20px;
+    font-size: 1.2rem;
   }
   p:last-of-type {
-    margin-bottom: 40px;
-  }
-  div {
-    justify-content: flex-end;
-    display: flex;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -81,8 +80,19 @@ class Modal extends React.Component {
 
   render() {
     const { in: inProp, currentView, continueHandler } = this.props;
+    const nextView = (currentView, num) => {
+      const CurrentView = Views[num];
+      return (
+        <Fade delay={300} left opposite when={currentView === num} collapse>
+          <ContentWrap display={currentView === num ? "block" : "none"}>
+            <CurrentView />
+          </ContentWrap>
+        </Fade>
+      );
+    };
+
     return (
-      <Transition in={inProp} timeout={duration}>
+      <Transition in={inProp} timeout={duration} unmountOnExit>
         {state => (
           <FullWrap
             style={{
@@ -98,32 +108,11 @@ class Modal extends React.Component {
                   when={currentView === 0}
                   collapse
                 >
-                  <ContentWrap display={currentView === 0}>
+                  <ContentWrap display={currentView === 0 ? "block" : "none"}>
                     <View0 />
                   </ContentWrap>
                 </Fade>
-                <Fade
-                  delay={300}
-                  left
-                  opposite
-                  when={currentView === 1}
-                  collapse
-                >
-                  <ContentWrap display={currentView === 1}>
-                    <View1 />
-                  </ContentWrap>
-                </Fade>
-                <Fade
-                  delay={300}
-                  left
-                  opposite
-                  when={currentView === 2}
-                  collapse
-                >
-                  <ContentWrap display={currentView === 2}>
-                    <View2 />
-                  </ContentWrap>
-                </Fade>
+                {nextView(currentView, 1)}
               </InnerWrap>
               <Btn onClick={continueHandler}>Continue</Btn>
             </WithBtnWrap>

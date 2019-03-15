@@ -1,4 +1,5 @@
 import { scaleLinear } from "d3-scale";
+import chart from "./chart";
 import { max } from "d3-array";
 
 export const donationColors = [
@@ -10,20 +11,26 @@ export const donationColors = [
   "#507C30"
 ];
 
-export const screenWidth = window.innerWidth;
 export const screenHeight = window.innerHeight;
-
-export const chartWidth = screenWidth * (3 / 4);
-export const chartHeight = chartWidth * 0.5;
+export const screenWidth = window.innerWidth;
+export const chartWidth = Math.min(screenWidth * 0.65, 1400);
+export const chartHeight = screenHeight * 0.8;
+export const tierColumnWidth = Math.max(chartWidth * 0.15, 110);
+export const topPad = chartHeight * 0.22;
+export const bottomPad = chartHeight * 0.12;
 
 // Locations to move bubbles towards, depending
 // on which view mode is selected.
 export const center = { x: screenWidth / 2, y: screenHeight / 2 };
+export const chartCenter = {
+  x: (chartWidth - tierColumnWidth) / 2 + tierColumnWidth,
+  y: chartHeight / 2
+};
 
 export const candidates = {
-  "Bernie Sanders": { x: center.x - chartWidth / 4 },
-  "Hillary Clinton": { x: center.x },
-  "Martin O'Malley": { x: center.x + chartWidth / 4 }
+  "Bernie Sanders": { x: chartCenter.x - (chartWidth - tierColumnWidth) / 3 },
+  "Hillary Clinton": { x: chartCenter.x },
+  "Martin O'Malley": { x: chartCenter.x + (chartWidth - tierColumnWidth) / 3 }
 };
 
 export const tierLevels = {
@@ -49,7 +56,7 @@ export const tierLevels = {
 
 export const tierScale = scaleLinear()
   .domain([0, 5])
-  .range([0, chartHeight]);
+  .range([topPad, chartHeight - bottomPad]);
 
 export const tierLevelKeys = Object.keys(tierLevels);
 tierLevelKeys.forEach((k, i) => {
@@ -69,13 +76,18 @@ export function maxAmount(data) {
   });
 }
 
-export function scaleString(s) {
-  return `matrix(${s}, 0, 0, ${s}, ${center.x - s * center.x}, ${center.y -
-    s * center.y})`;
+export function scaleMatrix(s) {
+  let centerX = chartWidth / 2;
+  let centerY = chartHeight / 2;
+
+  return `matrix(${s}, 0, 0, ${s}, ${centerX - s * centerX}, ${centerY -
+    s * centerY})`;
 }
 
-// function setDimensions(currentView){
-//   if(currentView === 0){
-
-//   }
-// }
+export function wait(delay) {
+  return new Promise(res => {
+    setTimeout(() => {
+      res();
+    }, delay);
+  });
+}

@@ -2,14 +2,16 @@ import { forceX, forceY } from "d3-force";
 import chart from "./chart";
 import {
   forceStrength,
-  chartWidth,
   tierLevels,
-  scaleString,
-  candidates
+  scaleMatrix,
+  candidates,
+  chartHeight,
+  tierColumnWidth,
+  wait
 } from "./config";
 
 export function groupBubbles(alpha, decay) {
-  const centerY = chart.height / 2;
+  const centerY = chartHeight / 2;
 
   hideTierLabels();
 
@@ -24,13 +26,14 @@ export function groupBubbles(alpha, decay) {
   chart.simulation.alpha(alpha).restart();
 }
 
-export function splitBubbles() {
+export async function splitBubbles(delay = 0) {
+  await wait(delay);
+  console.log("after waiting");
   showTierLabels();
-  console.log("splitting");
   chart.allBubblesGroup
     .transition()
     .duration(200)
-    .attr("transform", scaleString(1));
+    .attr("transform", scaleMatrix(1));
 
   chart.simulation
     .velocityDecay(0.2)
@@ -56,29 +59,27 @@ export function splitBubbles() {
 }
 
 export function hideTierLabels() {
-  chart.chartContext.selectAll(".tier-label").remove();
+  chart.svg.selectAll(".tier-label").remove();
 }
 
 export function showTierLabels() {
-  const tierLabels = Object.keys(tierLevels);
-  const tierTitle = chart.chartContext
-    .selectAll(".tier-label")
-    .data(tierLabels);
-  const tierX = chartWidth * 0.15;
+  let tierLabels = Object.keys(tierLevels);
+
+  const tierTitle = chart.svg.selectAll(".tier-label").data(tierLabels);
 
   tierTitle
     .enter()
     .append("text")
     .attr("class", "tier-label")
     .attr("y", key => tierLevels[key].y)
-    .attr("x", tierX)
+    .attr("x", tierColumnWidth)
     .attr("text-anchor", "end")
     .text(d => tierLevels[d].text);
 }
 
-export function toggleDonationGroups(activeDonationBtn) {
+export function toggleDonationGroups(activeDonationBtn, delay) {
   if (activeDonationBtn === "donation_tiers") {
-    splitBubbles();
+    splitBubbles(delay);
   } else {
     groupBubbles(1, 0.12);
   }
