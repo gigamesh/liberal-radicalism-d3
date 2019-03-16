@@ -3,7 +3,6 @@ import Chart from "./components/Chart";
 import Modal from "./components/Modal";
 import SideBox from "./components/SideBox";
 import LandscapeMessage from "./components/LandscapeMessage";
-import styled from "@emotion/styled";
 import chart from "./d3/chart";
 import { debounce, checkLandscape } from "./helpers/helpers";
 import { wait } from "./d3/config";
@@ -76,7 +75,7 @@ class App extends Component {
       this.setState({
         animDelay: 1500,
         modalShowing: false,
-        activeDonationBtn: "donation_tiers",
+        activeDonationBtn: "all_tiers",
         sideBoxShowing: true
       });
     }
@@ -89,14 +88,14 @@ class App extends Component {
     const { currentView, landscape, modalShowing, sideBoxShowing } = this.state;
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
-    // console.log(
-    //   "windowWidth: ",
-    //   windowWidth,
-    //   "currentView: ",
-    //   currentView,
-    //   "modalShowing: ",
-    //   modalShowing
-    // );
+    console.log(
+      "windowWidth: ",
+      windowWidth,
+      "currentView: ",
+      currentView,
+      "modalShowing: ",
+      modalShowing
+    );
     return !landscape ? (
       <LandscapeMessage />
     ) : (

@@ -11,41 +11,39 @@ import {
   wait
 } from "./config";
 
-export function groupBubbles(alpha, decay) {
+export function groupAllBubbles(alpha, decay) {
+  const { allForce } = chart;
   const centerY = chartHeight / 2;
 
   hideTierLabels();
 
-  for (let key in chart.simulations) {
-    chart.simulations[key].velocityDecay(decay).force(
-      "y",
-      forceY()
-        .strength(forceStrength)
-        .y(centerY)
-    );
-    chart.simulations[key].alpha(alpha).restart();
-  }
+  // for (let key in tierForce) {
+  //   tierForce[key].velocityDecay(decay).force(
+  //     "y",
+  //     forceY()
+  //       .strength(forceStrength)
+  //       .y(centerY)
+  //   );
+  //   tierForce[key].alpha(alpha).restart();
+  // }
 
-  // chart.simulation.velocityDecay(decay).force(
-  //   "y",
-  //   forceY()
-  //     .strength(forceStrength)
-  //     .y(centerY)
-  // );
+  allForce.velocityDecay(decay).force(
+    "y",
+    forceY()
+      .strength(forceStrength)
+      .y(centerY)
+  );
 
-  // chart.simulation.alpha(alpha).restart();
+  allForce.alpha(alpha).restart();
 }
 
-export async function splitBubbles(delay = 0) {
+export async function splitByDonation(delay = 0) {
+  const { tierForce } = chart;
   await wait(delay);
   showTierLabels();
-  chart.allBubblesGroup
-    .transition()
-    .duration(200)
-    .attr("transform", scaleMatrix(1));
 
-  for (let key in chart.simulations) {
-    chart.simulations[key]
+  for (let key in tierForce) {
+    tierForce[key]
       .velocityDecay(0.2)
       .force(
         "y",
@@ -64,11 +62,11 @@ export async function splitBubbles(delay = 0) {
           })
       );
 
-    // @v4 We can reset the alpha value and restart the simulation
-    chart.simulations[key].alpha(1).restart();
+    // @v4 We can reset the alpha value and restart the allForce
+    tierForce[key].alpha(1).restart();
   }
 
-  // chart.simulation
+  // allForce
   //   .velocityDecay(0.2)
   //   .force(
   //     "y",
@@ -87,8 +85,26 @@ export async function splitBubbles(delay = 0) {
   //       })
   //   );
 
-  // // @v4 We can reset the alpha value and restart the simulation
-  // chart.simulation.alpha(1).restart();
+  // // @v4 We can reset the alpha value and restart the allForce
+  // allForce.alpha(1).restart();
+}
+
+export function splitByCandidate() {
+  const { candidateForce } = chart;
+
+  for (let key in candidateForce) {
+    candidateForce[key].velocityDecay(0.2).force(
+      "x",
+      forceX()
+        .strength(0.07)
+        .x(d => {
+          return candidates[d.name].x;
+        })
+    );
+
+    // @v4 We can reset the alpha value and restart the allForce
+    candidateForce[key].alpha(1).restart();
+  }
 }
 
 export function hideTierLabels() {
@@ -117,10 +133,30 @@ export function showTierLabels() {
     });
 }
 
+export function showCandidates() {
+  // Add the candidate names
+  let names = Object.keys(candidates);
+
+  const candidateTitle = chart.svg.selectAll(".candidate").data(names);
+
+  candidateTitle
+    .enter()
+    .append("text")
+    .attr("class", "candidate")
+    .attr("x", function(d) {
+      return candidates[d].x;
+    })
+    .attr("y", chartHeight * 0.04)
+    .attr("text-anchor", "middle")
+    .text(function(d) {
+      return d;
+    });
+}
+
 export function toggleDonationGroups(activeDonationBtn, delay) {
   if (activeDonationBtn === "donation_tiers") {
-    splitBubbles(delay);
+    splitByDonation(delay);
   } else {
-    groupBubbles(1, 0.12);
+    groupAllBubbles(1, 0.12);
   }
 }

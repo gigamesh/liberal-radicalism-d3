@@ -34,7 +34,7 @@ const MainTitle = styled.div`
   transition: 500ms ease-in-out;
   h1 {
     margin: 0.7rem;
-    font-size: ${window.innerHeight < 350 ? "1.5rem" : "2.3rem"};
+    font-size: ${window.innerHeight < 350 ? "1.5rem" : "2rem"};
     text-align: right;
     color: #777;
   }

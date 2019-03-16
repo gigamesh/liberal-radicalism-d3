@@ -6,7 +6,11 @@
 import { select } from "d3-selection";
 import { scaleOrdinal } from "d3-scale";
 import createNodes from "./createNodes";
-import initSimulation, { initSimulations } from "./simulation";
+import {
+  initSimulation,
+  initTierSimulations,
+  initCandidateSimulations
+} from "./simulation";
 import { maxAmount, donationColors } from "./config";
 import render from "./render";
 
@@ -18,11 +22,9 @@ const chart = {
       .domain([2700, 2000, 1000, 500, 200, 50])
       .range(donationColors.reverse());
 
-    //working - DON'T REMOVE UNTIL NEW ONE IS WORKING!
-    this.simulation = initSimulation();
-
-    //new
-    this.simulations = initSimulations();
+    this.allForce = initSimulation();
+    this.tierForce = initTierSimulations();
+    this.candidateForce = initCandidateSimulations();
 
     this.svg = select(domNode).append("svg");
 

@@ -44,7 +44,7 @@ export const totals = [
     oneThouTo2000Count: 1448,
     twoThouToLimitCount: 1784,
     grandTotalCount: 10498,
-    zeroTo50Amount: 8641.68,
+    zeroTo50Amount: -18641.68,
     fiftyTo200Amount: 168283.64,
     twoHundredTo500Amount: 539928,
     fiveHundredTo1000Amount: 908108.54,

@@ -14,8 +14,9 @@ export default () => (
       software, scientific research, journalism, and political campaigns.
     </p>
     <p>
-      This presentation is an attempt to explain its power using data from the
-      United States 2016 Democratic Primary for President.
+      This presentation is an attempt to explain its power using a hypothetical
+      election using data from the United States 2016 Democratic Primary for
+      President.
     </p>
   </div>
 );

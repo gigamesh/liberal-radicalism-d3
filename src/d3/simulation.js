@@ -1,11 +1,17 @@
-import { forceSimulation, forceX, forceManyBody } from "d3-force";
-import { forceCluster } from "d3-force-cluster";
+import { forceSimulation, forceX, forceY, forceManyBody } from "d3-force";
 import chart from "./chart";
-import { forceStrength, charge, chartWidth, tierLevels } from "./config";
+import {
+  forceStrength,
+  getCharge,
+  chartWidth,
+  chartHeight,
+  tierLevels,
+  candidates
+} from "./config";
 
 // generates force simulator based on x & y position
 
-function initSimulation() {
+export function initSimulation() {
   const sim = forceSimulation()
     .force(
       "x",
@@ -13,7 +19,7 @@ function initSimulation() {
         .strength(forceStrength)
         .x(chartWidth / 2)
     )
-    .force("charge", forceManyBody().strength(charge))
+    .force("charge", forceManyBody().strength(getCharge()))
     .on("tick", frame);
 
   // @v4 Force starts up automatically,
@@ -22,7 +28,7 @@ function initSimulation() {
   return sim;
 }
 
-export function initSimulations() {
+export function initTierSimulations() {
   const simulations = { ...tierLevels };
 
   // these are just the x values & text for the legend
@@ -37,7 +43,7 @@ export function initSimulations() {
           .strength(forceStrength)
           .x(chartWidth / 2)
       )
-      .force("charge", forceManyBody().strength(charge))
+      .force("charge", forceManyBody().strength(getCharge()))
       .on("tick", frame);
 
     // @v4 Force starts up automatically,
@@ -45,6 +51,32 @@ export function initSimulations() {
     sim.stop();
     simulations[key] = sim;
   }
+  return simulations;
+}
+
+export function initCandidateSimulations() {
+  const simulations = { ...candidates };
+
+  // uneeded prop
+  delete simulations.x;
+
+  for (let key in simulations) {
+    const sim = forceSimulation()
+      .force(
+        "y",
+        forceY()
+          .strength(forceStrength)
+          .y(chartHeight / 2)
+      )
+      .force("charge", forceManyBody().strength(getCharge()))
+      .on("tick", frame);
+
+    // @v4 Force starts up automatically,
+    //  which we don't want as there aren't any nodes yet.
+    sim.stop();
+    simulations[key] = sim;
+  }
+
   return simulations;
 }
 
@@ -57,5 +89,3 @@ function frame() {
       return d.y;
     });
 }
-
-export default initSimulation;

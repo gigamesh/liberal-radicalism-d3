@@ -17,7 +17,7 @@ export const chartWidth = Math.min(screenWidth * 0.62, 1400);
 export const chartHeight = screenHeight * 0.92;
 export const tierColumnWidth = Math.max(chartWidth * 0.18, 110);
 export const topPad = chartHeight * 0.04;
-export const bottomPad = 0;
+export const bottomPad = chartHeight * 0.03;
 
 // Locations to move bubbles towards, depending
 // on which view mode is selected.
@@ -28,9 +28,9 @@ export const chartCenter = {
 };
 
 export const candidates = {
-  "Bernie Sanders": { x: chartCenter.x - (chartWidth - tierColumnWidth) / 3 },
-  "Hillary Clinton": { x: chartCenter.x },
-  "Martin O'Malley": { x: chartCenter.x + (chartWidth - tierColumnWidth) / 3 }
+  Alice: { x: chartCenter.x - (chartWidth - tierColumnWidth) / 3 },
+  Bill: { x: chartCenter.x },
+  Carl: { x: chartCenter.x + (chartWidth - tierColumnWidth) / 3 }
 };
 
 export const tierLevels = {
@@ -75,11 +75,10 @@ tierLevelKeys.forEach((k, i) => {
   tierLevels[k].y = tierScale(i);
 });
 
-// @v4 strength to apply to the position forces
 export const forceStrength = 0.07;
 
-export function charge(d) {
-  return -Math.pow(d.radius, 1.9) * forceStrength;
+export function getCharge(exponent = 1.8, force = forceStrength) {
+  return d => -Math.pow(d.radius, exponent) * force;
 }
 
 export function maxAmount(data) {

@@ -8,7 +8,12 @@ import {
   chartWidth,
   chartHeight
 } from "./config";
-import { groupBubbles, toggleDonationGroups } from "./bubbleHandlers";
+import {
+  groupAllBubbles,
+  showCandidates,
+  splitByCandidate,
+  splitByDonation
+} from "./bubbleHandlers";
 import chart from "./chart";
 
 function render(currentView, activeDonationBtn, animDelay) {
@@ -41,52 +46,53 @@ function render(currentView, activeDonationBtn, animDelay) {
       return d.radius;
     });
 
-  for (let key in this.simulations) {
-    const nodeGroup = this.nodes.filter(node => {
-      return key === node.tier;
-    });
-    this.simulations[key].nodes(nodeGroup);
-  }
-  // this.simulation.nodes(this.nodes);
+  // views triggered by switch statement at the bottom
+  const view0 = () => {
+    this.allForce.nodes(this.nodes);
+    groupAllBubbles(1, 0.4);
+  };
+  const view1 = () => {};
+  const view2 = () => {
+    this.svg.classed("downscale", true);
+    this.svg.classed("left-side", true);
+    showCandidates();
+
+    for (let key in this.candidateForce) {
+      const nodeGroup = this.nodes.filter(node => {
+        return key === node.name;
+      });
+      this.candidateForce[key].nodes(nodeGroup);
+    }
+
+    splitByCandidate();
+  };
+
+  const view3 = () => {
+    for (let key in this.tierForce) {
+      const nodeGroup = this.nodes.filter(node => {
+        return key === node.tier;
+      });
+      this.tierForce[key].nodes(nodeGroup);
+    }
+
+    splitByDonation();
+  };
 
   switch (currentView) {
     case 0:
-      groupBubbles(1, 0.4);
+      view0();
       break;
     case 1:
-      this.svg.classed("downscale", true);
-      // this.svg.style("transition", "transform 500ms ease-in-out");
-
+      view1();
       break;
     case 2:
-      this.svg.classed("left-side", true);
-      showCandidates();
-      toggleDonationGroups(activeDonationBtn, animDelay);
+      view2();
+      break;
+    case 3:
+      view3();
       break;
     default:
   }
-}
-
-function showCandidates() {
-  // Add the candidate names
-  let names = Object.keys(candidates);
-
-  const candidateTitle = chart.svg.selectAll(".candidate").data(names);
-
-  candidateTitle
-    .enter()
-    .append("text")
-    .attr("class", "candidate")
-    .attr("x", function(d) {
-      return candidates[d].x;
-    })
-    .attr("y", chartHeight * 0.04)
-    .attr("text-anchor", "middle")
-    .text(function(d) {
-      if (screenWidth < 700) {
-        return d.match(/[^ ]* (.*)/)[1];
-      } else return d;
-    });
 }
 
 export default render;
