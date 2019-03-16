@@ -6,11 +6,15 @@
   --text-color: #444;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: "Questrial", sans-serif;
   color: var(--text-color);
   line-height: 1.5rem;
-  overflow: hidden;
 }
 
 ::selection {
@@ -56,7 +60,11 @@ button {
   font-size: 1rem;
 }
 
-.modal-appear {
+.tier-label:last-of-type {
+  font-weight: bold;
+}
+
+/* .modal-appear {
   opacity: 0;
 }
 
@@ -81,6 +89,14 @@ button {
 .modal-leave.example-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+} */
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 blockquote:before {
@@ -102,8 +118,7 @@ blockquote:after {
 
 svg {
   position: absolute;
-  /* background: pink */
-  transform: translateX(-50%) scale(2.5);
+  transform: translateX(-50%) scale(3);
   left: 50%;
 }
 
@@ -113,7 +128,7 @@ svg.downscale {
 }
 
 svg.left-side {
-  left: 0;
+  left: 3%;
   transform: translate(0);
 }
 

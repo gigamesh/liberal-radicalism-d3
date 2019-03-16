@@ -6,8 +6,8 @@
 import { select } from "d3-selection";
 import { scaleOrdinal } from "d3-scale";
 import createNodes from "./createNodes";
-import initSimulation from "./simulation";
-import { maxAmount, donationColors, scaleMatrix } from "./config";
+import initSimulation, { initSimulations } from "./simulation";
+import { maxAmount, donationColors } from "./config";
 import render from "./render";
 
 const chart = {
@@ -16,9 +16,13 @@ const chart = {
 
     this.fillColor = scaleOrdinal()
       .domain([2700, 2000, 1000, 500, 200, 50])
-      .range(donationColors);
+      .range(donationColors.reverse());
 
+    //working - DON'T REMOVE UNTIL NEW ONE IS WORKING!
     this.simulation = initSimulation();
+
+    //new
+    this.simulations = initSimulations();
 
     this.svg = select(domNode).append("svg");
 

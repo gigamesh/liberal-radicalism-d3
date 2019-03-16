@@ -19,7 +19,7 @@ const duration = 1000;
 const FullWrap = styled.div`
   opacity: 0;
   transition: opacity ${duration}ms ease-in-out;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -37,10 +37,9 @@ const InnerWrap = styled.div`
 `;
 
 const WithBtnWrap = styled.div`
-  overflow: hidden;
-  height: 75vh;
-  max-height: 500px;
-  max-width: 60%;
+  height: 100vh;
+  max-height: 22rem;
+  max-width: 40rem;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -55,7 +54,8 @@ const ContentWrap = styled.div`
   width: 100%;
   h1 {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    margin-top: 0;
   }
   h2 {
     margin-bottom: 30px;
@@ -114,7 +114,12 @@ class Modal extends React.Component {
                 </Fade>
                 {nextView(currentView, 1)}
               </InnerWrap>
-              <Btn onClick={continueHandler}>Continue</Btn>
+              <Btn
+                onClick={continueHandler}
+                style={{ position: "absolute", bottom: 0, right: 0 }}
+              >
+                Continue
+              </Btn>
             </WithBtnWrap>
           </FullWrap>
         )}

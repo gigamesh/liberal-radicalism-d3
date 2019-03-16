@@ -13,11 +13,11 @@ export const donationColors = [
 
 export const screenHeight = window.innerHeight;
 export const screenWidth = window.innerWidth;
-export const chartWidth = Math.min(screenWidth * 0.65, 1400);
-export const chartHeight = screenHeight * 0.8;
-export const tierColumnWidth = Math.max(chartWidth * 0.15, 110);
-export const topPad = chartHeight * 0.22;
-export const bottomPad = chartHeight * 0.12;
+export const chartWidth = Math.min(screenWidth * 0.62, 1400);
+export const chartHeight = screenHeight * 0.92;
+export const tierColumnWidth = Math.max(chartWidth * 0.18, 110);
+export const topPad = chartHeight * 0.04;
+export const bottomPad = 0;
 
 // Locations to move bubbles towards, depending
 // on which view mode is selected.
@@ -34,28 +34,40 @@ export const candidates = {
 };
 
 export const tierLevels = {
+  Amounts: {
+    text: "Donation Ranges"
+  },
   twoThouToLimitAmount: {
-    text: "$2k - $2,700 (limit)"
+    text: "$2k - $2,700 (limit)",
+    cluster: {}
   },
   oneThouTo2000Amount: {
-    text: "$1k - $1999.99"
+    text: "$1k - $1999.99",
+    cluster: {}
   },
   fiveHundredTo1000Amount: {
-    text: "$500 - 999.99"
+    text: "$500 - 999.99",
+    cluster: {}
   },
   twoHundredTo500Amount: {
-    text: "$200 - 499.99"
+    text: "$200 - 499.99",
+    cluster: {}
   },
   fiftyTo200Amount: {
-    text: "$50 - 199.99"
+    text: "$50 - 199.99",
+    cluster: {}
   },
   zeroTo50Amount: {
-    text: "$0 - 49.99"
+    text: "$0 - 49.99",
+    cluster: {}
+  },
+  Totals: {
+    text: "TOTALS:"
   }
 };
 
 export const tierScale = scaleLinear()
-  .domain([0, 5])
+  .domain([0, 7])
   .range([topPad, chartHeight - bottomPad]);
 
 export const tierLevelKeys = Object.keys(tierLevels);
@@ -67,7 +79,7 @@ tierLevelKeys.forEach((k, i) => {
 export const forceStrength = 0.07;
 
 export function charge(d) {
-  return -Math.pow(d.radius, 2) * forceStrength;
+  return -Math.pow(d.radius, 1.9) * forceStrength;
 }
 
 export function maxAmount(data) {

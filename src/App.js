@@ -1,51 +1,57 @@
 import React, { Component } from "react";
 import Chart from "./components/Chart";
 import Modal from "./components/Modal";
+import SideBox from "./components/SideBox";
+import LandscapeMessage from "./components/LandscapeMessage";
 import styled from "@emotion/styled";
 import chart from "./d3/chart";
+import { debounce, checkLandscape } from "./helpers/helpers";
 import { wait } from "./d3/config";
 import chartData from "./data/2016_primary_json";
 import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
 import Buttons from "./components/Buttons";
 
-const MainTitle = styled.h1`
-  position: absolute;
-  top: 0;
-  padding-left: 1rem;
-  opacity: ${({ opacity }) => opacity};
-  transition: 500ms ease-in-out;
-`;
+const initState = {
+  activeDonationBtn: "donation_all",
+  currentView: 0,
+  modalShowing: false,
+  animDelay: 0,
+  landscape: true,
+  chartLoaded: false,
+  sideBoxShowing: false
+};
 
 class App extends Component {
-  state = {
-    windowWidth: 0,
-    windowHeight: 0,
-    activeDonationBtn: "donation_all",
-    currentView: 0,
-    modalShowing: false,
-    animDelay: 0
-  };
+  state = { ...initState };
 
   async componentDidMount() {
-    // storing window dimensions in state to trigger update
+    this.checkOrientation();
 
-    this.setState({
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight
-    });
+    window.addEventListener("resize", debounce(this.checkOrientation, 100));
 
     await wait(1200);
 
     this.setState({ modalShowing: true });
 
-    // const dataAray = buildDataArray();
-    // console.log(dataAray);
-    // console.log(JSON.stringify(dataAray));
+    // const dataArray = buildDataArray();
+    // console.log(dataArray);
+    // console.log(JSON.stringify(dataArray));
   }
 
-  async componentDidUpdate() {
-    const { currentView, activeDonationBtn, animDelay } = this.state;
+  checkOrientation = () => {
+    const landscape = checkLandscape();
+
+    this.setState({ landscape });
+  };
+
+  async componentDidUpdate(prevProps, prevState) {
+    const { currentView, activeDonationBtn, animDelay, landscape } = this.state;
+
+    if (!landscape) return;
+    if (landscape && !prevState.landscape) {
+      window.location.reload();
+    }
 
     if (!animDelay) {
       chart.render(currentView, activeDonationBtn);
@@ -70,39 +76,46 @@ class App extends Component {
       this.setState({
         animDelay: 1500,
         modalShowing: false,
-        activeDonationBtn: "donation_tiers"
+        activeDonationBtn: "donation_tiers",
+        sideBoxShowing: true
       });
+    }
+    if (newView > 2) {
+      window.scrollTo(0, 0);
     }
   };
 
   render() {
-    const { windowHeight, currentView, modalShowing } = this.state;
-    const footerHeight = windowHeight > 375 ? "6vh" : "8vh";
-    console.log(currentView);
-    return (
+    const { currentView, landscape, modalShowing, sideBoxShowing } = this.state;
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+    // console.log(
+    //   "windowWidth: ",
+    //   windowWidth,
+    //   "currentView: ",
+    //   currentView,
+    //   "modalShowing: ",
+    //   modalShowing
+    // );
+    return !landscape ? (
+      <LandscapeMessage />
+    ) : (
       <React.Fragment>
-        {windowHeight > 375 && (
-          <MainTitle className="header-main" opacity={currentView < 2 ? 0 : 1}>
-            liberal radicalism
-          </MainTitle>
-        )}
-
         <Chart chartData={chartData} currentView={currentView} />
-
-        <Buttons
-          footerHeight={footerHeight}
-          donationButtonHandler={this.donationButtonHandler}
-          continueHandler={this.continueHandler}
-          currentView={currentView}
-        />
         <Modal
           in={modalShowing}
           currentView={currentView}
           continueHandler={this.continueHandler}
         />
+        <SideBox
+          continueHandler={this.continueHandler}
+          sideBoxShowing={sideBoxShowing}
+          currentView={currentView}
+          donationButtonHandler={this.donationButtonHandler}
+        />
         <button
           onClick={this.continueHandler}
-          style={{ position: "absolute", left: 0, bottom: 0 }}
+          style={{ position: "absolute", right: 0, bottom: 0 }}
         >
           continue
         </button>

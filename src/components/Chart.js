@@ -3,13 +3,15 @@ import styled from "@emotion/styled";
 import chart from "../d3/chart";
 
 const ChartContainer = styled.div`
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  width: 95vw;
   margin: 0 auto;
   height: 100vh;
+  width: 100vw;
   z-index: -1;
 `;
 

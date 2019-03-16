@@ -1,14 +1,23 @@
 import { scaleSqrt } from "d3-scale";
 import chart from "./chart";
-import { tierLevels, chartWidth, chartHeight } from "./config";
+import { tierLevels, chartWidth, chartHeight, candidates } from "./config";
 
 function createNodes(rawData) {
   const centerX = chartWidth / 2;
   const centerY = chartHeight / 2;
 
+  // attaches x & y value for each cluster
+  for (let key in tierLevels) {
+    if (tierLevels[key].cluster) {
+      for (let name in candidates) {
+        tierLevels[key].cluster[name] = [candidates[name].x, tierLevels[key].y];
+      }
+    }
+  }
+
   const radiusScale = scaleSqrt()
     .domain([0, chart.maxAmount])
-    .range([0, chartHeight * 0.022]);
+    .range([0, chartHeight * 0.018]);
 
   const myNodes = rawData.map(function(d, i) {
     let a = Math.random() * 2 * Math.PI;

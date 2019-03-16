@@ -1,7 +1,7 @@
 import React from "react";
 
 export default () => (
-  <React.Fragment>
+  <div>
     <h1>liberal radicalism</h1>
     <p>
       Liberal Radicalism (a.k.a. Quadratic Finance) is a mechanism for optimally
@@ -17,5 +17,5 @@ export default () => (
       This presentation is an attempt to explain its power using data from the
       United States 2016 Democratic Primary for President.
     </p>
-  </React.Fragment>
+  </div>
 );

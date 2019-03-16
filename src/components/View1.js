@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Wrap = styled.div`
-  max-width: 500px;
+  /* max-width: 500px; */
 `;
 
 const Quote = styled.blockquote`

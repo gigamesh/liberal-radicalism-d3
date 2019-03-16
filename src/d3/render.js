@@ -41,7 +41,13 @@ function render(currentView, activeDonationBtn, animDelay) {
       return d.radius;
     });
 
-  this.simulation.nodes(this.nodes);
+  for (let key in this.simulations) {
+    const nodeGroup = this.nodes.filter(node => {
+      return key === node.tier;
+    });
+    this.simulations[key].nodes(nodeGroup);
+  }
+  // this.simulation.nodes(this.nodes);
 
   switch (currentView) {
     case 0:
@@ -74,10 +80,10 @@ function showCandidates() {
     .attr("x", function(d) {
       return candidates[d].x;
     })
-    .attr("y", 20)
+    .attr("y", chartHeight * 0.04)
     .attr("text-anchor", "middle")
     .text(function(d) {
-      if (screenWidth < 600) {
+      if (screenWidth < 700) {
         return d.match(/[^ ]* (.*)/)[1];
       } else return d;
     });

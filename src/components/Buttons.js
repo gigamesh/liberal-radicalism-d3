@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Button from "./Button";
 
-const Toolbar = styled.div`
+const Wrapper = styled.div`
   height: ${({ height }) => height};
-  position: absolute;
   width: 100%;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -13,21 +12,23 @@ const Toolbar = styled.div`
 
 export default function Buttons(props) {
   return props.currentView > -1 ? (
-    <Toolbar id="donations-buttons" height={props.footerHeight}>
-      <button
+    <Wrapper id="donations-buttons" height={props.footerHeight}>
+      <Button
+        small={window.innerHeight < 600}
         id="donation_all"
         onClick={props.donationButtonHandler}
         className="button active"
       >
         All Donations
-      </button>
-      <button
+      </Button>
+      <Button
+        small={window.innerHeight < 600}
         id="donation_tiers"
         onClick={props.donationButtonHandler}
         className="button"
       >
         Donations By Tier
-      </button>
-    </Toolbar>
+      </Button>
+    </Wrapper>
   ) : null;
 }
