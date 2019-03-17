@@ -32,11 +32,9 @@ function render(currentView, activeDonationBtn, animDelay) {
     .enter()
     .append("circle")
     .attr("r", 0)
-    .attr("fill", function(d) {
-      return chart.fillColor(+d.size);
-    })
+    .attr("fill", d => d.color)
     .attr("stroke", function(d) {
-      return rgb(chart.fillColor(+d.size)).darker([3]);
+      return rgb(d.color).darker([3]);
     })
     .attr("stroke-width", 0.5);
 

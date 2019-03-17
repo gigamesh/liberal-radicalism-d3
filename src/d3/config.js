@@ -15,7 +15,7 @@ export const screenHeight = window.innerHeight;
 export const screenWidth = window.innerWidth;
 export const chartWidth = Math.min(screenWidth * 0.62, 1400);
 export const chartHeight = screenHeight * 0.92;
-export const legendWidth = Math.max(chartWidth * 0.18, 110);
+export const legendWidth = Math.max(chartWidth * 0.18, 95);
 export const topPad = chartHeight * 0.04;
 export const bottomPad = chartHeight * 0.03;
 
@@ -27,14 +27,31 @@ export const chartCenter = {
   y: chartHeight / 2
 };
 
+export const combinedDollarSum = 447368608;
+
 export const candidates = {
-  Alice: { x: chartCenter.x - (chartWidth - legendWidth) / 3 },
-  Bill: { x: chartCenter.x },
-  Carl: { x: chartCenter.x + (chartWidth - legendWidth) / 3 }
+  Alice: {
+    count: 403668,
+    dollarSum: 19229039,
+    normalRatio: 0.30993,
+    lrRatio: 0.53435
+  },
+  Bill: {
+    count: 43033136,
+    dollarSum: 42005680,
+    normalRatio: 0.67704,
+    lrRatio: 0.46021
+  },
+  Carl: {
+    count: 1050,
+    dollarSum: 808276,
+    normalRatio: 0.01302,
+    lrRatio: 0.00543
+  }
 };
 
 export const xScale = scalePoint()
-  .padding(0.5)
+  .padding(0.3)
   .domain(Object.keys(candidates))
   .range([0, chartWidth]);
 

@@ -65,6 +65,7 @@ export async function splitByDonation(delay = 0) {
     tierForce[key].alpha(1).restart();
 
     showTierLabels();
+    showTotals();
   }
 }
 
@@ -93,6 +94,23 @@ export function stopSplitByCandidate() {
   }
 }
 
+function showTotals() {
+  const totalText = chart.svg
+    .selectAll(".money-totals")
+    .data(Object.keys(candidates));
+
+  totalText
+    .enter()
+    .append("text")
+    .attr("class", "money-totals")
+    .attr("y", tierLevels.Totals.y)
+    .attr("x", name => xScale(name))
+    .attr("text-anchor", "middle")
+    .text(name => {
+      return `$${candidates[name].dollarSum.toLocaleString()}`;
+    });
+}
+
 export function hideTierLabels() {
   chart.svg.selectAll(".tier-label").remove();
 }
@@ -115,6 +133,9 @@ export function showTierLabels() {
         select(this)
           .style("text-decoration", "underline")
           .style("font-weight", "bold");
+      }
+      if (d === "Totals") {
+        select(this).style("font-weight", "bold");
       }
     });
 }

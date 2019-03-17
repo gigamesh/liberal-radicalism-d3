@@ -19,11 +19,13 @@ const duration = 1000;
 const FullWrap = styled.div`
   opacity: 0;
   transition: opacity ${duration}ms ease-in-out;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  bottom: 0;
+  right: 0;
+  /* width: 100vw;
+  height: 100vh; */
   z-index: 1;
   background: rgba(255, 255, 255, 0.9);
   display: flex;

@@ -72,8 +72,8 @@ export default function SideBox({
   publicFundHandler,
   fundsActive
 }) {
-  const fundItOn = (!fundsActive && currentView === 4) || currentView === 6;
-  const continueOn = (currentView !== 4 && currentView !== 6) || fundsActive;
+  const fundItOn = (!fundsActive && currentView === 3) || currentView === 5;
+  const continueOn = (currentView !== 3 && currentView !== 5) || fundsActive;
   return (
     <Container opacity={sideBoxShowing ? 1 : 0}>
       <MainTitle className="header-main" opacity={currentView < 2 ? 0 : 1}>

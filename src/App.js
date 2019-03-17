@@ -108,16 +108,8 @@ class App extends Component {
       activeDonationBtn,
       fundsActive
     } = this.state;
-    const windowHeight = window.innerHeight;
-    const windowWidth = window.innerWidth;
-    console.log(
-      "windowWidth: ",
-      windowWidth,
-      "currentView: ",
-      currentView,
-      "modalShowing: ",
-      modalShowing
-    );
+
+    console.log("currentView: ", currentView);
     return !landscape ? (
       <LandscapeMessage />
     ) : (

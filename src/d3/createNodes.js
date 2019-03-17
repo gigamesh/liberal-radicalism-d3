@@ -23,15 +23,43 @@ function createNodes(rawData) {
 
   const radiusScale = scaleSqrt()
     .domain([0, chart.maxAmount])
-    .range([0, chartHeight * 0.018]);
+    .range([0, chartHeight * 0.017]);
 
-  const myNodes = rawData.map(function(d, i) {
+  // create public funding nodes
+  const numOfNodes = 200;
+  let pubArray = [];
+
+  let tiers = { ...tierLevels };
+  delete tiers.Totals;
+  delete tiers.Amounts;
+
+  for (let name in candidates) {
+    let portion = Math.round(numOfNodes * candidates[name].normalRatio);
+    // console.log(name, portion)
+    for (let t in tiers) {
+      let tierPortion = Math.round(portion / 6);
+
+      for (let i = 0; i < tierPortion; i++) {
+        pubArray.push({
+          name,
+          size: 500,
+          text: "Public Fund",
+          tier: t
+        });
+      }
+    }
+  }
+
+  const allData = pubArray.concat(rawData);
+
+  const myNodes = allData.map(function(d, i) {
     let a = Math.random() * 2 * Math.PI;
     let r = Math.sqrt(~~(Math.random() * chartHeight ** 2));
     return {
-      id: d.id,
+      id: i + "-donation",
       radius: radiusScale(+d.size),
       size: +d.size,
+      color: d.text !== "Public Fund" ? chart.fillColor(+d.size) : "#fce079",
       name: d.name,
       text: tierLevels[d.tier].text,
       tier: d.tier,
