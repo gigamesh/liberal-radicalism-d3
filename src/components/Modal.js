@@ -5,9 +5,9 @@ import Fade from "react-reveal/Fade";
 import Button from "./Button";
 import View0 from "./View0";
 import View1 from "./View1";
-import View2 from "./View2";
+import View5 from "./View5";
 
-const Views = [View0, View1, View2];
+const Views = { 0: View0, 1: View1, 5: View5 };
 
 const transitionStyles = {
   entering: { opacity: 0 },
@@ -113,6 +113,7 @@ class Modal extends React.Component {
                   </ContentWrap>
                 </Fade>
                 {nextView(currentView, 1)}
+                {nextView(currentView, 5)}
               </InnerWrap>
               <Btn
                 onClick={continueHandler}

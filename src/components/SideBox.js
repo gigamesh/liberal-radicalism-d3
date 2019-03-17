@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
-import Buttons from "./Buttons";
 import sideText from "./sideText";
 
 const Container = styled.div`
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   top: 0;
   right: 0;
   width: 35vw;
@@ -23,6 +19,31 @@ const Container = styled.div`
     margin-top: 0;
   }
   z-index: -1;
+  h3 {
+    text-align: center;
+  }
+  figure {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  button:first-of-type {
+    margin-left: 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
+const TextWrap = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const BtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 `;
 
 const MainTitle = styled.div`
@@ -45,22 +66,39 @@ export default function SideBox({
   continueHandler,
   sideBoxShowing,
   currentView,
-  donationButtonHandler
+  donationButtonHandler,
+  activeDonationBtn,
+  backHandler,
+  publicFundHandler,
+  fundsActive
 }) {
-  // console.log(sideBoxShowing);
+  const fundItOn = (!fundsActive && currentView === 4) || currentView === 6;
+  const continueOn = (currentView !== 4 && currentView !== 6) || fundsActive;
   return (
     <Container opacity={sideBoxShowing ? 1 : 0}>
       <MainTitle className="header-main" opacity={currentView < 2 ? 0 : 1}>
         <h1>liberal radicalism</h1>
       </MainTitle>
-
-      <div dangerouslySetInnerHTML={{ __html: sideText[currentView] }} />
-      <Buttons
-        donationButtonHandler={donationButtonHandler}
-        continueHandler={continueHandler}
-        currentView={currentView}
-      />
-      <Button onClick={continueHandler}>Continue</Button>
+      <TextWrap>{sideText[currentView]}</TextWrap>
+      <BtnWrapper>
+        <div>
+          {/* {currentView > 2 && (
+            <Button
+              small={window.innerHeight < 600}
+              id="donation_all"
+              onClick={donationButtonHandler}
+              className={activeDonationBtn && "active"}
+            >
+              Toggle Donations
+            </Button>
+          )} */}
+        </div>
+        <div>
+          {/* {currentView > 2 && <Button onClick={backHandler}>Back</Button>} */}
+          {fundItOn && <Button onClick={publicFundHandler}>Fund It!</Button>}
+          {continueOn && <Button onClick={continueHandler}>Continue</Button>}
+        </div>
+      </BtnWrapper>
     </Container>
   );
 }

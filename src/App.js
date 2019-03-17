@@ -9,16 +9,16 @@ import { wait } from "./d3/config";
 import chartData from "./data/2016_primary_json";
 import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
-import Buttons from "./components/Buttons";
 
 const initState = {
-  activeDonationBtn: "donation_all",
+  activeDonationBtn: false,
   currentView: 0,
   modalShowing: false,
   animDelay: 0,
   landscape: true,
   chartLoaded: false,
-  sideBoxShowing: false
+  sideBoxShowing: false,
+  fundsActive: false
 };
 
 class App extends Component {
@@ -61,7 +61,7 @@ class App extends Component {
   }
 
   donationButtonHandler = e => {
-    this.setState({ activeDonationBtn: e.target.id });
+    this.setState({ activeDonationBtn: !this.state.activeDonationBtn });
   };
 
   continueHandler = e => {
@@ -75,17 +75,39 @@ class App extends Component {
       this.setState({
         animDelay: 1500,
         modalShowing: false,
-        activeDonationBtn: "all_tiers",
+        activeDonationBtn: false,
         sideBoxShowing: true
       });
     }
     if (newView > 2) {
       window.scrollTo(0, 0);
     }
+
+    if (newView !== 4 && newView < 6) {
+      this.setState({ fundsActive: false });
+    }
+  };
+
+  backHandler = () => {
+    if (this.state.currentView < 3) return;
+    this.setState({
+      currentView: this.state.currentView - 1
+    });
+  };
+
+  publicFundHandler = () => {
+    this.setState({ fundsActive: true });
   };
 
   render() {
-    const { currentView, landscape, modalShowing, sideBoxShowing } = this.state;
+    const {
+      currentView,
+      landscape,
+      modalShowing,
+      sideBoxShowing,
+      activeDonationBtn,
+      fundsActive
+    } = this.state;
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
     console.log(
@@ -108,16 +130,20 @@ class App extends Component {
         />
         <SideBox
           continueHandler={this.continueHandler}
+          backHandler={this.backHandler}
           sideBoxShowing={sideBoxShowing}
           currentView={currentView}
           donationButtonHandler={this.donationButtonHandler}
+          activeDonationBtn={activeDonationBtn}
+          publicFundHandler={this.publicFundHandler}
+          fundsActive={fundsActive}
         />
-        <button
+        {/* <button
           onClick={this.continueHandler}
           style={{ position: "absolute", right: 0, bottom: 0 }}
         >
           continue
-        </button>
+        </button> */}
       </React.Fragment>
     );
   }

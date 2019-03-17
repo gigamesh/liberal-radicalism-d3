@@ -1,6 +1,12 @@
 import { scaleSqrt } from "d3-scale";
 import chart from "./chart";
-import { tierLevels, chartWidth, chartHeight, candidates } from "./config";
+import {
+  tierLevels,
+  chartWidth,
+  chartHeight,
+  candidates,
+  xScale
+} from "./config";
 
 function createNodes(rawData) {
   const centerX = chartWidth / 2;
@@ -10,7 +16,7 @@ function createNodes(rawData) {
   for (let key in tierLevels) {
     if (tierLevels[key].cluster) {
       for (let name in candidates) {
-        tierLevels[key].cluster[name] = [candidates[name].x, tierLevels[key].y];
+        tierLevels[key].cluster[name] = [xScale(name), tierLevels[key].y];
       }
     }
   }

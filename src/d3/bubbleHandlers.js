@@ -4,11 +4,12 @@ import { select } from "d3-selection";
 import {
   forceStrength,
   tierLevels,
-  scaleMatrix,
   candidates,
+  xScale,
   chartHeight,
-  tierColumnWidth,
-  wait
+  legendWidth,
+  wait,
+  chartWidth
 } from "./config";
 
 export function groupAllBubbles(alpha, decay) {
@@ -40,7 +41,6 @@ export function groupAllBubbles(alpha, decay) {
 export async function splitByDonation(delay = 0) {
   const { tierForce } = chart;
   await wait(delay);
-  showTierLabels();
 
   for (let key in tierForce) {
     tierForce[key]
@@ -58,39 +58,20 @@ export async function splitByDonation(delay = 0) {
         forceX()
           .strength(forceStrength)
           .x(d => {
-            return candidates[d.name].x;
+            return xScale(d.name);
           })
       );
 
-    // @v4 We can reset the alpha value and restart the allForce
     tierForce[key].alpha(1).restart();
+
+    showTierLabels();
   }
-
-  // allForce
-  //   .velocityDecay(0.2)
-  //   .force(
-  //     "y",
-  //     forceY()
-  //       .strength(forceStrength)
-  //       .y(d => {
-  //         return tierLevels[d.tier].y;
-  //       })
-  //   )
-  //   .force(
-  //     "x",
-  //     forceX()
-  //       .strength(forceStrength)
-  //       .x(d => {
-  //         return candidates[d.name].x;
-  //       })
-  //   );
-
-  // // @v4 We can reset the alpha value and restart the allForce
-  // allForce.alpha(1).restart();
 }
 
 export function splitByCandidate() {
   const { candidateForce } = chart;
+
+  xScale.range([0, chartWidth]);
 
   for (let key in candidateForce) {
     candidateForce[key].velocityDecay(0.2).force(
@@ -98,12 +79,17 @@ export function splitByCandidate() {
       forceX()
         .strength(0.07)
         .x(d => {
-          return candidates[d.name].x;
+          return xScale(d.name);
         })
     );
-
-    // @v4 We can reset the alpha value and restart the allForce
     candidateForce[key].alpha(1).restart();
+  }
+}
+
+export function stopSplitByCandidate() {
+  const { candidateForce } = chart;
+  for (let key in candidateForce) {
+    candidateForce[key].stop();
   }
 }
 
@@ -121,7 +107,7 @@ export function showTierLabels() {
     .append("text")
     .attr("class", "tier-label")
     .attr("y", key => tierLevels[key].y)
-    .attr("x", tierColumnWidth)
+    .attr("x", legendWidth)
     .attr("text-anchor", "end")
     .text(d => tierLevels[d].text)
     .each(function(d) {
@@ -133,18 +119,28 @@ export function showTierLabels() {
     });
 }
 
-export function showCandidates() {
-  // Add the candidate names
+export function moveCandidateTitles() {
   let names = Object.keys(candidates);
+  const candidateTitles = chart.svg.selectAll(".candidate").data(names);
 
-  const candidateTitle = chart.svg.selectAll(".candidate").data(names);
+  candidateTitles
+    .transition()
+    .duration(500)
+    .attr("x", function(d) {
+      return xScale(d);
+    });
+}
 
-  candidateTitle
+export function showCandidates() {
+  let names = Object.keys(candidates);
+  const candidateTitles = chart.svg.selectAll(".candidate").data(names);
+
+  candidateTitles
     .enter()
     .append("text")
     .attr("class", "candidate")
     .attr("x", function(d) {
-      return candidates[d].x;
+      return xScale(d);
     })
     .attr("y", chartHeight * 0.04)
     .attr("text-anchor", "middle")

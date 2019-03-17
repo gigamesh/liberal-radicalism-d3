@@ -1,4 +1,4 @@
-import { scaleLinear } from "d3-scale";
+import { scaleLinear, scalePoint } from "d3-scale";
 import chart from "./chart";
 import { max } from "d3-array";
 
@@ -15,7 +15,7 @@ export const screenHeight = window.innerHeight;
 export const screenWidth = window.innerWidth;
 export const chartWidth = Math.min(screenWidth * 0.62, 1400);
 export const chartHeight = screenHeight * 0.92;
-export const tierColumnWidth = Math.max(chartWidth * 0.18, 110);
+export const legendWidth = Math.max(chartWidth * 0.18, 110);
 export const topPad = chartHeight * 0.04;
 export const bottomPad = chartHeight * 0.03;
 
@@ -23,15 +23,20 @@ export const bottomPad = chartHeight * 0.03;
 // on which view mode is selected.
 export const center = { x: screenWidth / 2, y: screenHeight / 2 };
 export const chartCenter = {
-  x: (chartWidth - tierColumnWidth) / 2 + tierColumnWidth,
+  x: (chartWidth - legendWidth) / 2 + legendWidth,
   y: chartHeight / 2
 };
 
 export const candidates = {
-  Alice: { x: chartCenter.x - (chartWidth - tierColumnWidth) / 3 },
+  Alice: { x: chartCenter.x - (chartWidth - legendWidth) / 3 },
   Bill: { x: chartCenter.x },
-  Carl: { x: chartCenter.x + (chartWidth - tierColumnWidth) / 3 }
+  Carl: { x: chartCenter.x + (chartWidth - legendWidth) / 3 }
 };
+
+export const xScale = scalePoint()
+  .padding(0.5)
+  .domain(Object.keys(candidates))
+  .range([0, chartWidth]);
 
 export const tierLevels = {
   Amounts: {

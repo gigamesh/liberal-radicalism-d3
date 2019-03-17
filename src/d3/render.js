@@ -2,17 +2,20 @@ import { rgb } from "d3-color";
 // import { selection, select as d3Select } from 'd3-selection';
 import "d3-transition";
 import {
-  candidates,
   screenWidth,
   screenHeight,
   chartWidth,
-  chartHeight
+  chartHeight,
+  xScale,
+  legendWidth
 } from "./config";
 import {
   groupAllBubbles,
   showCandidates,
   splitByCandidate,
-  splitByDonation
+  splitByDonation,
+  moveCandidateTitles,
+  stopSplitByCandidate
 } from "./bubbleHandlers";
 import chart from "./chart";
 
@@ -68,14 +71,17 @@ function render(currentView, activeDonationBtn, animDelay) {
   };
 
   const view3 = () => {
+    stopSplitByCandidate();
+
     for (let key in this.tierForce) {
       const nodeGroup = this.nodes.filter(node => {
         return key === node.tier;
       });
       this.tierForce[key].nodes(nodeGroup);
     }
-
+    xScale.range([legendWidth * 1.5, chartWidth]);
     splitByDonation();
+    moveCandidateTitles();
   };
 
   switch (currentView) {
