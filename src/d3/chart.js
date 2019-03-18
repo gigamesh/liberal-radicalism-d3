@@ -5,13 +5,13 @@
  */
 import { select } from "d3-selection";
 import { scaleOrdinal } from "d3-scale";
-import createNodes from "./createNodes";
+import { createNodes, createPubFundNodes } from "./createNodes";
 import {
   initSimulation,
   initTierSimulations,
   initCandidateSimulations
 } from "./simulation";
-import { maxAmount, donationColors } from "./config";
+import { maxAmount, donationColors, chartWidth, chartHeight } from "./config";
 import render from "./render";
 
 const chart = {
@@ -26,7 +26,10 @@ const chart = {
     this.tierForce = initTierSimulations();
     this.candidateForce = initCandidateSimulations();
 
-    this.svg = select(domNode).append("svg");
+    this.svg = select(domNode)
+      .append("svg")
+      .attr("width", chartWidth)
+      .attr("height", chartHeight);
 
     this.nodes = createNodes(rawData);
 

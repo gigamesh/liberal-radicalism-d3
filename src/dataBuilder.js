@@ -1,74 +1,70 @@
-import { totals } from "./data/2016_primary_data";
-const windowHeight = document.documentElement.clientHeight;
-const windowWidth = document.documentElement.clientWidth;
+import { totals } from "./data/fakePrimaryData";
 
-const max = 10000000;
+/// bundling the smaller amounts as to not create too many DOM elements
+// imperfect solution until I learn to combine D3 with canvas
 
-const tierReference = {
-  zeroTo50Amount: {
-    ratio: 50 / 2700
+const radiusRatios = {
+  _50Count: {
+    ratio: 2500
   },
-  fiftyTo200Amount: {
-    ratio: 200 / 2700
+  _200Count: {
+    ratio: 5000
   },
-  twoHundredTo500Amount: {
-    ratio: 500 / 2700
+  _500Count: {
+    ratio: 5000
   },
-  fiveHundredTo1000Amount: {
-    ratio: 1000 / 2700
+  _1kCount: {
+    ratio: 5000
   },
-  oneThouTo2000Amount: {
-    ratio: 2000 / 2700
+  _2kCount: {
+    ratio: 6000
   },
-  twoThouToLimitAmount: {
-    ratio: 1
+  _5kCount: {
+    ratio: 5000
+  },
+  _50kCount: {
+    ratio: 50000
+  },
+  _500kCount: {
+    ratio: 500000
   }
 };
 
 export const buildDataArray = () => {
-  let count = 0;
   const dataArray = [];
+  let count = 0;
 
   totals.forEach(candidate => {
     for (let prop in candidate) {
-      if (
-        /amount/i.test(prop) &&
-        !/grand/i.test(prop) &&
-        candidate[prop] &&
-        !isNaN(candidate[prop])
-      ) {
-        const amount = max * tierReference[prop].ratio;
-        let num = Math.ceil(candidate[prop] / amount);
-        // console.log(candidate.name, prop, num, amount);
+      switch (prop) {
+        case "_50Count":
+          count = Math.round(candidate[prop][1] / 50);
+          break;
+        case "_200Count":
+          count = Math.round(candidate[prop][1] / 25);
+          break;
+        case "_500Count":
+          count = Math.round(candidate[prop][1] / 10);
+          break;
+        case "_1kCount":
+          count = Math.round(candidate[prop][1] / 5);
+          break;
+        case "_2kCount":
+          count = Math.round(candidate[prop][1] / 3);
+          break;
+        default:
+          count = candidate[prop][1];
+      }
 
-        for (let i = 0; i < num; i++) {
-          let a = Math.random() * 2 * Math.PI;
-          let r = Math.sqrt(~~(Math.random() * windowHeight ** 2));
-
-          dataArray.push({
-            id: count,
-            name: candidate.name,
-            tier: prop,
-            text: tierReference[prop].text,
-            size: 2700 * tierReference[prop].ratio,
-            amount: Math.round(amount / 100000) * 100000,
-            initX: (windowWidth / 2) * Math.cos(a),
-            initY: windowHeight / 2 + r * Math.sin(a)
-          });
-          count++;
-        }
+      for (let i = 0; i < count; i++) {
+        dataArray.push({
+          name: candidate.name,
+          tier: prop,
+          size: radiusRatios[prop].size
+        });
       }
     }
   });
-
-  const cache = {};
-  dataArray.forEach(o => {
-    if (o.name === "Hillary Clinton" && !cache[o.tier]) {
-      cache[o.tier] = 0;
-    }
-    cache[o.tier]++;
-  });
-  console.log(cache);
 
   // console.log(count);
   return dataArray;

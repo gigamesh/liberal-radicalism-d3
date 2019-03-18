@@ -15,6 +15,7 @@ import {
 export function groupAllBubbles(alpha, decay) {
   const { allForce } = chart;
   const centerY = chartHeight / 2;
+  console.log("group called");
 
   hideTierLabels();
 
@@ -38,9 +39,8 @@ export function groupAllBubbles(alpha, decay) {
   allForce.alpha(alpha).restart();
 }
 
-export async function splitByDonation(delay = 0) {
+export async function splitByDonation() {
   const { tierForce } = chart;
-  await wait(delay);
 
   for (let key in tierForce) {
     tierForce[key]
@@ -72,17 +72,23 @@ export async function splitByDonation(delay = 0) {
 export function splitByCandidate() {
   const { candidateForce } = chart;
 
-  xScale.range([0, chartWidth]);
-
   for (let key in candidateForce) {
-    candidateForce[key].velocityDecay(0.2).force(
-      "x",
-      forceX()
-        .strength(0.07)
-        .x(d => {
-          return xScale(d.name);
-        })
-    );
+    candidateForce[key]
+      .velocityDecay(0.25)
+      .force(
+        "x",
+        forceX()
+          .strength(forceStrength)
+          .x(d => {
+            return xScale(d.name);
+          })
+      )
+      .force(
+        "y",
+        forceY()
+          .strength(forceStrength)
+          .y(chartHeight * 0.5)
+      );
     candidateForce[key].alpha(1).restart();
   }
 }
@@ -107,7 +113,7 @@ function showTotals() {
     .attr("x", name => xScale(name))
     .attr("text-anchor", "middle")
     .text(name => {
-      return `$${candidates[name].dollarSum.toLocaleString()}`;
+      return `$${candidates[name].donationSum.toLocaleString()}`;
     });
 }
 
@@ -146,7 +152,7 @@ export function moveCandidateTitles() {
 
   candidateTitles
     .transition()
-    .duration(500)
+    .duration(700)
     .attr("x", function(d) {
       return xScale(d);
     });

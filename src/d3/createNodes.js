@@ -8,9 +8,13 @@ import {
   xScale
 } from "./config";
 
-function createNodes(rawData) {
+export function createNodes(rawData) {
   const centerX = chartWidth / 2;
   const centerY = chartHeight / 2;
+
+  const radiusScale = scaleSqrt()
+    .domain([0, chart.maxAmount])
+    .range([0, chartHeight * 0.015]);
 
   // attaches x & y value for each cluster
   for (let key in tierLevels) {
@@ -21,45 +25,13 @@ function createNodes(rawData) {
     }
   }
 
-  const radiusScale = scaleSqrt()
-    .domain([0, chart.maxAmount])
-    .range([0, chartHeight * 0.017]);
-
-  // create public funding nodes
-  const numOfNodes = 200;
-  let pubArray = [];
-
-  let tiers = { ...tierLevels };
-  delete tiers.Totals;
-  delete tiers.Amounts;
-
-  for (let name in candidates) {
-    let portion = Math.round(numOfNodes * candidates[name].normalRatio);
-    // console.log(name, portion)
-    for (let t in tiers) {
-      let tierPortion = Math.round(portion / 6);
-
-      for (let i = 0; i < tierPortion; i++) {
-        pubArray.push({
-          name,
-          size: 500,
-          text: "Public Fund",
-          tier: t
-        });
-      }
-    }
-  }
-
-  const allData = pubArray.concat(rawData);
-
-  const myNodes = allData.map(function(d, i) {
+  const myNodes = rawData.map(function(d, i) {
     let a = Math.random() * 2 * Math.PI;
     let r = Math.sqrt(~~(Math.random() * chartHeight ** 2));
     return {
       id: i + "-donation",
       radius: radiusScale(+d.size),
-      size: +d.size,
-      color: d.text !== "Public Fund" ? chart.fillColor(+d.size) : "#fce079",
+      color: chart.fillColor(+d.size),
       name: d.name,
       text: tierLevels[d.tier].text,
       tier: d.tier,
@@ -76,4 +48,38 @@ function createNodes(rawData) {
   return myNodes;
 }
 
-export default createNodes;
+export function createPubFundNodes() {
+  const radiusScale = scaleSqrt()
+    .domain([0, chart.maxAmount])
+    .range([0, chartHeight * 0.017]);
+
+  // create public funding nodes
+  const numOfNodes = 400;
+  let pubNodes = [];
+
+  let tiers = { ...tierLevels };
+  delete tiers.Totals;
+  delete tiers.Amounts;
+
+  for (let name in candidates) {
+    let portion = Math.round(numOfNodes * candidates[name].normalRatio);
+    // console.log(name, portion)
+    for (let t in tiers) {
+      let tierPortion = Math.round(portion / 6);
+
+      for (let i = 0; i < tierPortion; i++) {
+        pubNodes.push({
+          name,
+          radius: radiusScale(250),
+          color: "#fce079",
+          size: 250,
+          text: "Public Fund",
+          tier: t,
+          x: chartWidth,
+          y: chartHeight
+        });
+      }
+    }
+  }
+  return pubNodes;
+}

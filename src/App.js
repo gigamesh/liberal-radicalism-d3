@@ -6,7 +6,7 @@ import LandscapeMessage from "./components/LandscapeMessage";
 import chart from "./d3/chart";
 import { debounce, checkLandscape } from "./helpers/helpers";
 import { wait } from "./d3/config";
-import chartData from "./data/2016_primary_json";
+import chartData from "./data/fakePrimaryJSON";
 import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
 
@@ -33,9 +33,9 @@ class App extends Component {
 
     this.setState({ modalShowing: true });
 
-    // const dataArray = buildDataArray();
-    // console.log(dataArray);
-    // console.log(JSON.stringify(dataArray));
+    const dataArray = buildDataArray();
+    console.log(dataArray);
+    console.log(JSON.stringify(dataArray));
   }
 
   checkOrientation = () => {
@@ -45,7 +45,13 @@ class App extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
-    const { currentView, activeDonationBtn, animDelay, landscape } = this.state;
+    const {
+      currentView,
+      activeDonationBtn,
+      animDelay,
+      landscape,
+      fundsActive
+    } = this.state;
 
     if (!landscape) return;
     if (landscape && !prevState.landscape) {
@@ -53,10 +59,10 @@ class App extends Component {
     }
 
     if (!animDelay) {
-      chart.render(currentView, activeDonationBtn);
+      chart.render({ currentView, activeDonationBtn, fundsActive });
     } else {
-      await wait(500);
-      chart.render(currentView, activeDonationBtn);
+      await wait(animDelay);
+      chart.render({ currentView, activeDonationBtn, fundsActive });
     }
   }
 
@@ -73,7 +79,7 @@ class App extends Component {
 
     if (newView === 2) {
       this.setState({
-        animDelay: 1500,
+        animDelay: 0,
         modalShowing: false,
         activeDonationBtn: false,
         sideBoxShowing: true
@@ -83,9 +89,9 @@ class App extends Component {
       window.scrollTo(0, 0);
     }
 
-    if (newView !== 4 && newView < 6) {
-      this.setState({ fundsActive: false });
-    }
+    // if (newView !== 4 && newView < 6) {
+    //   this.setState({ fundsActive: false });
+    // }
   };
 
   backHandler = () => {
@@ -96,7 +102,10 @@ class App extends Component {
   };
 
   publicFundHandler = () => {
-    this.setState({ fundsActive: true });
+    this.setState({
+      fundsActive: true,
+      currentView: this.state.currentView + 1
+    });
   };
 
   render() {

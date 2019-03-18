@@ -32,21 +32,21 @@ export const combinedDollarSum = 447368608;
 export const candidates = {
   Alice: {
     count: 403668,
-    dollarSum: 19229039,
-    normalRatio: 0.30993,
-    lrRatio: 0.53435
+    donationSum: 19229039,
+    donationSumRatio: 0.31,
+    normalMatchSum: 46431809,
+    normalRatio: 0.42,
+    lrMatch: 45946755,
+    lrRatio: 0.41
   },
   Bill: {
     count: 43033136,
-    dollarSum: 42005680,
-    normalRatio: 0.67704,
-    lrRatio: 0.46021
-  },
-  Carl: {
-    count: 1050,
-    dollarSum: 808276,
-    normalRatio: 0.01302,
-    lrRatio: 0.00543
+    donationSum: 42005680,
+    donationSumRatio: 0.68,
+    normalMatchSum: 62984468,
+    normalRatio: 0.57,
+    lrMatch: 65016253,
+    lrRatio: 0.58
   }
 };
 
@@ -59,28 +59,28 @@ export const tierLevels = {
   Amounts: {
     text: "Donation Ranges"
   },
-  twoThouToLimitAmount: {
-    text: "$2k - $2,700 (limit)",
+  twoThouToLimitCount: {
+    text: "$2000.01 - $2,700",
     cluster: {}
   },
-  oneThouTo2000Amount: {
-    text: "$1k - $1999.99",
+  oneThouTo2000Count: {
+    text: "$1000.01 - $2k",
     cluster: {}
   },
-  fiveHundredTo1000Amount: {
-    text: "$500 - 999.99",
+  fiveHundredTo1000Count: {
+    text: "$500.01 - $1k",
     cluster: {}
   },
-  twoHundredTo500Amount: {
-    text: "$200 - 499.99",
+  twoHundredTo500Count: {
+    text: "$200.01 - $500",
     cluster: {}
   },
-  fiftyTo200Amount: {
-    text: "$50 - 199.99",
+  fiftyTo200Count: {
+    text: "$50.01 - $200",
     cluster: {}
   },
-  zeroTo50Amount: {
-    text: "$0 - 49.99",
+  zeroTo50Count: {
+    text: "$0 - $50",
     cluster: {}
   },
   Totals: {

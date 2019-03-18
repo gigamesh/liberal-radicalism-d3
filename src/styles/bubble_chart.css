@@ -6,7 +6,7 @@
   --dark-green: #335618;
   --gold: #fce079;
   --text-color: #444;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 * {
@@ -102,7 +102,7 @@ blockquote:after {
 
 svg {
   position: absolute;
-  transform: translateX(-50%) scale(3);
+  transform: translateX(-50%) scale(2.75);
   left: 50%;
 }
 

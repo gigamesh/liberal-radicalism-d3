@@ -12,9 +12,6 @@ const Container = styled.div`
   text-align: justify;
   opacity: ${({ opacity }) => opacity};
   transition: opacity 500ms ease 1500ms;
-  p {
-    font-size: 1.2rem;
-  }
   p:first-of-type {
     margin-top: 0;
   }
@@ -72,7 +69,8 @@ export default function SideBox({
   publicFundHandler,
   fundsActive
 }) {
-  const fundItOn = (!fundsActive && currentView === 3) || currentView === 5;
+  const fundItOn =
+    (!fundsActive && currentView === 3) || (!fundsActive && currentView === 5);
   const continueOn = (currentView !== 3 && currentView !== 5) || fundsActive;
   return (
     <Container opacity={sideBoxShowing ? 1 : 0}>
