@@ -7,7 +7,7 @@ import chart from "./d3/chart";
 import { debounce, checkLandscape } from "./helpers/helpers";
 import { wait } from "./d3/config";
 import chartData from "./data/fakePrimaryJSON";
-import { buildDataArray } from "./dataBuilder";
+// import { buildDataArray } from "./dataBuilder";
 import "./styles/bubble_chart.css";
 
 const initState = {
@@ -33,9 +33,9 @@ class App extends Component {
 
     this.setState({ modalShowing: true });
 
-    const dataArray = buildDataArray();
-    console.log(dataArray);
-    console.log(JSON.stringify(dataArray));
+    // const dataArray = buildDataArray();
+    // console.log(dataArray);
+    // console.log(JSON.stringify(dataArray));
   }
 
   checkOrientation = () => {

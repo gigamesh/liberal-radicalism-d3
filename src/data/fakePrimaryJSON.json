@@ -1,399 +1,2557 @@
 [
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_50Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_200Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_500Count" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_1kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_2kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Alice", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_50Count" },
-  { "name": "Bill", "tier": "_50Count" },
-  { "name": "Bill", "tier": "_50Count" },
-  { "name": "Bill", "tier": "_50Count" },
-  { "name": "Bill", "tier": "_50Count" },
-  { "name": "Bill", "tier": "_50Count" },
-  { "name": "Bill", "tier": "_200Count" },
-  { "name": "Bill", "tier": "_200Count" },
-  { "name": "Bill", "tier": "_200Count" },
-  { "name": "Bill", "tier": "_200Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_500Count" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_1kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_2kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_5kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_50kCount" },
-  { "name": "Bill", "tier": "_500kCount" }
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Alice",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Alice",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Alice",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Alice",
+    "tier": "_50kCount",
+    "amount": 50000,
+    "sqrt": 223.60679774997897,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Bill",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Bill",
+    "tier": "_50Count",
+    "amount": 2500,
+    "sqrt": 7.0710678118654755,
+    "count": 50
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_500Count",
+    "amount": 2500,
+    "sqrt": 22.360679774997898,
+    "count": 5
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_1kCount",
+    "amount": 3000,
+    "sqrt": 31.622776601683793,
+    "count": 3
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_2kCount",
+    "amount": 4000,
+    "sqrt": 44.721359549995796,
+    "count": 2
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_5kCount",
+    "amount": 5000,
+    "sqrt": 70.71067811865476,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_50kCount",
+    "amount": 50000,
+    "sqrt": 223.60679774997897,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_50kCount",
+    "amount": 50000,
+    "sqrt": 223.60679774997897,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_50kCount",
+    "amount": 50000,
+    "sqrt": 223.60679774997897,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_50kCount",
+    "amount": 50000,
+    "sqrt": 223.60679774997897,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_50kCount",
+    "amount": 50000,
+    "sqrt": 223.60679774997897,
+    "count": 1
+  },
+  {
+    "name": "Bill",
+    "tier": "_1mCount",
+    "amount": 1000000,
+    "sqrt": 1000,
+    "count": 1
+  }
 ]

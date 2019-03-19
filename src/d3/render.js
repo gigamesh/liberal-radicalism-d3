@@ -16,9 +16,10 @@ import {
   showCandidates,
   splitByCandidate,
   splitByDonation,
-  moveCandidateTitles,
+  showTotals,
+  moveTitlesAndTotals,
   stopSplitByCandidate
-} from "./bubbleHandlers";
+} from "./nodeHandlers";
 import chart from "./chart";
 import { createPubFundNodes } from "./createNodes";
 
@@ -45,7 +46,7 @@ function render({ currentView, activeDonationBtn, animDelay }) {
 }
 
 function view0() {
-  chart.allForce.nodes(chart.nodes);
+  chart.allForce.nodes(chart.nodes.sortedArray());
   groupAllBubbles(1, 0.4);
 }
 
@@ -62,13 +63,14 @@ function view2() {
   showCandidates();
 
   for (let key in candidateForce) {
-    const nodeGroup = nodes.filter(node => {
+    const nodeGroup = nodes.sortedArray().filter(node => {
       return key === node.name;
     });
     candidateForce[key].nodes(nodeGroup);
   }
 
   splitByCandidate();
+  showTotals("donationSum");
 }
 
 function view3() {
@@ -76,14 +78,14 @@ function view3() {
   stopSplitByCandidate();
 
   for (let key in tierForce) {
-    const nodeGroup = nodes.filter(node => {
+    const nodeGroup = nodes.sortedArray().filter(node => {
       return key === node.tier;
     });
     tierForce[key].nodes(nodeGroup);
   }
   xScale.range([legendWidth * 1.5, chartWidth]);
   splitByDonation();
-  moveCandidateTitles();
+  moveTitlesAndTotals();
 }
 
 function view4() {
@@ -91,15 +93,16 @@ function view4() {
   const pubFundNodes = createPubFundNodes();
 
   //add them to existing nodes
-  chart.nodes = [...chart.nodes, ...pubFundNodes];
+  const allNodes = chart.nodes.sortedArray(pubFundNodes);
+  // console.log(allNodes);
 
   // restart force simulatoin for each group
   for (let key in chart.tierForce) {
-    const nodeGroup = chart.nodes.filter(node => {
+    const nodeGroup = allNodes.filter(node => {
       return key === node.tier;
     });
-    chart.tierForce[key].velocityDecay(0.28);
 
+    chart.tierForce[key].velocityDecay(0.28);
     chart.tierForce[key].nodes(nodeGroup);
     chart.tierForce[key].alpha(1).restart();
   }
@@ -108,10 +111,11 @@ function view4() {
 export function updateAndMerge() {
   chart.bubbles = chart.allBubblesGroup
     .selectAll("circle")
-    .data(chart.nodes, function(d) {
+    .data(chart.nodes.sortedArray(), function(d) {
       return d.id;
     });
 
+  console.log(chart.nodes.sortedArray());
   const bubblesE = chart.bubbles
     .enter()
     .append("circle")
@@ -120,7 +124,7 @@ export function updateAndMerge() {
     .attr("stroke", function(d) {
       return rgb(d.color).darker([3]);
     })
-    .attr("stroke-width", 0.5);
+    .attr("stroke-width", 0.25);
 
   chart.bubbles = chart.bubbles.merge(bubblesE);
 

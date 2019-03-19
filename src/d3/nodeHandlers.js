@@ -1,4 +1,5 @@
 import { forceX, forceY } from "d3-force";
+import { easePolyOut } from "d3-ease";
 import chart from "./chart";
 import { select } from "d3-selection";
 import {
@@ -19,16 +20,6 @@ export function groupAllBubbles(alpha, decay) {
 
   hideTierLabels();
 
-  // for (let key in tierForce) {
-  //   tierForce[key].velocityDecay(decay).force(
-  //     "y",
-  //     forceY()
-  //       .strength(forceStrength)
-  //       .y(centerY)
-  //   );
-  //   tierForce[key].alpha(alpha).restart();
-  // }
-
   allForce.velocityDecay(decay).force(
     "y",
     forceY()
@@ -44,7 +35,7 @@ export async function splitByDonation() {
 
   for (let key in tierForce) {
     tierForce[key]
-      .velocityDecay(0.2)
+      .velocityDecay(0.25)
       .force(
         "y",
         forceY()
@@ -65,7 +56,6 @@ export async function splitByDonation() {
     tierForce[key].alpha(1).restart();
 
     showTierLabels();
-    showTotals();
   }
 }
 
@@ -100,11 +90,10 @@ export function stopSplitByCandidate() {
   }
 }
 
-function showTotals() {
-  const totalText = chart.svg
-    .selectAll(".money-totals")
-    .data(Object.keys(candidates));
+export function showTotals(key) {
+  const names = Object.keys(candidates);
 
+  const totalText = chart.svg.selectAll(".money-totals").data(names);
   totalText
     .enter()
     .append("text")
@@ -113,7 +102,7 @@ function showTotals() {
     .attr("x", name => xScale(name))
     .attr("text-anchor", "middle")
     .text(name => {
-      return `$${candidates[name].donationSum.toLocaleString()}`;
+      return `$${candidates[name][key].toLocaleString()}`;
     });
 }
 
@@ -131,6 +120,10 @@ export function showTierLabels() {
     .append("text")
     .attr("class", "tier-label")
     .attr("y", key => tierLevels[key].y)
+    .attr("x", 0)
+    .transition()
+    .ease(easePolyOut)
+    .duration(700)
     .attr("x", legendWidth)
     .attr("text-anchor", "end")
     .text(d => tierLevels[d].text)
@@ -146,13 +139,13 @@ export function showTierLabels() {
     });
 }
 
-export function moveCandidateTitles() {
-  let names = Object.keys(candidates);
-  const candidateTitles = chart.svg.selectAll(".candidate").data(names);
+export function moveTitlesAndTotals() {
+  const candidateTitles = chart.svg.selectAll(".candidate, .money-totals");
 
   candidateTitles
     .transition()
     .duration(700)
+    .ease(easePolyOut)
     .attr("x", function(d) {
       return xScale(d);
     });

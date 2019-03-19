@@ -19,8 +19,17 @@ const chart = {
     this.maxAmount = maxAmount(rawData);
 
     this.fillColor = scaleOrdinal()
-      .domain([2700, 2000, 1000, 500, 200, 50])
-      .range(donationColors.reverse());
+      .domain([
+        "_1mCount",
+        "_50kCount",
+        "_5kCount",
+        "_2kCount",
+        "_1kCount",
+        "_500Count",
+        "_200Count",
+        "_50Count"
+      ])
+      .range(donationColors);
 
     this.allForce = initSimulation();
     this.tierForce = initTierSimulations();

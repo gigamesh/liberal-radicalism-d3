@@ -102,7 +102,7 @@ blockquote:after {
 
 svg {
   position: absolute;
-  transform: translateX(-50%) scale(2.75);
+  transform: translateX(-50%) scale(4);
   left: 50%;
 }
 

@@ -1,23 +1,25 @@
 import { scaleLinear, scalePoint } from "d3-scale";
-import chart from "./chart";
 import { max } from "d3-array";
 
 export const donationColors = [
-  "#D2F4B7",
-  "#C4E7A8",
-  "#B5D999",
-  "#98BF7B",
-  "#7BA45D",
-  "#507C30"
+  "#99D492",
+  "#74C67A",
+  "#56B870",
+  "#39A96B",
+  "#1D9A6C",
+  "#188977",
+  "#137177",
+  "#0E4D64",
+  "#0A2F51"
 ];
 
 export const screenHeight = window.innerHeight;
 export const screenWidth = window.innerWidth;
 export const chartWidth = Math.min(screenWidth * 0.62, 1400);
 export const chartHeight = screenHeight * 0.92;
-export const legendWidth = Math.max(chartWidth * 0.18, 95);
+export const legendWidth = Math.max(chartWidth * 0.25, 95);
 export const topPad = chartHeight * 0.04;
-export const bottomPad = chartHeight * 0.03;
+export const bottomPad = chartHeight * 0.02;
 
 // Locations to move bubbles towards, depending
 // on which view mode is selected.
@@ -31,22 +33,16 @@ export const combinedDollarSum = 447368608;
 
 export const candidates = {
   Alice: {
-    count: 403668,
-    donationSum: 19229039,
-    donationSumRatio: 0.31,
-    normalMatchSum: 46431809,
-    normalRatio: 0.42,
-    lrMatch: 45946755,
-    lrRatio: 0.41
+    count: 4448,
+    donationSum: 698750,
+    normalMatchSum: 1898780,
+    lrMatch: 2075929.41
   },
   Bill: {
-    count: 43033136,
-    donationSum: 42005680,
-    donationSumRatio: 0.68,
-    normalMatchSum: 62984468,
-    normalRatio: 0.57,
-    lrMatch: 65016253,
-    lrRatio: 0.58
+    count: 530,
+    donationSum: 1691400,
+    normalMatchSum: 2015955,
+    lrMatch: 1814220.59
   }
 };
 
@@ -59,27 +55,35 @@ export const tierLevels = {
   Amounts: {
     text: "Donation Ranges"
   },
-  twoThouToLimitCount: {
-    text: "$2000.01 - $2,700",
+  _1mCount: {
+    text: "$1m",
     cluster: {}
   },
-  oneThouTo2000Count: {
-    text: "$1000.01 - $2k",
+  _50kCount: {
+    text: "$50k - $1m",
     cluster: {}
   },
-  fiveHundredTo1000Count: {
-    text: "$500.01 - $1k",
+  _5kCount: {
+    text: "$2k - $5k",
     cluster: {}
   },
-  twoHundredTo500Count: {
-    text: "$200.01 - $500",
+  _2kCount: {
+    text: "$1k - $2k",
     cluster: {}
   },
-  fiftyTo200Count: {
-    text: "$50.01 - $200",
+  _1kCount: {
+    text: "$500 - $1k",
     cluster: {}
   },
-  zeroTo50Count: {
+  _500Count: {
+    text: "$200 - $500",
+    cluster: {}
+  },
+  _200Count: {
+    text: "$50 - $200",
+    cluster: {}
+  },
+  _50Count: {
     text: "$0 - $50",
     cluster: {}
   },
@@ -89,7 +93,7 @@ export const tierLevels = {
 };
 
 export const tierScale = scaleLinear()
-  .domain([0, 7])
+  .domain([0, 10])
   .range([topPad, chartHeight - bottomPad]);
 
 export const tierLevelKeys = Object.keys(tierLevels);
@@ -105,7 +109,7 @@ export function getCharge(exponent = 1.8, force = forceStrength) {
 
 export function maxAmount(data) {
   return max(data, function(d) {
-    return +d.size;
+    return +d.amount;
   });
 }
 

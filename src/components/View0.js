@@ -9,13 +9,10 @@ export default () => (
       E. Glen Weyl.
     </p>
     <p>
-      It incentivizes distributed funding of vital public goods such as
-      infrastructure, open-source software, scientific research, journalism, and
-      political campaigns.
-    </p>
-    <p>
-      It has the potential to significantly reduce incongruities between
-      democracy and capitalism.
+      It has the potential to reduce chronic conflicts between democracy and
+      capitalism by incentivizing distributed funding of vital public goods such
+      as infrastructure, open-source software, scientific research, journalism,
+      and political campaigns.
     </p>
   </div>
 );

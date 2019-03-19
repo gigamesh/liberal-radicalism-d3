@@ -1,69 +1,86 @@
-import { totals } from "./data/fakePrimaryData";
+import totals from "./data/fakePrimaryData";
 
 /// bundling the smaller amounts as to not create too many DOM elements
 // imperfect solution until I learn to combine D3 with canvas
 
 const radiusRatios = {
   _50Count: {
-    ratio: 2500
+    size: 2500
   },
   _200Count: {
-    ratio: 5000
+    size: 2400
   },
   _500Count: {
-    ratio: 5000
+    size: 2500
   },
   _1kCount: {
-    ratio: 5000
+    size: 3000
   },
   _2kCount: {
-    ratio: 6000
+    size: 4000
   },
   _5kCount: {
-    ratio: 5000
+    size: 5000
   },
   _50kCount: {
-    ratio: 50000
+    size: 50000
   },
-  _500kCount: {
-    ratio: 500000
+  _1mCount: {
+    size: 1000000
   }
 };
 
 export const buildDataArray = () => {
   const dataArray = [];
-  let count = 0;
 
   totals.forEach(candidate => {
+    let dollarSum = 0;
+    let howMany = 0;
+    let count = 1;
+
     for (let prop in candidate) {
-      switch (prop) {
-        case "_50Count":
-          count = Math.round(candidate[prop][1] / 50);
-          break;
-        case "_200Count":
-          count = Math.round(candidate[prop][1] / 25);
-          break;
-        case "_500Count":
-          count = Math.round(candidate[prop][1] / 10);
-          break;
-        case "_1kCount":
-          count = Math.round(candidate[prop][1] / 5);
-          break;
-        case "_2kCount":
-          count = Math.round(candidate[prop][1] / 3);
-          break;
-        default:
-          count = candidate[prop][1];
+      if (prop !== "name") {
+        dollarSum = dollarSum + candidate[prop].value * candidate[prop].count;
       }
 
-      for (let i = 0; i < count; i++) {
+      switch (prop) {
+        case "_50Count":
+          count = 50;
+          howMany = Math.round(candidate[prop].count / count);
+          break;
+        case "_200Count":
+          count = 12;
+          howMany = Math.round(candidate[prop].count / count);
+          break;
+        case "_500Count":
+          count = 5;
+          howMany = Math.round(candidate[prop].count / count);
+          break;
+        case "_1kCount":
+          count = 3;
+          howMany = Math.round(candidate[prop].count / count);
+          break;
+        case "_2kCount":
+          count = 2;
+          howMany = Math.round(candidate[prop].count / count);
+          break;
+        default:
+          count = 1;
+          howMany = candidate[prop].count;
+      }
+
+      for (let i = 0; i < howMany; i++) {
         dataArray.push({
           name: candidate.name,
           tier: prop,
-          size: radiusRatios[prop].size
+          amount: radiusRatios[prop].size,
+          sqrt: Math.sqrt(candidate[prop].value),
+          count
         });
       }
     }
+
+    console.log(candidate.name, dollarSum);
   });
 
   // console.log(count);

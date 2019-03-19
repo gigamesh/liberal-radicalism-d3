@@ -1,24 +1,23 @@
-export const totals = [
-  {
-    name: "Alice",
-    _50Count: [50, 4450],
-    _200Count: [200, 1210],
-    _500Count: [500, 602],
-    _1kCount: [1000, 205],
-    _2kCount: [2000, 54],
-    _5kCount: [5000, 25],
-    _50kCount: [100000, 0],
-    _500kCount: [500000, 0]
+export default {
+  Alice: {
+    _50Count: { value: 50, count: 3353 },
+    _200Count: { value: 200, count: 638 },
+    _500Count: { value: 500, count: 305 },
+    _1kCount: { value: 1000, count: 110 },
+    _2kCount: { value: 2000, count: 38 },
+    _5kCount: { value: 5000, count: 3 },
+    _50kCount: { value: 50000, count: 1 },
+    _1mCount: { value: 1000000, count: 0 }
   },
-  {
-    name: "Bill",
-    _50Count: [50, 280],
-    _200Count: [200, 110],
-    _500Count: [500, 80],
-    _1kCount: [1000, 73],
-    _2kCount: [2000, 35],
-    _5kCount: [5000, 58],
-    _50kCount: [100000, 12],
-    _500kCount: [500000, 1]
+
+  Bill: {
+    _50Count: { value: 50, count: 168 },
+    _200Count: { value: 200, count: 110 },
+    _500Count: { value: 500, count: 80 },
+    _1kCount: { value: 1000, count: 75 },
+    _2kCount: { value: 2000, count: 53 },
+    _5kCount: { value: 5000, count: 38 },
+    _50kCount: { value: 50000, count: 5 },
+    _1mCount: { value: 1000000, count: 1 }
   }
-];
+};
