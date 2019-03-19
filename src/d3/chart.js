@@ -4,7 +4,7 @@
  *
  */
 import { select } from "d3-selection";
-import { scaleOrdinal } from "d3-scale";
+import { scaleOrdinal, scaleSqrt } from "d3-scale";
 import { createNodes, createPubFundNodes } from "./createNodes";
 import {
   initSimulation,
@@ -17,6 +17,9 @@ import render from "./render";
 const chart = {
   init: function(domNode, rawData) {
     this.maxAmount = maxAmount(rawData);
+    this.radiusScale = scaleSqrt()
+      .domain([0, this.maxAmount])
+      .range([0, chartHeight * 0.06]);
 
     this.fillColor = scaleOrdinal()
       .domain([
@@ -46,6 +49,8 @@ const chart = {
     // .attr("transform", scaleMatrix(2));
 
     this.bubbles = null;
+    this.pubFundsActive = false;
+    this.donationsGrouped = true;
   },
   render
 };

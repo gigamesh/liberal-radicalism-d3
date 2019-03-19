@@ -13,8 +13,12 @@ export default styled.button`
   padding: 0 0.5rem 0;
   margin-left: 10px;
   cursor: pointer;
-  &.active {
+  &:hover {
+    color: var(--green);
+    border: 1px solid var(--green);
+  }
+  &:active {
     color: #fff;
-    background: var(--text-color);
+    background: var(--green);
   }
 `;

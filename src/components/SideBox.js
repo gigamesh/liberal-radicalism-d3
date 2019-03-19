@@ -63,8 +63,8 @@ export default function SideBox({
   continueHandler,
   sideBoxShowing,
   currentView,
-  donationButtonHandler,
-  activeDonationBtn,
+  donationToggler,
+  donationsGrouped,
   backHandler,
   publicFundHandler,
   fundsActive
@@ -80,16 +80,16 @@ export default function SideBox({
       <TextWrap>{sideText[currentView]}</TextWrap>
       <BtnWrapper>
         <div>
-          {/* {currentView > 2 && (
+          {currentView > 2 && (
             <Button
               small={window.innerHeight < 600}
               id="donation_all"
-              onClick={donationButtonHandler}
-              className={activeDonationBtn && "active"}
+              onClick={donationToggler}
+              className={donationsGrouped && "active"}
             >
               Toggle Donations
             </Button>
-          )} */}
+          )}
         </div>
         <div>
           {/* {currentView > 2 && <Button onClick={backHandler}>Back</Button>} */}

@@ -1,5 +1,6 @@
 import { forceX, forceY } from "d3-force";
 import { easePolyOut } from "d3-ease";
+import { interpolateNumber } from "d3-interpolate";
 import chart from "./chart";
 import { select } from "d3-selection";
 import {
@@ -16,7 +17,6 @@ import {
 export function groupAllBubbles(alpha, decay) {
   const { allForce } = chart;
   const centerY = chartHeight / 2;
-  console.log("group called");
 
   hideTierLabels();
 
@@ -31,9 +31,14 @@ export function groupAllBubbles(alpha, decay) {
 }
 
 export async function splitByDonation() {
-  const { tierForce } = chart;
+  const { tierForce, nodes } = chart;
 
   for (let key in tierForce) {
+    const nodeGroup = nodes.sortedArray().filter(node => {
+      return key === node.tier;
+    });
+    tierForce[key].nodes(nodeGroup);
+
     tierForce[key]
       .velocityDecay(0.25)
       .force(
@@ -59,16 +64,21 @@ export async function splitByDonation() {
   }
 }
 
-export function splitByCandidate() {
-  const { candidateForce } = chart;
+export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
+  const { candidateForce, nodes } = chart;
 
   for (let key in candidateForce) {
+    const nodeGroup = nodes.sortedArray().filter(node => {
+      return key === node.name;
+    });
+    candidateForce[key].nodes(nodeGroup);
+
     candidateForce[key]
-      .velocityDecay(0.25)
+      .velocityDecay(decay)
       .force(
         "x",
         forceX()
-          .strength(forceStrength)
+          .strength(strength)
           .x(d => {
             return xScale(d.name);
           })
@@ -76,17 +86,25 @@ export function splitByCandidate() {
       .force(
         "y",
         forceY()
-          .strength(forceStrength)
+          .strength(strength)
           .y(chartHeight * 0.5)
       );
-    candidateForce[key].alpha(1).restart();
+    candidateForce[key].alpha(alpha).restart();
   }
+  // hideTierLabels();
 }
 
 export function stopSplitByCandidate() {
   const { candidateForce } = chart;
   for (let key in candidateForce) {
     candidateForce[key].stop();
+  }
+}
+
+export function stopSplitByDonation() {
+  const { tierForce } = chart;
+  for (let key in tierForce) {
+    tierForce[key].stop();
   }
 }
 
@@ -149,6 +167,29 @@ export function moveTitlesAndTotals() {
     .attr("x", function(d) {
       return xScale(d);
     });
+}
+
+export function updateTotals(key) {
+  const totalText = chart.svg.selectAll(".money-totals");
+
+  totalText.each(function(d) {
+    select(this)
+      .transition()
+      .tween("text", function() {
+        let total = select(this);
+        let start, end;
+        total.text(name => {
+          start = candidates[name].donationSum;
+          end = candidates[name][key];
+        });
+
+        const interpolator = interpolateNumber(start, end);
+        return function(t) {
+          total.text("$" + Math.round(interpolator(t)).toLocaleString());
+        };
+      })
+      .duration(2000);
+  });
 }
 
 export function showCandidates() {

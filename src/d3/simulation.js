@@ -57,9 +57,6 @@ export function initTierSimulations() {
 export function initCandidateSimulations() {
   const simulations = { ...candidates };
 
-  // uneeded prop
-  delete simulations.x;
-
   for (let key in simulations) {
     const sim = forceSimulation()
       .force(

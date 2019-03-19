@@ -11,7 +11,7 @@ import chartData from "./data/fakePrimaryJSON";
 import "./styles/bubble_chart.css";
 
 const initState = {
-  activeDonationBtn: false,
+  donationsGrouped: true,
   currentView: 0,
   modalShowing: false,
   animDelay: 0,
@@ -47,7 +47,7 @@ class App extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const {
       currentView,
-      activeDonationBtn,
+      donationsGrouped,
       animDelay,
       landscape,
       fundsActive
@@ -58,16 +58,18 @@ class App extends Component {
       window.location.reload();
     }
 
+    const config = { currentView, donationsGrouped, fundsActive };
+
     if (!animDelay) {
-      chart.render({ currentView, activeDonationBtn, fundsActive });
+      chart.render(config);
     } else {
       await wait(animDelay);
-      chart.render({ currentView, activeDonationBtn, fundsActive });
+      chart.render(config);
     }
   }
 
-  donationButtonHandler = e => {
-    this.setState({ activeDonationBtn: !this.state.activeDonationBtn });
+  donationToggler = e => {
+    this.setState({ donationsGrouped: !this.state.donationsGrouped });
   };
 
   continueHandler = e => {
@@ -81,7 +83,7 @@ class App extends Component {
       this.setState({
         animDelay: 0,
         modalShowing: false,
-        activeDonationBtn: false,
+        donationsGrouped: false,
         sideBoxShowing: true
       });
     }
@@ -114,7 +116,7 @@ class App extends Component {
       landscape,
       modalShowing,
       sideBoxShowing,
-      activeDonationBtn,
+      donationsGrouped,
       fundsActive
     } = this.state;
 
@@ -134,8 +136,8 @@ class App extends Component {
           backHandler={this.backHandler}
           sideBoxShowing={sideBoxShowing}
           currentView={currentView}
-          donationButtonHandler={this.donationButtonHandler}
-          activeDonationBtn={activeDonationBtn}
+          donationToggler={this.donationToggler}
+          donationsGrouped={donationsGrouped}
           publicFundHandler={this.publicFundHandler}
           fundsActive={fundsActive}
         />

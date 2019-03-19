@@ -1,9 +1,10 @@
 :root {
   --max-width: 1600px;
   --lightest-green: #efffe2;
-  --lighter-green: #c4e7a8;
-  --green: #98bf7b;
-  --dark-green: #335618;
+  --lighter-green: #b3d691;
+  --light-green: #85c973;
+  --green: #39aa61;
+  --dark-green: #0a4256;
   --gold: #fce079;
   --text-color: #444;
   font-size: 18px;

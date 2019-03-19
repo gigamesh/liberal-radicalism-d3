@@ -1,16 +1,6 @@
 import { rgb } from "d3-color";
-import { forceManyBody } from "d3-force";
 import "d3-transition";
-import {
-  screenWidth,
-  screenHeight,
-  chartWidth,
-  chartHeight,
-  xScale,
-  legendWidth,
-  getCharge,
-  forceStrength
-} from "./config";
+import { chartWidth, xScale, legendWidth } from "./config";
 import {
   groupAllBubbles,
   showCandidates,
@@ -18,16 +8,21 @@ import {
   splitByDonation,
   showTotals,
   moveTitlesAndTotals,
-  stopSplitByCandidate
+  stopSplitByCandidate,
+  stopSplitByDonation,
+  updateTotals
 } from "./nodeHandlers";
 import chart from "./chart";
 import { createPubFundNodes } from "./createNodes";
 
-function render({ currentView, activeDonationBtn, animDelay }) {
+function render({ currentView, donationsGrouped, animDelay }) {
+  this.donationsGrouped = donationsGrouped;
+
   switch (currentView) {
     case 0:
       view0();
-      break;
+      initialRenderTransition();
+      return;
     case 1:
       view1();
       break;
@@ -39,10 +34,9 @@ function render({ currentView, activeDonationBtn, animDelay }) {
       break;
     case 4:
       view4();
+      break;
     default:
   }
-
-  updateAndMerge();
 }
 
 function view0() {
@@ -62,50 +56,79 @@ function view2() {
 
   showCandidates();
 
-  for (let key in candidateForce) {
-    const nodeGroup = nodes.sortedArray().filter(node => {
-      return key === node.name;
-    });
-    candidateForce[key].nodes(nodeGroup);
-  }
-
   splitByCandidate();
   showTotals("donationSum");
 }
 
 function view3() {
-  const { tierForce, nodes } = chart;
   stopSplitByCandidate();
 
-  for (let key in tierForce) {
-    const nodeGroup = nodes.sortedArray().filter(node => {
-      return key === node.tier;
-    });
-    tierForce[key].nodes(nodeGroup);
-  }
   xScale.range([legendWidth * 1.5, chartWidth]);
-  splitByDonation();
-  moveTitlesAndTotals();
+
+  if (chart.donationsGrouped) {
+    stopSplitByDonation();
+    splitByCandidate(undefined, 0.23, 0.1);
+    chart.donationsGrouped = false;
+  } else {
+    stopSplitByCandidate();
+    splitByDonation();
+    moveTitlesAndTotals();
+    chart.donationsGrouped = true;
+  }
+
+  updateAndMerge();
 }
 
 function view4() {
+  if (chart.donationsGrouped) {
+    stopSplitByDonation();
+    splitByCandidate(undefined, 0.23, 0.1);
+    chart.donationsGrouped = false;
+  } else {
+    stopSplitByCandidate();
+    splitByDonation();
+    moveTitlesAndTotals();
+    chart.donationsGrouped = true;
+  }
+
+  if (chart.pubFundsActive) return;
+
   //create public funding nodes
   const pubFundNodes = createPubFundNodes();
 
   //add them to existing nodes
   const allNodes = chart.nodes.sortedArray(pubFundNodes);
-  // console.log(allNodes);
 
-  // restart force simulatoin for each group
-  for (let key in chart.tierForce) {
-    const nodeGroup = allNodes.filter(node => {
-      return key === node.tier;
-    });
+  if (chart.donationsGrouped) {
+    // restart force simulatoin for each group
+    for (let key in chart.tierForce) {
+      const nodeGroup = allNodes.filter(node => {
+        return key === node.tier;
+      });
 
-    chart.tierForce[key].velocityDecay(0.28);
-    chart.tierForce[key].nodes(nodeGroup);
-    chart.tierForce[key].alpha(1).restart();
+      chart.tierForce[key].velocityDecay(0.28);
+      chart.tierForce[key].nodes(nodeGroup);
+      chart.tierForce[key].alpha(1).restart();
+    }
+  } else {
+    for (let name in chart.candidateForce) {
+      const nodeGroup = allNodes.filter(node => {
+        return name === node.name;
+      });
+
+      chart.candidateForce[name].velocityDecay(0.28);
+      chart.candidateForce[name].nodes(nodeGroup);
+      chart.candidateForce[name].alpha(1).restart();
+    }
   }
+
+  updateTotals("normalMatchSum");
+
+  if (!chart.pubFundsActive) {
+    updateAndMerge();
+  }
+
+  chart.pubFundsActive = true;
 }
 
 export function updateAndMerge() {
@@ -114,8 +137,30 @@ export function updateAndMerge() {
     .data(chart.nodes.sortedArray(), function(d) {
       return d.id;
     });
+  // console.log("updateAndMerge...nodes: ", chart.nodes.sortedArray());
 
-  console.log(chart.nodes.sortedArray());
+  const bubblesE = chart.bubbles
+    .enter()
+    .append("circle")
+    .attr("r", function(d) {
+      return d.radius;
+    })
+    .attr("fill", d => d.color)
+    .attr("stroke", function(d) {
+      return rgb(d.color).darker([3]);
+    })
+    .attr("stroke-width", 0.25);
+
+  chart.bubbles = chart.bubbles.merge(bubblesE);
+}
+
+function initialRenderTransition() {
+  chart.bubbles = chart.allBubblesGroup
+    .selectAll("circle")
+    .data(chart.nodes.sortedArray(), function(d) {
+      return d.id;
+    });
+
   const bubblesE = chart.bubbles
     .enter()
     .append("circle")

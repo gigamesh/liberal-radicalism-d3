@@ -2,10 +2,10 @@ import { scaleLinear, scalePoint } from "d3-scale";
 import { max } from "d3-array";
 
 export const donationColors = [
-  "#99D492",
-  "#74C67A",
-  "#56B870",
-  "#39A96B",
+  "#B3D691",
+  "#85C973",
+  "#56BA5D",
+  "#39AA61",
   "#1D9A6C",
   "#188977",
   "#137177",
@@ -46,51 +46,43 @@ export const candidates = {
   }
 };
 
-export const xScale = scalePoint()
-  .padding(0.3)
-  .domain(Object.keys(candidates))
-  .range([0, chartWidth]);
-
 export const tierLevels = {
   Amounts: {
     text: "Donation Ranges"
   },
   _1mCount: {
-    text: "$1m",
-    cluster: {}
+    text: "$1m"
   },
   _50kCount: {
-    text: "$50k - $1m",
-    cluster: {}
+    text: "$50k - $1m"
   },
   _5kCount: {
-    text: "$2k - $5k",
-    cluster: {}
+    text: "$2k - $5k"
   },
   _2kCount: {
-    text: "$1k - $2k",
-    cluster: {}
+    text: "$1k - $2k"
   },
   _1kCount: {
-    text: "$500 - $1k",
-    cluster: {}
+    text: "$500 - $1k"
   },
   _500Count: {
-    text: "$200 - $500",
-    cluster: {}
+    text: "$200 - $500"
   },
   _200Count: {
-    text: "$50 - $200",
-    cluster: {}
+    text: "$50 - $200"
   },
   _50Count: {
-    text: "$0 - $50",
-    cluster: {}
+    text: "$0 - $50"
   },
   Totals: {
     text: "TOTALS:"
   }
 };
+
+export const xScale = scalePoint()
+  .padding(0.3)
+  .domain(Object.keys(candidates))
+  .range([0, chartWidth]);
 
 export const tierScale = scaleLinear()
   .domain([0, 10])
@@ -103,7 +95,7 @@ tierLevelKeys.forEach((k, i) => {
 
 export const forceStrength = 0.07;
 
-export function getCharge(exponent = 1.8, force = forceStrength) {
+export function getCharge(exponent = 1.9, force = forceStrength) {
   return d => -Math.pow(d.radius, exponent) * force;
 }
 

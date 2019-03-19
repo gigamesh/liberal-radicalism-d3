@@ -1,4 +1,3 @@
-import { scaleSqrt } from "d3-scale";
 import totals from "../data/fakePrimaryData";
 import chart from "./chart";
 import {
@@ -6,17 +5,12 @@ import {
   chartWidth,
   chartHeight,
   candidates,
-  xScale,
-  sortByRadius
+  xScale
 } from "./config";
 
 export function createNodes(rawData) {
   const centerX = chartWidth / 2;
   const centerY = chartHeight / 2;
-
-  const radiusScale = scaleSqrt()
-    .domain([0, chart.maxAmount])
-    .range([0, chartHeight * 0.045]);
 
   // attaches x & y value for each cluster
   for (let key in tierLevels) {
@@ -33,13 +27,12 @@ export function createNodes(rawData) {
 
     return {
       id: i + "-donation",
-      radius: radiusScale(+d.amount),
+      radius: chart.radiusScale(+d.amount),
       color: chart.fillColor(d.tier),
       name: d.name,
       text: tierLevels[d.tier].text,
       tier: d.tier,
       amount: d.amount,
-      count: d.count,
       x: centerX + r * Math.cos(a),
       y: centerY + r * Math.sin(a)
     };
@@ -83,12 +76,6 @@ export function createNodes(rawData) {
 }
 
 export function createPubFundNodes() {
-  const radiusScale = scaleSqrt()
-    .domain([0, chart.maxAmount])
-    .range([0, chartHeight * 0.045]);
-
-  // create public funding nodes
-  const pubNodeDollarAmount = 5000;
   let pubNodes = [];
 
   let tiers = { ...tierLevels };
@@ -96,7 +83,6 @@ export function createPubFundNodes() {
   delete tiers.Amounts;
 
   for (let name in chart.nodes) {
-    console.log(name);
     for (let tier in tiers) {
       // matchedAmt is an assumed average donation size for each tier
       // or 1000 beyond the lower tiers
@@ -110,23 +96,21 @@ export function createPubFundNodes() {
           : tier === "_1kCount"
           ? 750
           : 1000;
-      let numOfNodes = Math.round(
-        (totals[name][tier].count * matchedAmt) / pubNodeDollarAmount
-      );
+      let amount = totals[name][tier].count * matchedAmt;
 
-      for (let i = 0; i < numOfNodes; i++) {
-        pubNodes.push({
-          id: i + "-pubfund",
-          name,
-          radius: radiusScale(pubNodeDollarAmount),
-          color: "#fce079",
-          amount: pubNodeDollarAmount,
-          text: "Public Fund",
-          tier: tier,
-          x: chartWidth,
-          y: chartHeight
-        });
-      }
+      // for (let i = 0; i < numOfNodes; i++) {
+      pubNodes.push({
+        id: tier + "-pubfund",
+        radius: chart.radiusScale(amount),
+        name,
+        color: "#f4d733",
+        amount: amount,
+        text: "Public Fund",
+        tier: tier,
+        x: chartWidth,
+        y: chartHeight
+      });
+      // }
     }
   }
   return pubNodes;
