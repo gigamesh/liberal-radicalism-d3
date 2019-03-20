@@ -87,9 +87,13 @@ class App extends Component {
       window.scrollTo(0, 0);
     }
 
-    // if (newView !== 4 && newView < 6) {
-    //   this.setState({ fundsActive: false });
-    // }
+    if (newView === 5) {
+      this.setState({ fundsActive: false });
+    }
+
+    if (newView === 7) {
+      this.setState({ modalShowing: true, fundsActive: false });
+    }
   };
 
   backHandler = () => {
@@ -116,11 +120,11 @@ class App extends Component {
       fundsActive
     } = this.state;
 
-    console.log("currentView: ", currentView);
     return !landscape ? (
       <LandscapeMessage />
     ) : (
       <React.Fragment>
+        {/* <div style={{ height: "300vh", background: "pink", width: "10%" }} /> */}
         <Chart chartData={chartData} currentView={currentView} />
         <Modal
           in={modalShowing}

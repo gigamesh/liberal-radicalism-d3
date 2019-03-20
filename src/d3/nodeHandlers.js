@@ -34,7 +34,7 @@ export async function splitByDonation() {
   const { tierForce, nodes } = chart;
 
   for (let key in tierForce) {
-    const nodeGroup = chart.nodes.filter(node => {
+    const nodeGroup = nodes.filter(node => {
       return key === node.tier;
     });
     tierForce[key].nodes(nodeGroup);
@@ -68,7 +68,7 @@ export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
   const { candidateForce, nodes } = chart;
 
   for (let key in candidateForce) {
-    const nodeGroup = chart.nodes.filter(node => {
+    const nodeGroup = nodes.filter(node => {
       return key === node.name;
     });
     candidateForce[key].nodes(nodeGroup);

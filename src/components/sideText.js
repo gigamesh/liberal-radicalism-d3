@@ -25,7 +25,7 @@ export default {
       <p>
         In our election, there is no donation limit, and Bill is clearly more
         popular among rich patrons, benefiting from one very generous donation
-        of $500,000. Alice received less in total funding, however she has far
+        of $450,000. Alice received less in total funding, however she has far
         more supporters.
       </p>
       <p>
@@ -44,8 +44,8 @@ export default {
   4: (
     <React.Fragment>
       <p>
-        As the totals show, Alice received a healthy boost, but Bill is still in
-        the lead.
+        As the totals show, Alice received a very healthy boost, but Bill is
+        still in the lead.
       </p>
       <p>
         While matching systems like this are effective at making fund raising
@@ -54,26 +54,33 @@ export default {
       <ul>
         <li>
           If a limit is set on how much someone can donate, wealthy donors are
-          incentivized exert influence through less transparent channels
-          (lobbying,{" "}
+          incentivized exert influence through less transparent channels:
+          lobbying,{" "}
           <a
             href="https://www.opensecrets.org/pacs/superpacs.php"
             target="_blank"
           >
             "Super PACs"
           </a>
-          , Mar-a-Lago memberships, etc).
+          , Mar-a-Lago memberships, etc.
         </li>
         <li>
-          The matching threshold is fairly arbitrary and subject to being
-          changed by whoever is currently in power
+          The matching threshold also encourages wealthy patrons to put their
+          money elsewhere because it's typically a miniscule fraction of the
+          total amount they give. In the case of Bill's top contributor, only
+          0.04% of his donation was matched (the barely-visible small yellow dot
+          next to the biggest green one).
         </li>
         <li>
-          The systems have a tendency to get bogged down with arcane rules and
-          are poorly managed, making them less useful over time (ex: Most major
-          U.S. presidential candidates haven't accepted public funding since
-          2008 because associated limits on spending haven't been increased with
-          campaign costs).
+          The matching threshold is fairly arbitrary and prone to being
+          manipulated by whoever is currently in power.
+        </li>
+        <li>
+          Matching systems in politics have a tendency to get bogged down with
+          arcane rules and are poorly managed, making them less useful over
+          time. For example, most major U.S. presidential candidates haven't
+          accepted public funding since 2008 because associated limits on
+          spending haven't been increased with campaign costs.
         </li>
       </ul>
     </React.Fragment>
@@ -102,12 +109,23 @@ export default {
     </React.Fragment>
   ),
   6: (
-    <p>
-      As the donation groups show, the Liberal Radical mechanism tips the
-      competitive balance in favor of candidates who receive more individual
-      donations. In this scenario, Alice would end up with a healthy lead over
-      Bill, which is appropriate considering she is a far more popular
-      candidate.
-    </p>
+    <React.Fragment>
+      <p>
+        As the donation totals show, the Liberal Radical mechanism is slightly
+        better than the regular matching fund scheme in tipping the competitive
+        balance in favor of candidates who receive more individual donations.{" "}
+      </p>
+      <p>
+        In this scenario, Alice would end up with a slight lead over Bill, which
+        is appropriate considering she is a far more popular candidate.
+      </p>
+      <p>
+        But what is possibly even more interesting, a far larger portion of the
+        donation from Bill's top donor is contributing to the matching fund this
+        time (see the yellow dot next to the largest green dot). That suggests
+        that the L.R. mechanism could potentially bring political "dark money"
+        into the light.
+      </p>
+    </React.Fragment>
   )
 };

@@ -26,14 +26,19 @@ body {
   line-height: 1.5rem;
 }
 
+#root {
+  display: flex;
+  justify-content: flex-end;
+}
+
 a {
   color: var(--dark-green);
-  box-shadow: inset 0 -5px 0 var(--lighter-green);
+  box-shadow: inset 0 -3px 0 var(--lighter-green);
   text-decoration: none;
 }
 
 a:hover {
-  box-shadow: inset 0 -5px 0 var(--green);
+  box-shadow: inset 0 -3px 0 var(--green);
 }
 
 figure {
@@ -74,14 +79,6 @@ li {
 .money-totals {
   font-size: 1.2rem;
   font-weight: bold;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
 }
 
 blockquote:before {

@@ -4,7 +4,6 @@ import Button from "./Button";
 import sideText from "./sideText";
 
 const Container = styled.div`
-  position: absolute;
   top: 0;
   right: 0;
   width: 35vw;
@@ -15,13 +14,17 @@ const Container = styled.div`
   p:first-of-type {
     margin-top: 0;
   }
-  z-index: -1;
   h3 {
     text-align: center;
   }
   figure {
     text-align: center;
-    margin-bottom: 1rem;
+    max-width: 350px;
+    margin: 0 auto 1rem;
+  }
+  figcaption {
+    font-size: 0.8rem;
+    font-style: italic;
   }
   button:first-of-type {
     margin-left: 0;
@@ -69,9 +72,11 @@ export default function SideBox({
   publicFundHandler,
   fundsActive
 }) {
-  const fundItOn =
+  const fundBtnOn =
     (!fundsActive && currentView === 3) || (!fundsActive && currentView === 5);
-  const continueOn = (currentView !== 3 && currentView !== 5) || fundsActive;
+  const continueOn =
+    (currentView !== 7 && (currentView !== 3 && currentView !== 5)) ||
+    fundsActive;
   return (
     <Container opacity={sideBoxShowing ? 1 : 0}>
       <MainTitle className="header-main" opacity={currentView < 2 ? 0 : 1}>
@@ -80,7 +85,7 @@ export default function SideBox({
       <TextWrap>{sideText[currentView]}</TextWrap>
       <BtnWrapper>
         <div>
-          {currentView > 2 && (
+          {currentView > 2 && currentView !== 7 && (
             <Button
               small={window.innerHeight < 600}
               id="donation_all"
@@ -93,7 +98,7 @@ export default function SideBox({
         </div>
         <div>
           {/* {currentView > 2 && <Button onClick={backHandler}>Back</Button>} */}
-          {fundItOn && <Button onClick={publicFundHandler}>Fund It!</Button>}
+          {fundBtnOn && <Button onClick={publicFundHandler}>Fund It!</Button>}
           {continueOn && <Button onClick={continueHandler}>Continue</Button>}
         </div>
       </BtnWrapper>
