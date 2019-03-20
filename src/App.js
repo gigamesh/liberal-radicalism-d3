@@ -87,9 +87,13 @@ class App extends Component {
       window.scrollTo(0, 0);
     }
 
-    // if (newView !== 4 && newView < 6) {
-    //   this.setState({ fundsActive: false });
-    // }
+    if (newView === 5) {
+      this.setState({ fundsActive: false });
+    }
+
+    if (newView === 7) {
+      this.setState({ modalShowing: true, fundsActive: false });
+    }
   };
 
   backHandler = () => {

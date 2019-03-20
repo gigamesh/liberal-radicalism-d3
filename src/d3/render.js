@@ -39,6 +39,9 @@ function render({ currentView, donationsGrouped, animDelay }) {
     case 5:
       view5();
       break;
+    case 6:
+      view6();
+      break;
     default:
   }
 }
@@ -71,8 +74,6 @@ function view3() {
   xScale.range([legendWidth * 1.5, chartWidth]);
 
   toggleCheck();
-
-  updateAndMerge();
 }
 
 function view4() {
@@ -80,13 +81,13 @@ function view4() {
   if (chart.pubFundsActive) return;
 
   //create public funding nodes
-  addPubFundNodes();
-
-  restartForces();
+  addPubFundNodes("normal");
 
   updateTotals("normalMatchSum");
 
+  stopForces();
   updateAndMerge();
+  restartForces();
   chart.pubFundsActive = true;
 }
 
@@ -111,6 +112,21 @@ function view5() {
   chart.pubFundsActive = false;
 }
 
+function view6() {
+  toggleCheck();
+  if (chart.pubFundsActive) return;
+
+  //create public funding nodes
+  addPubFundNodes("lr");
+
+  updateTotals("lrMatchSum");
+
+  stopForces();
+  updateAndMerge();
+  restartForces();
+  chart.pubFundsActive = true;
+}
+
 function toggleCheck() {
   if (chart.donationsGrouped) {
     stopSplitByDonation();
@@ -122,6 +138,11 @@ function toggleCheck() {
     moveTitlesAndTotals();
     chart.donationsGrouped = true;
   }
+}
+
+function stopForces() {
+  stopSplitByDonation();
+  stopSplitByCandidate();
 }
 
 function restartForces() {
@@ -149,11 +170,14 @@ function restartForces() {
       chart.candidateForce[name].alpha(1).restart();
     }
   }
+
   chart.nodes = reheatedNodes;
 }
 
 export function updateAndMerge() {
-  // console.log(chart.nodes.splice(chart.nodes.length - 10));
+  // console.log(
+  //   JSON.stringify(chart.nodes.slice(chart.nodes.length - 30), null, 2)
+  // );
   const bubbles = chart.allBubblesGroup
     .selectAll("circle")
     .data(chart.nodes, function(d) {

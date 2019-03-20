@@ -28,59 +28,65 @@ export function createNodes(rawData) {
       y: centerY + r * Math.sin(a)
     };
   });
-  // console.log(myNodes);
-
-  // Object.defineProperty(nodes, "all", {
-  //   enumerable: false,
-  //   value: function() {
-  //     let newNodes = [];
-
-  //     for (let key in nodes) {
-  //       newNodes.push(...nodes[key]);
-  //     }
-
-  //     // sort them to prevent occlusion of smaller nodes.
-  //     newNodes.sort(function(a, b) {
-  //       return b.radius - a.radius;
-  //     });
-
-  //     return newNodes;
-  //   }
-  // });
 
   return myNodes.sort(function(a, b) {
     return b.radius - a.radius;
   });
 }
 
-export function addPubFundNodes() {
+export function addPubFundNodes(mechanism = "normal") {
   let pubNodes = [];
 
-  let tiers = { ...tierLevels };
-  delete tiers.Totals;
-  delete tiers.Amounts;
+  if (mechanism === "normal") {
+    for (let name in totals) {
+      for (let tier in totals[name]) {
+        let matchedAmt = tier === "_50Count" ? 50 : 200;
+        let amount = totals[name][tier].count * matchedAmt;
 
-  for (let name in candidates) {
-    for (let tier in tiers) {
-      // matchedAmt is an assumed average donation size for each tier
-      // or 1000 beyond the lower tiers
-      let matchedAmt = tier === "_50Count" ? 50 : 200;
+        pubNodes.push({
+          id: tier + "-pubfund",
+          radius: chart.radiusScale(amount),
+          name,
+          color: "#f4d733",
+          amount: amount,
+          text: "Public Fund",
+          tier: tier,
+          x: chartWidth,
+          y: chartHeight
+        });
+      }
+    }
+  } else if (mechanism === "lr") {
+    for (let name in totals) {
+      const fund = 450000;
+      const combinedLR =
+        candidates.Bill.sumOfSqrts + candidates.Alice.sumOfSqrts;
 
-      let amount = totals[name][tier].count * matchedAmt;
+      const totalLRRatio = candidates[name].sumOfSqrts / combinedLR;
+      const dollarTotal = totalLRRatio * fund;
 
-      pubNodes.push({
-        id: tier + "-pubfund",
-        radius: chart.radiusScale(amount),
-        name,
-        color: "#f4d733",
-        amount: amount,
-        text: "Public Fund",
-        tier: tier,
-        x: chartWidth,
-        y: chartHeight
-      });
+      const tiers = totals[name];
+      for (let tier in tiers) {
+        const { count, value } = totals[name][tier];
+
+        const ratio = (count * Math.sqrt(value)) / candidates[name].sumOfSqrts;
+        const amount = ratio * dollarTotal;
+
+        pubNodes.push({
+          id: tier + "-pubfund",
+          radius: chart.radiusScale(amount),
+          name,
+          color: "#f4d733",
+          amount: amount,
+          text: "Public Fund",
+          tier: tier,
+          x: chartWidth,
+          y: chartHeight
+        });
+      }
     }
   }
 
+  console.log(pubNodes);
   chart.nodes.push(...pubNodes);
 }

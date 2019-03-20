@@ -36,13 +36,15 @@ export const candidates = {
     count: 3648,
     donationSum: 688750,
     normalMatchSum: 1065400,
-    lrMatch: 1107370.5
+    sumOfSqrts: 40875.1802,
+    lrMatchSum: 1107370.5
   },
   Bill: {
     count: 446,
     donationSum: 1055200,
     normalMatchSum: 1124600,
-    lrMatch: 1124600
+    sumOfSqrts: 11191.09141,
+    lrMatchSum: 1086579.5
   }
 };
 

@@ -5,9 +5,9 @@ import Fade from "react-reveal/Fade";
 import Button from "./Button";
 import View0 from "./View0";
 import View1 from "./View1";
-import View5 from "./View5";
+import ViewFinal from "./ViewFinal";
 
-const Views = { 0: View0, 1: View1, 5: View5 };
+const Views = { 0: View0, 1: View1, 7: ViewFinal };
 
 const transitionStyles = {
   entering: { opacity: 0 },
@@ -27,7 +27,8 @@ const FullWrap = styled.div`
   /* width: 100vw;
   height: 100vh; */
   z-index: 1;
-  background: rgba(255, 255, 255, 0.9);
+  background: ${({ final }) =>
+    final ? "rgba(255, 255, 255, 1)" : "rgba(255,255,255, .9)"};
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -69,6 +70,15 @@ const ContentWrap = styled.div`
   p:last-of-type {
     margin-bottom: 2rem;
   }
+  .final p,
+  h1 {
+    margin: 2rem 0 2rem;
+    text-align: center;
+  }
+  .credits {
+    font-style: italic;
+    margin-top: 5rem;
+  }
 `;
 
 let Btn = styled(Button)`
@@ -97,6 +107,7 @@ class Modal extends React.Component {
       <Transition in={inProp} timeout={duration} unmountOnExit>
         {state => (
           <FullWrap
+            final={currentView === 7}
             style={{
               ...transitionStyles[state]
             }}
@@ -115,14 +126,16 @@ class Modal extends React.Component {
                   </ContentWrap>
                 </Fade>
                 {nextView(currentView, 1)}
-                {nextView(currentView, 5)}
+                {nextView(currentView, 7)}
               </InnerWrap>
-              <Btn
-                onClick={continueHandler}
-                style={{ position: "absolute", bottom: 0, right: 0 }}
-              >
-                Continue
-              </Btn>
+              {currentView !== 7 && (
+                <Btn
+                  onClick={continueHandler}
+                  style={{ position: "absolute", bottom: 0, right: 0 }}
+                >
+                  Continue
+                </Btn>
+              )}
             </WithBtnWrap>
           </FullWrap>
         )}
