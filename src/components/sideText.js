@@ -9,7 +9,7 @@ export default {
         donation from supporters collected during a specified length of time is
         matched dollar-for-dollar from a public fund, up to a limit per
         donation. For the purposes of demonstration, we'll set the matching
-        limit at a generous $1,000, apportioned from a fund of $1.5 million.
+        limit at $200, apportioned from a fund of $450,000.
       </p>
     </React.Fragment>
   ),
@@ -25,7 +25,7 @@ export default {
       <p>
         In our election, there is no donation limit, and Bill is clearly more
         popular among rich patrons, benefiting from one very generous donation
-        of $1 million. Alice received less in total funding, however she has far
+        of $500,000. Alice received less in total funding, however she has far
         more supporters.
       </p>
       <p>
@@ -37,24 +37,25 @@ export default {
       </p>
       <p>
         Click "Fund It!" below to see how much each candidate would get when the
-        first $1,000 of every donation is matched.
+        first $200 of every donation is matched.
       </p>
     </React.Fragment>
   ),
   4: (
     <React.Fragment>
       <p>
-        As the totals show, Alice received a healthy boost, but Bill is still
-        firmly in the lead.
+        As the totals show, Alice received a healthy boost, but Bill is still in
+        the lead.
       </p>
       <p>
-        While matching systems like this are effective, they come with some
-        problems:
+        While matching systems like this are effective at making fund raising
+        more democratic, they come with some problems:
       </p>
       <ul>
         <li>
-          If a limit is set on how much someone can donate, wealthy donors tend
-          to just exert influence through less transparent channels (lobbying,{" "}
+          If a limit is set on how much someone can donate, wealthy donors are
+          incentivized exert influence through less transparent channels
+          (lobbying,{" "}
           <a
             href="https://www.opensecrets.org/pacs/superpacs.php"
             target="_blank"
@@ -68,10 +69,10 @@ export default {
           changed by whoever is currently in power
         </li>
         <li>
-          Because of the reasons listed above, systems like this can cease being
-          useful over time if not administered well (ex: Most major U.S.
-          presidential candidates haven't accepted public funding since 2008
-          because associated limits on spending haven't been increased with
+          The systems have a tendency to get bogged down with arcane rules and
+          are poorly managed, making them less useful over time (ex: Most major
+          U.S. presidential candidates haven't accepted public funding since
+          2008 because associated limits on spending haven't been increased with
           campaign costs).
         </li>
       </ul>
@@ -82,7 +83,9 @@ export default {
     <React.Fragment>
       <p>
         Now let's re-run the campaign using the Liberal Radicalism mechanism.
-        Rather than matching each donation up to the arbitrary $1,000 threshold,
+      </p>
+      <p>
+        Rather than matching each donation up to the arbitrary $200 threshold,
         the L.R. formula will be used to determine how the public funds will be
         apportioned:
       </p>

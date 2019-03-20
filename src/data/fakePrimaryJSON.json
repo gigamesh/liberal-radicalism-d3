@@ -330,143 +330,122 @@
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
-  },
-  {
-    "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
-  },
-  {
-    "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
-  },
-  {
-    "name": "Alice",
-    "tier": "_50Count",
-    "amount": 2500,
-    "sqrt": 7.0710678118654755,
-    "count": 50
+    "tier": "_200Count",
+    "amount": 2400,
+    "sqrt": 14.142135623730951,
+    "count": 12
   },
   {
     "name": "Alice",
@@ -1758,20 +1737,6 @@
   },
   {
     "name": "Bill",
-    "tier": "_200Count",
-    "amount": 2400,
-    "sqrt": 14.142135623730951,
-    "count": 12
-  },
-  {
-    "name": "Bill",
-    "tier": "_200Count",
-    "amount": 2400,
-    "sqrt": 14.142135623730951,
-    "count": 12
-  },
-  {
-    "name": "Bill",
     "tier": "_500Count",
     "amount": 2500,
     "sqrt": 22.360679774997898,
@@ -2245,188 +2210,6 @@
     "amount": 4000,
     "sqrt": 44.721359549995796,
     "count": 2
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
-  },
-  {
-    "name": "Bill",
-    "tier": "_5kCount",
-    "amount": 5000,
-    "sqrt": 70.71067811865476,
-    "count": 1
   },
   {
     "name": "Bill",
@@ -2549,9 +2332,9 @@
   },
   {
     "name": "Bill",
-    "tier": "_1mCount",
-    "amount": 1000000,
-    "sqrt": 1000,
+    "tier": "_500kCount",
+    "amount": 500000,
+    "sqrt": 707.1067811865476,
     "count": 1
   }
 ]

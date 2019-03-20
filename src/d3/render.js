@@ -10,10 +10,12 @@ import {
   moveTitlesAndTotals,
   stopSplitByCandidate,
   stopSplitByDonation,
-  updateTotals
+  updateTotals,
+  clearPubFunds,
+  resetTotals
 } from "./nodeHandlers";
 import chart from "./chart";
-import { createPubFundNodes } from "./createNodes";
+import { addPubFundNodes } from "./createNodes";
 
 function render({ currentView, donationsGrouped, animDelay }) {
   this.donationsGrouped = donationsGrouped;
@@ -21,7 +23,6 @@ function render({ currentView, donationsGrouped, animDelay }) {
   switch (currentView) {
     case 0:
       view0();
-      initialRenderTransition();
       return;
     case 1:
       view1();
@@ -35,13 +36,17 @@ function render({ currentView, donationsGrouped, animDelay }) {
     case 4:
       view4();
       break;
+    case 5:
+      view5();
+      break;
     default:
   }
 }
 
 function view0() {
-  chart.allForce.nodes(chart.nodes.sortedArray());
+  chart.allForce.nodes(chart.nodes);
   groupAllBubbles(1, 0.4);
+  initialRenderTransition();
 }
 
 function view1() {}
@@ -65,21 +70,48 @@ function view3() {
 
   xScale.range([legendWidth * 1.5, chartWidth]);
 
-  if (chart.donationsGrouped) {
-    stopSplitByDonation();
-    splitByCandidate(undefined, 0.23, 0.1);
-    chart.donationsGrouped = false;
-  } else {
-    stopSplitByCandidate();
-    splitByDonation();
-    moveTitlesAndTotals();
-    chart.donationsGrouped = true;
-  }
+  toggleCheck();
 
   updateAndMerge();
 }
 
 function view4() {
+  toggleCheck();
+  if (chart.pubFundsActive) return;
+
+  //create public funding nodes
+  addPubFundNodes();
+
+  restartForces();
+
+  updateTotals("normalMatchSum");
+
+  updateAndMerge();
+  chart.pubFundsActive = true;
+}
+
+function view5() {
+  toggleCheck();
+  if (!chart.pubFundsActive) return;
+
+  resetTotals();
+
+  //clear public fund nodes
+  chart.nodes = chart.nodes.filter(node => {
+    return node.text !== "Public Fund";
+  });
+
+  restartForces(chart.nodes);
+
+  chart.bubbles
+    .data(chart.nodes)
+    .exit()
+    .remove();
+
+  chart.pubFundsActive = false;
+}
+
+function toggleCheck() {
   if (chart.donationsGrouped) {
     stopSplitByDonation();
     splitByCandidate(undefined, 0.23, 0.1);
@@ -90,19 +122,15 @@ function view4() {
     moveTitlesAndTotals();
     chart.donationsGrouped = true;
   }
+}
 
-  if (chart.pubFundsActive) return;
-
-  //create public funding nodes
-  const pubFundNodes = createPubFundNodes();
-
-  //add them to existing nodes
-  const allNodes = chart.nodes.sortedArray(pubFundNodes);
+function restartForces() {
+  let reheatedNodes = chart.nodes;
 
   if (chart.donationsGrouped) {
     // restart force simulatoin for each group
     for (let key in chart.tierForce) {
-      const nodeGroup = allNodes.filter(node => {
+      const nodeGroup = reheatedNodes.filter(node => {
         return key === node.tier;
       });
 
@@ -112,7 +140,7 @@ function view4() {
     }
   } else {
     for (let name in chart.candidateForce) {
-      const nodeGroup = allNodes.filter(node => {
+      const nodeGroup = reheatedNodes.filter(node => {
         return name === node.name;
       });
 
@@ -121,25 +149,18 @@ function view4() {
       chart.candidateForce[name].alpha(1).restart();
     }
   }
-
-  updateTotals("normalMatchSum");
-
-  if (!chart.pubFundsActive) {
-    updateAndMerge();
-  }
-
-  chart.pubFundsActive = true;
+  chart.nodes = reheatedNodes;
 }
 
 export function updateAndMerge() {
-  chart.bubbles = chart.allBubblesGroup
+  // console.log(chart.nodes.splice(chart.nodes.length - 10));
+  const bubbles = chart.allBubblesGroup
     .selectAll("circle")
-    .data(chart.nodes.sortedArray(), function(d) {
+    .data(chart.nodes, function(d) {
       return d.id;
     });
-  // console.log("updateAndMerge...nodes: ", chart.nodes.sortedArray());
 
-  const bubblesE = chart.bubbles
+  const bubblesE = bubbles
     .enter()
     .append("circle")
     .attr("r", function(d) {
@@ -151,17 +172,17 @@ export function updateAndMerge() {
     })
     .attr("stroke-width", 0.25);
 
-  chart.bubbles = chart.bubbles.merge(bubblesE);
+  chart.bubbles = bubbles.merge(bubblesE);
 }
 
 function initialRenderTransition() {
-  chart.bubbles = chart.allBubblesGroup
+  const bubbles = chart.allBubblesGroup
     .selectAll("circle")
-    .data(chart.nodes.sortedArray(), function(d) {
+    .data(chart.nodes, function(d) {
       return d.id;
     });
 
-  const bubblesE = chart.bubbles
+  const bubblesE = bubbles
     .enter()
     .append("circle")
     .attr("r", 0)
@@ -171,7 +192,7 @@ function initialRenderTransition() {
     })
     .attr("stroke-width", 0.25);
 
-  chart.bubbles = chart.bubbles.merge(bubblesE);
+  chart.bubbles = bubbles.merge(bubblesE);
 
   chart.bubbles
     .transition()

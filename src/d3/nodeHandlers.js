@@ -34,7 +34,7 @@ export async function splitByDonation() {
   const { tierForce, nodes } = chart;
 
   for (let key in tierForce) {
-    const nodeGroup = nodes.sortedArray().filter(node => {
+    const nodeGroup = chart.nodes.filter(node => {
       return key === node.tier;
     });
     tierForce[key].nodes(nodeGroup);
@@ -68,7 +68,7 @@ export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
   const { candidateForce, nodes } = chart;
 
   for (let key in candidateForce) {
-    const nodeGroup = nodes.sortedArray().filter(node => {
+    const nodeGroup = chart.nodes.filter(node => {
       return key === node.name;
     });
     candidateForce[key].nodes(nodeGroup);
@@ -93,6 +93,8 @@ export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
   }
   // hideTierLabels();
 }
+
+export function clearPubFunds() {}
 
 export function stopSplitByCandidate() {
   const { candidateForce } = chart;
@@ -167,6 +169,14 @@ export function moveTitlesAndTotals() {
     .attr("x", function(d) {
       return xScale(d);
     });
+}
+
+export function resetTotals() {
+  const totalText = chart.svg.selectAll(".money-totals");
+
+  totalText.text(name => {
+    return `$${candidates[name].donationSum.toLocaleString()}`;
+  });
 }
 
 export function updateTotals(key) {

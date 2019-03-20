@@ -25,20 +25,22 @@ const radiusRatios = {
   _50kCount: {
     size: 50000
   },
-  _1mCount: {
-    size: 1000000
+  _500kCount: {
+    size: 500000
   }
 };
 
 export const buildDataArray = () => {
   const dataArray = [];
 
-  totals.forEach(candidate => {
+  for (let name in totals) {
+    let candidate = totals[name];
     let dollarSum = 0;
     let howMany = 0;
     let count = 1;
 
     for (let prop in candidate) {
+      console.log(prop);
       if (prop !== "name") {
         dollarSum = dollarSum + candidate[prop].value * candidate[prop].count;
       }
@@ -71,7 +73,7 @@ export const buildDataArray = () => {
 
       for (let i = 0; i < howMany; i++) {
         dataArray.push({
-          name: candidate.name,
+          name,
           tier: prop,
           amount: radiusRatios[prop].size,
           sqrt: Math.sqrt(candidate[prop].value),
@@ -80,8 +82,8 @@ export const buildDataArray = () => {
       }
     }
 
-    console.log(candidate.name, dollarSum);
-  });
+    console.log(name, dollarSum);
+  }
 
   // console.log(count);
   return dataArray;

@@ -34,7 +34,6 @@ class App extends Component {
     this.setState({ modalShowing: true });
 
     // const dataArray = buildDataArray();
-    // console.log(dataArray);
     // console.log(JSON.stringify(dataArray));
   }
 
@@ -52,14 +51,11 @@ class App extends Component {
       landscape,
       fundsActive
     } = this.state;
-
     if (!landscape) return;
     if (landscape && !prevState.landscape) {
       window.location.reload();
     }
-
     const config = { currentView, donationsGrouped, fundsActive };
-
     if (!animDelay) {
       chart.render(config);
     } else {

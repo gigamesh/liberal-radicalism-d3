@@ -33,16 +33,16 @@ export const combinedDollarSum = 447368608;
 
 export const candidates = {
   Alice: {
-    count: 4448,
-    donationSum: 698750,
-    normalMatchSum: 1898780,
-    lrMatch: 2075929.41
+    count: 3648,
+    donationSum: 688750,
+    normalMatchSum: 1065400,
+    lrMatch: 1107370.5
   },
   Bill: {
-    count: 530,
-    donationSum: 1691400,
-    normalMatchSum: 2015955,
-    lrMatch: 1814220.59
+    count: 446,
+    donationSum: 1055200,
+    normalMatchSum: 1124600,
+    lrMatch: 1124600
   }
 };
 
@@ -50,11 +50,11 @@ export const tierLevels = {
   Amounts: {
     text: "Donation Ranges"
   },
-  _1mCount: {
-    text: "$1m"
+  _500kCount: {
+    text: "$500k"
   },
   _50kCount: {
-    text: "$50k - $1m"
+    text: "$50k - $500k"
   },
   _5kCount: {
     text: "$2k - $5k"

@@ -5,7 +5,7 @@
  */
 import { select } from "d3-selection";
 import { scaleOrdinal, scaleSqrt } from "d3-scale";
-import { createNodes, createPubFundNodes } from "./createNodes";
+import { createNodes } from "./createNodes";
 import {
   initSimulation,
   initTierSimulations,
@@ -19,11 +19,11 @@ const chart = {
     this.maxAmount = maxAmount(rawData);
     this.radiusScale = scaleSqrt()
       .domain([0, this.maxAmount])
-      .range([0, chartHeight * 0.06]);
+      .range([0, chartHeight * 0.05]);
 
     this.fillColor = scaleOrdinal()
       .domain([
-        "_1mCount",
+        "_500kCount",
         "_50kCount",
         "_5kCount",
         "_2kCount",
