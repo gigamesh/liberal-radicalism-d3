@@ -25,7 +25,7 @@ export default {
       <p>
         In our election, there is no donation limit, and Bill is clearly more
         popular among rich patrons, benefiting from one very generous donation
-        of $450,000. Alice received less in total funding, however she has far
+        of $500,000. Alice received less in total funding, however she has far
         more supporters.
       </p>
       <p>

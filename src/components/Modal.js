@@ -22,10 +22,9 @@ const FullWrap = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   right: 0;
-  /* width: 100vw;
-  height: 100vh; */
+  height: 105vh;
+  overflow: hidden;
   z-index: 1;
   background: ${({ final }) =>
     final ? "rgba(255, 255, 255, 1)" : "rgba(255,255,255, .9)"};

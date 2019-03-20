@@ -6,7 +6,7 @@ import sideText from "./sideText";
 const Container = styled.div`
   top: 0;
   right: 0;
-  width: 35vw;
+  width: 40vw;
   padding: 3.2rem 3vw 2rem;
   text-align: justify;
   opacity: ${({ opacity }) => opacity};
@@ -47,14 +47,14 @@ const BtnWrapper = styled.div`
 `;
 
 const MainTitle = styled.div`
-  width: 30vw;
+  width: 34vw;
   z-index: 5;
   position: fixed;
   top: 0;
   opacity: ${({ opacity }) => opacity};
   transition: 500ms ease-in-out;
   h1 {
-    margin: 0.7rem;
+    margin: 0.7rem 0 0.7rem;
     font-size: ${window.innerHeight < 350 ? "1.5rem" : "2rem"};
     text-align: right;
     color: #777;
@@ -87,7 +87,6 @@ export default function SideBox({
         <div>
           {currentView > 2 && currentView !== 7 && (
             <Button
-              small={window.innerHeight < 600}
               id="donation_all"
               onClick={donationToggler}
               className={donationsGrouped && "active"}

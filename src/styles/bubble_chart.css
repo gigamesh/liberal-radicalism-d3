@@ -24,11 +24,13 @@ body {
   font-family: "Questrial", sans-serif;
   color: var(--text-color);
   line-height: 1.5rem;
+  overflow-x: hidden;
 }
 
 #root {
   display: flex;
   justify-content: flex-end;
+  overflow-x: hidden;
 }
 
 a {
@@ -117,6 +119,9 @@ svg.left-side {
 @media (max-height: 450px) {
   :root {
     font-size: 12px;
+  }
+  #root {
+    height: 105vh;
   }
   .candidate {
     font-size: 16px;
