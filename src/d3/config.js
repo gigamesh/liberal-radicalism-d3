@@ -53,10 +53,10 @@ export const tierLevels = {
     text: "Donation Ranges"
   },
   _500kCount: {
-    text: "$500k"
+    text: "$50k-500k"
   },
   _50kCount: {
-    text: "$50k - $500k"
+    text: "$5k - $50k"
   },
   _5kCount: {
     text: "$2k - $5k"
