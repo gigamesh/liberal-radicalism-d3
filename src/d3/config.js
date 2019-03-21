@@ -17,7 +17,7 @@ export const screenHeight = window.innerHeight;
 export const screenWidth = window.innerWidth;
 export const chartWidth = Math.min(screenWidth * 0.55, 1400);
 export const chartHeight = screenHeight * 0.92;
-export const legendWidth = Math.max(chartWidth * 0.25, 95);
+export const legendWidth = Math.max(chartWidth * 0.23, 120);
 export const topPad = chartHeight * 0.04;
 export const bottomPad = chartHeight * 0.02;
 

@@ -59,8 +59,6 @@ export async function splitByDonation() {
       );
 
     tierForce[key].alpha(1).restart();
-
-    showTierLabels();
   }
 }
 
@@ -125,11 +123,7 @@ export function showTotals(key) {
     });
 }
 
-export function hideTierLabels() {
-  chart.svg.selectAll(".tier-label").remove();
-}
-
-export function showTierLabels() {
+export function initTierLabels() {
   let tierLabels = Object.keys(tierLevels);
 
   const tierTitle = chart.svg.selectAll(".tier-label").data(tierLabels);
@@ -140,10 +134,6 @@ export function showTierLabels() {
     .attr("class", "tier-label")
     .attr("y", key => tierLevels[key].y)
     .attr("x", 0)
-    .transition()
-    .ease(easePolyOut)
-    .duration(700)
-    .attr("x", legendWidth)
     .attr("text-anchor", "end")
     .text(d => tierLevels[d].text)
     .each(function(d) {
@@ -158,12 +148,31 @@ export function showTierLabels() {
     });
 }
 
-export function moveCandidatesAndTotals(direction) {
+export function hideTierLabels(speed = 500) {
+  chart.svg
+    .selectAll(".tier-label")
+    .transition()
+    .ease(easePolyOut)
+    .duration(speed)
+    .attr("x", 0);
+}
+
+export function showTierLabels(speed = 500) {
+  const tierTitle = chart.svg.selectAll(".tier-label");
+
+  tierTitle
+    .transition()
+    .ease(easePolyOut)
+    .duration(speed)
+    .attr("x", legendWidth);
+}
+
+export function moveCandidatesAndTotals(speed = 500) {
   const candidateTitles = chart.svg.selectAll(".candidate, .money-totals");
 
   candidateTitles
     .transition()
-    .duration(700)
+    .duration(speed)
     .ease(easePolyOut)
     .attr("x", function(d) {
       return xScale(d);

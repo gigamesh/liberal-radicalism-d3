@@ -7,7 +7,7 @@ const Container = styled.div`
   top: 0;
   right: 0;
   width: 40vw;
-  padding: 3.2rem 3vw 2rem;
+  padding: 3.2rem 5vw 2rem;
   text-align: justify;
   opacity: ${({ opacity }) => opacity};
   transition: opacity 500ms ease 1500ms;
@@ -26,9 +26,6 @@ const Container = styled.div`
     font-size: 0.8rem;
     font-style: italic;
   }
-  button:first-of-type {
-    margin-left: 0;
-  }
   img {
     width: 100%;
     height: auto;
@@ -42,12 +39,13 @@ const TextWrap = styled.div`
 const BtnWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   margin-bottom: 1rem;
 `;
 
 const MainTitle = styled.div`
-  width: 34vw;
+  width: 30vw;
   z-index: 5;
   position: fixed;
   top: 0;

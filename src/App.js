@@ -114,15 +114,8 @@ class App extends Component {
       landscape,
       modalShowing,
       sideBoxShowing,
-      donationsGrouped,
       fundsActive
     } = this.state;
-    console.log(
-      "currentView:",
-      currentView,
-      "donationsGrouped:",
-      donationsGrouped
-    );
     return !landscape ? (
       <LandscapeMessage />
     ) : (
@@ -141,12 +134,6 @@ class App extends Component {
           publicFundHandler={this.publicFundHandler}
           fundsActive={fundsActive}
         />
-        {/* <button
-          onClick={this.continueHandler}
-          style={{ position: "absolute", right: 0, bottom: 0 }}
-        >
-          continue
-        </button> */}
       </React.Fragment>
     );
   }

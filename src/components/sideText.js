@@ -111,30 +111,30 @@ export default {
   6: (
     <React.Fragment>
       <p>
-        As the donation totals show, the Liberal Radical mechanism is slightly
-        better than the regular matching fund scheme in tipping the competitive
-        balance in favor of candidates who receive more individual donations.{" "}
-      </p>
-      <p>
         In this scenario, Alice would end up with a slight lead over Bill, which
         is appropriate considering she is a far more popular candidate.
       </p>
       <p>
-        But what is possibly even more interesting, a far larger portion of the
-        donation from Bill's top donor is contributing to the matching fund this
-        time (see the yellow dot next to the largest green dot). That suggests
-        that the L.R. mechanism could potentially bring political "dark money"
-        into the light.
+        The funding benefit is subtle, but what's especially interesting is that
+        it is acheived in a fluid manner that doesn't lead to problematic
+        incentives. This is best illustrated by the increased amount that Bill's
+        top donor's contribution is weighted in the matching fund (see the
+        yellow dot next to the largest green dot).{" "}
+      </p>
+      <p>
+        That is all to say that the L.R. mechanism could potentially be a path
+        toward campaign finance reform, coaxing political "dark money" into the
+        light.
       </p>
     </React.Fragment>
   ),
   7: (
     <React.Fragment>
       <p>
-        While the difference in funding outcomes is subtle, the benefits of L.R.
-        are that it acheives optimal funding in a fluid manner, without the need
-        for arbitrary thresholds. This quality makes its potential applications
-        and benefits to society far-reaching.
+        The beauty of L.R. is that it optimizes democratic funding of public
+        goods in a fluid manner, without the need for arbitrary thresholds. This
+        quality makes its potential applications and benefits to society
+        far-reaching.
       </p>
       <p>
         As capitalism{" "}

@@ -5,12 +5,12 @@ export default styled.button`
   position: relative;
   border: 1px solid #555;
   z-index: 5;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   background: #fff;
   font-family: inherit;
   border-radius: 3px;
   padding: 0.5rem;
-  margin-left: 10px;
+  margin: 0 4px 4px;
   white-space: pre;
   cursor: pointer;
   &:hover {

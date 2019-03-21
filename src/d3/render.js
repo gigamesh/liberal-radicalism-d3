@@ -13,7 +13,8 @@ import {
   updateTotals,
   hideTierLabels,
   resetTotals,
-  toggleDonationGroups
+  showTierLabels,
+  initTierLabels
 } from "./nodeHandlers";
 import chart from "./chart";
 import { createPubFundNodes } from "./createNodes";
@@ -54,6 +55,7 @@ function view0() {
   chart.allForce.nodes(chart.nodes);
   groupAllBubbles(1, 0.4);
   initialRenderTransition();
+  initTierLabels();
 }
 
 function view2() {
@@ -68,7 +70,7 @@ function view2() {
   if (!chart.candidatesShowing) {
     showCandidates();
   } else {
-    moveCandidatesAndTotals();
+    moveCandidatesAndTotals(300);
   }
 
   splitByCandidate();
@@ -83,7 +85,8 @@ function view3(donationsGrouped) {
   stopForces();
 
   xScale.range([legendWidth * 1.5, chartWidth]);
-  moveCandidatesAndTotals();
+  moveCandidatesAndTotals(600);
+  showTierLabels();
 
   if (!donationsGrouped) {
     splitByDonation();
@@ -127,11 +130,18 @@ async function view6() {
 function toggleCheck(donationsGrouped) {
   if (donationsGrouped) {
     stopSplitByDonation();
+
+    xScale.padding(0.4).range([0, chartWidth]);
     splitByCandidate(undefined, 0.23, 0.1);
+    moveCandidatesAndTotals(300);
+    hideTierLabels(300);
   } else {
     stopSplitByCandidate();
+
+    xScale.range([legendWidth * 1.5, chartWidth]);
     splitByDonation();
-    moveCandidatesAndTotals();
+    moveCandidatesAndTotals(700);
+    showTierLabels(700);
   }
   chart.donationsGrouped = donationsGrouped;
 }
