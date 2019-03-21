@@ -5,7 +5,7 @@
  */
 import { select } from "d3-selection";
 import { scaleOrdinal, scaleSqrt } from "d3-scale";
-import { createNodes } from "./createNodes";
+import { createNodes, createPubFundNodes } from "./createNodes";
 import {
   initSimulation,
   initTierSimulations,
@@ -44,6 +44,7 @@ const chart = {
       .attr("height", chartHeight);
 
     this.nodes = createNodes(rawData);
+    this.pubFundNodes = createPubFundNodes();
 
     this.allBubblesGroup = this.svg.append("g");
     // .attr("transform", scaleMatrix(2));

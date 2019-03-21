@@ -16,7 +16,7 @@ import {
   toggleDonationGroups
 } from "./nodeHandlers";
 import chart from "./chart";
-import { addPubFundNodes } from "./createNodes";
+import { createPubFundNodes } from "./createNodes";
 
 function render({ currentView, donationsGrouped, animDelay }) {
   // if view hasn't changed, we just need to toggle the donations
@@ -46,11 +46,8 @@ function render({ currentView, donationsGrouped, animDelay }) {
       break;
     default:
   }
+
   this.currentView = currentView;
-  console.log(
-    "end of render, chart.donationsGrouped: ",
-    chart.donationsGrouped
-  );
 }
 
 function view0() {
@@ -83,7 +80,7 @@ function view3(donationsGrouped) {
     resetToPreMatch();
   }
 
-  stopSplitByCandidate();
+  stopForces();
 
   xScale.range([legendWidth * 1.5, chartWidth]);
   moveCandidatesAndTotals();
@@ -95,22 +92,15 @@ function view3(donationsGrouped) {
 }
 
 async function view4() {
-  console.log("view4, chart.donationsGrouped:", chart.donationsGrouped);
-
   if (chart.pubFundsActive) return;
   stopForces();
 
-  //create public funding nodes
-  addPubFundNodes("normal");
-
   updateTotals("normalMatchSum");
 
+  chart.nodes.push(...chart.pubFundNodes);
+  restartForces();
   updateAndMerge();
-  if (chart.donationsGrouped) {
-    splitByCandidate();
-  } else {
-    splitByDonation();
-  }
+
   chart.pubFundsActive = true;
 }
 
@@ -124,7 +114,7 @@ async function view6() {
   if (chart.pubFundsActive) return;
 
   //create public funding nodes
-  addPubFundNodes("lr");
+  chart.nodes.push(...createPubFundNodes("lr"));
 
   updateTotals("lrMatchSum");
 
@@ -147,6 +137,7 @@ function toggleCheck(donationsGrouped) {
 }
 
 function stopForces() {
+  chart.allForce.stop();
   stopSplitByDonation();
   stopSplitByCandidate();
 }
@@ -177,7 +168,6 @@ function restartForces() {
     }
   }
 
-  console.log(JSON.stringify(reheatedNodes.slice(320), null, 2));
   chart.nodes = reheatedNodes;
 }
 
@@ -200,9 +190,6 @@ function resetToPreMatch() {
 }
 
 export function updateAndMerge() {
-  // console.log(
-  //   JSON.stringify(chart.nodes.slice(chart.nodes.length - 30), null, 2)
-  // );
   const bubbles = chart.allBubblesGroup
     .selectAll("circle")
     .data(chart.nodes, function(d) {
@@ -222,10 +209,6 @@ export function updateAndMerge() {
     .attr("stroke-width", 0.25);
 
   chart.bubbles = bubbles.merge(bubblesE);
-  // console.log(
-  //   "updated & merged",
-  //   JSON.stringify(chart.nodes.slice(300), null, 2)
-  // );
 }
 
 function initialRenderTransition() {

@@ -34,7 +34,7 @@ export function createNodes(rawData) {
   });
 }
 
-export function addPubFundNodes(mechanism = "normal") {
+export function createPubFundNodes(mechanism = "normal") {
   let pubNodes = [];
 
   if (mechanism === "normal") {
@@ -57,6 +57,7 @@ export function addPubFundNodes(mechanism = "normal") {
       }
     }
   } else if (mechanism === "lr") {
+    console.log("chartWidth:", chartWidth);
     for (let name in totals) {
       const fund = 450000;
       const combinedLR =
@@ -86,6 +87,6 @@ export function addPubFundNodes(mechanism = "normal") {
       }
     }
   }
-
-  chart.nodes.push(...pubNodes);
+  console.log(pubNodes);
+  return pubNodes;
 }
