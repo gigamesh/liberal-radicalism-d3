@@ -127,5 +127,29 @@ export default {
         into the light.
       </p>
     </React.Fragment>
+  ),
+  7: (
+    <React.Fragment>
+      <p>
+        While the difference in funding outcomes is subtle, the benefits of L.R.
+        are that it acheives optimal funding in a fluid manner, without the need
+        for arbitrary thresholds. This quality makes its potential applications
+        and benefits to society far-reaching.
+      </p>
+      <p>
+        As capitalism{" "}
+        <a
+          href="https://en.wikipedia.org/wiki/Capital_in_the_Twenty-First_Century"
+          target="_blank"
+        >
+          centralizes wealth and power
+        </a>{" "}
+        in an economy of privately-controlled personal data repositories and
+        artificial intelligence algorithms, it's imperitive that publicly shared
+        goods like political campaigns, journalism, and open-source software
+        receive ample funding. The L.R. mechanism may prove to be a powerful
+        tool in that effort.
+      </p>
+    </React.Fragment>
   )
 };

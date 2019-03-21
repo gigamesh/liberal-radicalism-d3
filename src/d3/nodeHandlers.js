@@ -91,7 +91,6 @@ export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
       );
     candidateForce[key].alpha(alpha).restart();
   }
-  // hideTierLabels();
 }
 
 export function clearPubFunds() {}
@@ -159,7 +158,7 @@ export function showTierLabels() {
     });
 }
 
-export function moveTitlesAndTotals() {
+export function moveCandidatesAndTotals(direction) {
   const candidateTitles = chart.svg.selectAll(".candidate, .money-totals");
 
   candidateTitles
@@ -218,6 +217,8 @@ export function showCandidates() {
     .text(function(d) {
       return d;
     });
+
+  chart.candidatesShowing = true;
 }
 
 export function toggleDonationGroups(activeDonationBtn, delay) {

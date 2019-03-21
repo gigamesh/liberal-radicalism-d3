@@ -45,14 +45,14 @@ export function addPubFundNodes(mechanism = "normal") {
 
         pubNodes.push({
           id: tier + "-pubfund",
-          radius: chart.radiusScale(amount),
+          radius: chart.radiusScale(+amount),
           name,
           color: "#f4d733",
-          amount: amount,
+          amount: +amount,
           text: "Public Fund",
           tier: tier,
-          x: chartWidth,
-          y: chartHeight
+          x: +chartWidth,
+          y: +chartHeight
         });
       }
     }
@@ -74,14 +74,14 @@ export function addPubFundNodes(mechanism = "normal") {
 
         pubNodes.push({
           id: tier + "-pubfund",
-          radius: chart.radiusScale(amount),
+          radius: chart.radiusScale(+amount),
           name,
           color: "#f4d733",
-          amount: amount,
+          amount: +amount,
           text: "Public Fund",
           tier: tier,
-          x: chartWidth,
-          y: chartHeight
+          x: +chartWidth,
+          y: +chartHeight
         });
       }
     }

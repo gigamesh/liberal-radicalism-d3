@@ -56,6 +56,7 @@ class App extends Component {
       window.location.reload();
     }
     const config = { currentView, donationsGrouped, fundsActive };
+
     if (!animDelay) {
       chart.render(config);
     } else {
@@ -68,9 +69,10 @@ class App extends Component {
     this.setState({ donationsGrouped: !this.state.donationsGrouped });
   };
 
-  continueHandler = e => {
+  navigationHandler = e => {
     const { currentView } = this.state;
-    const newView = currentView + 1;
+    const direction = e.target.id;
+    const newView = direction === "fwd" ? currentView + 1 : currentView - 1;
     this.setState({
       currentView: newView
     });
@@ -79,28 +81,24 @@ class App extends Component {
       this.setState({
         animDelay: 0,
         modalShowing: false,
-        donationsGrouped: false,
+        donationsGrouped: true,
         sideBoxShowing: true
       });
+    }
+    if (newView === 3) {
+      this.setState({ donationsGrouped: false });
     }
     if (newView > 2) {
       window.scrollTo(0, 0);
     }
 
-    if (newView === 5) {
+    if (newView !== 4 || newView !== 6) {
       this.setState({ fundsActive: false });
     }
 
-    if (newView === 7) {
-      this.setState({ modalShowing: true, fundsActive: false });
+    if (newView === 8) {
+      this.setState({ modalShowing: true });
     }
-  };
-
-  backHandler = () => {
-    if (this.state.currentView < 3) return;
-    this.setState({
-      currentView: this.state.currentView - 1
-    });
   };
 
   publicFundHandler = () => {
@@ -119,25 +117,27 @@ class App extends Component {
       donationsGrouped,
       fundsActive
     } = this.state;
-
+    console.log(
+      "currentView:",
+      currentView,
+      "donationsGrouped:",
+      donationsGrouped
+    );
     return !landscape ? (
       <LandscapeMessage />
     ) : (
       <React.Fragment>
-        {/* <div style={{ height: "300vh", background: "pink", width: "10%" }} /> */}
         <Chart chartData={chartData} currentView={currentView} />
         <Modal
           in={modalShowing}
           currentView={currentView}
-          continueHandler={this.continueHandler}
+          navigationHandler={this.navigationHandler}
         />
         <SideBox
-          continueHandler={this.continueHandler}
-          backHandler={this.backHandler}
+          navigationHandler={this.navigationHandler}
           sideBoxShowing={sideBoxShowing}
           currentView={currentView}
           donationToggler={this.donationToggler}
-          donationsGrouped={donationsGrouped}
           publicFundHandler={this.publicFundHandler}
           fundsActive={fundsActive}
         />

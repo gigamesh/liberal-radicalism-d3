@@ -1,37 +1,39 @@
 import { rgb } from "d3-color";
 import "d3-transition";
-import { chartWidth, xScale, legendWidth } from "./config";
+import { chartWidth, xScale, legendWidth, wait } from "./config";
 import {
   groupAllBubbles,
   showCandidates,
   splitByCandidate,
   splitByDonation,
   showTotals,
-  moveTitlesAndTotals,
+  moveCandidatesAndTotals,
   stopSplitByCandidate,
   stopSplitByDonation,
   updateTotals,
-  clearPubFunds,
-  resetTotals
+  hideTierLabels,
+  resetTotals,
+  toggleDonationGroups
 } from "./nodeHandlers";
 import chart from "./chart";
 import { addPubFundNodes } from "./createNodes";
 
 function render({ currentView, donationsGrouped, animDelay }) {
-  this.donationsGrouped = donationsGrouped;
+  // if view hasn't changed, we just need to toggle the donations
+  if (this.currentView === currentView) {
+    toggleCheck(donationsGrouped);
+    return;
+  }
 
   switch (currentView) {
     case 0:
       view0();
       return;
-    case 1:
-      view1();
-      break;
     case 2:
       view2();
       break;
     case 3:
-      view3();
+      view3(donationsGrouped);
       break;
     case 4:
       view4();
@@ -44,6 +46,11 @@ function render({ currentView, donationsGrouped, animDelay }) {
       break;
     default:
   }
+  this.currentView = currentView;
+  console.log(
+    "end of render, chart.donationsGrouped: ",
+    chart.donationsGrouped
+  );
 }
 
 function view0() {
@@ -52,68 +59,68 @@ function view0() {
   initialRenderTransition();
 }
 
-function view1() {}
-
 function view2() {
-  const { svg, candidateForce, nodes } = chart;
-
+  const { svg } = chart;
+  stopForces();
+  hideTierLabels();
   svg.classed("downscale", true);
   svg.classed("left-side", true);
 
   xScale.padding(0.4).range([0, chartWidth]);
 
-  showCandidates();
+  if (!chart.candidatesShowing) {
+    showCandidates();
+  } else {
+    moveCandidatesAndTotals();
+  }
 
   splitByCandidate();
   showTotals("donationSum");
 }
 
-function view3() {
+function view3(donationsGrouped) {
+  if (chart.pubFundsActive) {
+    resetToPreMatch();
+  }
+
   stopSplitByCandidate();
 
   xScale.range([legendWidth * 1.5, chartWidth]);
+  moveCandidatesAndTotals();
 
-  toggleCheck();
+  if (!donationsGrouped) {
+    splitByDonation();
+    chart.donationsGrouped = false;
+  }
 }
 
-function view4() {
-  toggleCheck();
+async function view4() {
+  console.log("view4, chart.donationsGrouped:", chart.donationsGrouped);
+
   if (chart.pubFundsActive) return;
+  stopForces();
 
   //create public funding nodes
   addPubFundNodes("normal");
 
   updateTotals("normalMatchSum");
 
-  stopForces();
   updateAndMerge();
-  restartForces();
+  if (chart.donationsGrouped) {
+    splitByCandidate();
+  } else {
+    splitByDonation();
+  }
   chart.pubFundsActive = true;
 }
 
 function view5() {
-  toggleCheck();
   if (!chart.pubFundsActive) return;
 
-  resetTotals();
-
-  //clear public fund nodes
-  chart.nodes = chart.nodes.filter(node => {
-    return node.text !== "Public Fund";
-  });
-
-  restartForces(chart.nodes);
-
-  chart.bubbles
-    .data(chart.nodes)
-    .exit()
-    .remove();
-
-  chart.pubFundsActive = false;
+  resetToPreMatch();
 }
 
-function view6() {
-  toggleCheck();
+async function view6() {
   if (chart.pubFundsActive) return;
 
   //create public funding nodes
@@ -127,17 +134,16 @@ function view6() {
   chart.pubFundsActive = true;
 }
 
-function toggleCheck() {
-  if (chart.donationsGrouped) {
+function toggleCheck(donationsGrouped) {
+  if (donationsGrouped) {
     stopSplitByDonation();
     splitByCandidate(undefined, 0.23, 0.1);
-    chart.donationsGrouped = false;
   } else {
     stopSplitByCandidate();
     splitByDonation();
-    moveTitlesAndTotals();
-    chart.donationsGrouped = true;
+    moveCandidatesAndTotals();
   }
+  chart.donationsGrouped = donationsGrouped;
 }
 
 function stopForces() {
@@ -148,7 +154,7 @@ function stopForces() {
 function restartForces() {
   let reheatedNodes = chart.nodes;
 
-  if (chart.donationsGrouped) {
+  if (!chart.donationsGrouped) {
     // restart force simulatoin for each group
     for (let key in chart.tierForce) {
       const nodeGroup = reheatedNodes.filter(node => {
@@ -171,7 +177,26 @@ function restartForces() {
     }
   }
 
+  console.log(JSON.stringify(reheatedNodes.slice(320), null, 2));
   chart.nodes = reheatedNodes;
+}
+
+function resetToPreMatch() {
+  resetTotals();
+
+  //clear public fund nodes
+  chart.nodes = chart.nodes.filter(node => {
+    return node.text !== "Public Fund";
+  });
+
+  restartForces(chart.nodes);
+
+  chart.bubbles
+    .data(chart.nodes)
+    .exit()
+    .remove();
+
+  chart.pubFundsActive = false;
 }
 
 export function updateAndMerge() {
@@ -197,6 +222,10 @@ export function updateAndMerge() {
     .attr("stroke-width", 0.25);
 
   chart.bubbles = bubbles.merge(bubblesE);
+  // console.log(
+  //   "updated & merged",
+  //   JSON.stringify(chart.nodes.slice(300), null, 2)
+  // );
 }
 
 function initialRenderTransition() {

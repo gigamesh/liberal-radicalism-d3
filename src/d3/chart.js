@@ -51,6 +51,8 @@ const chart = {
     this.bubbles = null;
     this.pubFundsActive = false;
     this.donationsGrouped = true;
+    this.candidatesShowing = false;
+    this.currentView = -1;
   },
   render
 };

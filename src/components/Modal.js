@@ -7,7 +7,7 @@ import View0 from "./View0";
 import View1 from "./View1";
 import ViewFinal from "./ViewFinal";
 
-const Views = { 0: View0, 1: View1, 7: ViewFinal };
+const Views = { 0: View0, 1: View1, 8: ViewFinal };
 
 const transitionStyles = {
   entering: { opacity: 0 },
@@ -23,7 +23,7 @@ const FullWrap = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  height: 105vh;
+  height: 100vh;
   overflow: hidden;
   z-index: 1;
   background: ${({ final }) =>
@@ -90,7 +90,7 @@ class Modal extends React.Component {
   };
 
   render() {
-    const { in: inProp, currentView, continueHandler } = this.props;
+    const { in: inProp, currentView, navigationHandler } = this.props;
     const nextView = (currentView, num) => {
       const CurrentView = Views[num];
       return (
@@ -106,7 +106,7 @@ class Modal extends React.Component {
       <Transition in={inProp} timeout={duration} unmountOnExit>
         {state => (
           <FullWrap
-            final={currentView === 7}
+            final={currentView === 8}
             style={{
               ...transitionStyles[state]
             }}
@@ -125,11 +125,12 @@ class Modal extends React.Component {
                   </ContentWrap>
                 </Fade>
                 {nextView(currentView, 1)}
-                {nextView(currentView, 7)}
+                {nextView(currentView, 8)}
               </InnerWrap>
-              {currentView !== 7 && (
+              {currentView !== 8 && (
                 <Btn
-                  onClick={continueHandler}
+                  id="fwd"
+                  onClick={navigationHandler}
                   style={{ position: "absolute", bottom: 0, right: 0 }}
                 >
                   Continue

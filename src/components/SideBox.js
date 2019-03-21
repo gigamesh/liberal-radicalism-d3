@@ -63,29 +63,29 @@ const MainTitle = styled.div`
 `;
 
 export default function SideBox({
-  continueHandler,
+  navigationHandler,
   sideBoxShowing,
   currentView,
   donationToggler,
   donationsGrouped,
-  backHandler,
   publicFundHandler,
   fundsActive
 }) {
-  const fundBtnOn =
-    (!fundsActive && currentView === 3) || (!fundsActive && currentView === 5);
   const continueOn =
-    (currentView !== 7 && (currentView !== 3 && currentView !== 5)) ||
+    (currentView !== 8 && (currentView !== 3 && currentView !== 5)) ||
     fundsActive;
   return (
     <Container opacity={sideBoxShowing ? 1 : 0}>
-      <MainTitle className="header-main" opacity={currentView < 2 ? 0 : 1}>
+      <MainTitle
+        className="header-main"
+        opacity={currentView < 2 || currentView === 8 ? 0 : 1}
+      >
         <h1>liberal radicalism</h1>
       </MainTitle>
       <TextWrap>{sideText[currentView]}</TextWrap>
       <BtnWrapper>
         <div>
-          {currentView > 2 && currentView !== 7 && (
+          {currentView > 2 && currentView < 7 && (
             <Button
               id="donation_all"
               onClick={donationToggler}
@@ -96,9 +96,19 @@ export default function SideBox({
           )}
         </div>
         <div>
-          {/* {currentView > 2 && <Button onClick={backHandler}>Back</Button>} */}
-          {fundBtnOn && <Button onClick={publicFundHandler}>Fund It!</Button>}
-          {continueOn && <Button onClick={continueHandler}>Continue</Button>}
+          {currentView > 2 && currentView !== 8 && (
+            <Button id="back" onClick={navigationHandler}>
+              Back
+            </Button>
+          )}
+          {!continueOn && currentView !== 8 && (
+            <Button onClick={publicFundHandler}>Fund It!</Button>
+          )}
+          {continueOn && (
+            <Button id="fwd" onClick={navigationHandler}>
+              Continue
+            </Button>
+          )}
         </div>
       </BtnWrapper>
     </Container>
