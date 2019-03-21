@@ -87,6 +87,6 @@ export function createPubFundNodes(mechanism = "normal") {
       }
     }
   }
-  console.log(pubNodes);
+
   return pubNodes;
 }

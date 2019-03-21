@@ -2,6 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
 import sideText from "./sideText";
+import { animateScroll } from "react-scroll";
+import render from "../d3/render";
+import { tierScale } from "../d3/config";
 
 const Container = styled.div`
   top: 0;
@@ -60,55 +63,70 @@ const MainTitle = styled.div`
   background: #fff;
 `;
 
-export default function SideBox({
-  navigationHandler,
-  sideBoxShowing,
-  currentView,
-  donationToggler,
-  donationsGrouped,
-  publicFundHandler,
-  fundsActive
-}) {
-  const continueOn =
-    (currentView !== 8 && (currentView !== 3 && currentView !== 5)) ||
-    fundsActive;
-  return (
-    <Container opacity={sideBoxShowing ? 1 : 0}>
-      <MainTitle
-        className="header-main"
-        opacity={currentView < 2 || currentView === 8 ? 0 : 1}
-      >
-        <h1>liberal radicalism</h1>
-      </MainTitle>
-      <TextWrap>{sideText[currentView]}</TextWrap>
-      <BtnWrapper>
-        <div>
-          {currentView > 2 && currentView < 7 && (
-            <Button
-              id="donation_all"
-              onClick={donationToggler}
-              className={donationsGrouped && "active"}
-            >
-              Toggle Donations
-            </Button>
-          )}
-        </div>
-        <div>
-          {currentView > 2 && currentView !== 8 && (
-            <Button id="back" onClick={navigationHandler}>
-              Back
-            </Button>
-          )}
-          {!continueOn && currentView !== 8 && (
-            <Button onClick={publicFundHandler}>Fund It!</Button>
-          )}
-          {continueOn && (
-            <Button id="fwd" onClick={navigationHandler}>
-              Continue
-            </Button>
-          )}
-        </div>
-      </BtnWrapper>
-    </Container>
-  );
+class SideBox extends React.Component {
+  scrollRef = React.createRef();
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentView !== this.props.currentView) {
+      this.scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      console.log(this.scrollRef);
+    }
+  }
+
+  render() {
+    const {
+      navigationHandler,
+      sideBoxShowing,
+      currentView,
+      donationToggler,
+      donationsGrouped,
+      publicFundHandler,
+      fundsActive
+    } = this.props;
+    const continueOn =
+      (currentView !== 8 && (currentView !== 3 && currentView !== 5)) ||
+      fundsActive;
+    return (
+      <Container opacity={sideBoxShowing ? 1 : 0}>
+        <div ref={this.scrollRef} />
+        <MainTitle
+          className="header-main"
+          opacity={currentView < 2 || currentView === 8 ? 0 : 1}
+        >
+          <h1>liberal radicalism</h1>
+        </MainTitle>
+        <TextWrap>{sideText[currentView]}</TextWrap>
+        <BtnWrapper>
+          <div>
+            {currentView > 2 && currentView < 7 && (
+              <Button
+                id="donation_all"
+                onClick={donationToggler}
+                className={donationsGrouped && "active"}
+              >
+                Toggle Donations
+              </Button>
+            )}
+          </div>
+          <div>
+            {currentView > 2 && currentView !== 8 && (
+              <Button id="back" onClick={navigationHandler}>
+                Back
+              </Button>
+            )}
+            {!continueOn && currentView !== 8 && (
+              <Button onClick={publicFundHandler}>Fund It!</Button>
+            )}
+            {continueOn && (
+              <Button id="fwd" onClick={navigationHandler}>
+                Continue
+              </Button>
+            )}
+          </div>
+        </BtnWrapper>
+      </Container>
+    );
+  }
 }
+
+export default SideBox;

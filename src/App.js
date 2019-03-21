@@ -55,6 +55,7 @@ class App extends Component {
     if (landscape && !prevState.landscape) {
       window.location.reload();
     }
+
     const config = { currentView, donationsGrouped, fundsActive };
 
     if (!animDelay) {
