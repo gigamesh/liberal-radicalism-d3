@@ -90,7 +90,7 @@ class App extends Component {
       this.setState({ donationsGrouped: false });
     }
     if (newView > 2) {
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     }
 
     if (newView !== 4 || newView !== 6) {
