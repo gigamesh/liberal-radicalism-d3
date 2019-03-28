@@ -51,30 +51,32 @@ function render({ currentView, donationsGrouped, animDelay }) {
   this.currentView = currentView;
 }
 
-function view0() {
+async function view0() {
   chart.allForce.nodes(chart.nodes);
   groupAllBubbles(1, 0.4);
   initialRenderTransition();
-  initTierLabels();
 }
 
-function view2() {
+async function view2() {
   const { svg } = chart;
   stopForces();
   hideTierLabels();
-  svg.classed("downscale", true);
-  svg.classed("left-side", true);
 
   xScale.padding(0.4).range([0, chartWidth]);
 
+  splitByCandidate();
+
+  svg.classed("downscale", true);
+  svg.classed("left-side", true);
+
+  await wait(1500);
   if (!chart.candidatesShowing) {
     showCandidates();
   } else {
     moveCandidatesAndTotals(300);
   }
-
-  splitByCandidate();
   showTotals("donationSum");
+  initTierLabels();
 }
 
 function view3(donationsGrouped) {

@@ -42,12 +42,13 @@ const chart = {
       .append("svg")
       .attr("width", chartWidth)
       .attr("height", chartHeight);
+    // .attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`)
+    // .attr("preserveAspectRatio", "xMidYMid none");
 
     this.nodes = createNodes(rawData);
     this.pubFundNodes = createPubFundNodes();
 
     this.allBubblesGroup = this.svg.append("g");
-    // .attr("transform", scaleMatrix(2));
 
     this.bubbles = null;
     this.pubFundsActive = false;

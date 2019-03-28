@@ -116,8 +116,12 @@ svg.downscale {
 }
 
 svg.left-side {
-  left: 3%;
+  left: 5%;
   transform: translate(0);
+}
+
+g {
+  transform-origin: center;
 }
 
 @media (max-height: 450px) {

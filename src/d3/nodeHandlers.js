@@ -110,17 +110,23 @@ export function stopSplitByDonation() {
 export function showTotals(key) {
   const names = Object.keys(candidates);
 
+  console.log("showTotals called");
+
   const totalText = chart.svg.selectAll(".money-totals").data(names);
   totalText
     .enter()
     .append("text")
     .attr("class", "money-totals")
+    .attr("opacity", 0)
     .attr("y", tierLevels.Totals.y)
     .attr("x", name => xScale(name))
     .attr("text-anchor", "middle")
     .text(name => {
       return `$${candidates[name][key].toLocaleString()}`;
-    });
+    })
+    .transition()
+    .duration(300)
+    .attr("opacity", 1);
 }
 
 export function initTierLabels() {
@@ -214,18 +220,24 @@ export function showCandidates() {
   let names = Object.keys(candidates);
   const candidateTitles = chart.svg.selectAll(".candidate").data(names);
 
+  console.log("showCandidates called");
+
   candidateTitles
     .enter()
     .append("text")
     .attr("class", "candidate")
+    .attr("opacity", 0)
     .attr("x", function(d) {
       return xScale(d);
     })
-    .attr("y", chartHeight * 0.04)
+    .attr("y", chartHeight * 0.05)
     .attr("text-anchor", "middle")
     .text(function(d) {
       return d;
-    });
+    })
+    .transition()
+    .duration(300)
+    .attr("opacity", 1);
 
   chart.candidatesShowing = true;
 }

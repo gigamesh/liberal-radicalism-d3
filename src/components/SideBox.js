@@ -43,7 +43,7 @@ const BtnWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  margin-bottom: 1rem;
+  padding-bottom: 40px;
 `;
 
 const MainTitle = styled.div`
@@ -68,7 +68,6 @@ class SideBox extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.currentView !== this.props.currentView) {
       this.scrollRef.current.scrollIntoView({ behavior: "smooth" });
-      // this.scrollRef.current.scroll({ top: 0, left: 0, behavior: "smooth" });
     }
   }
 
