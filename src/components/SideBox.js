@@ -9,7 +9,7 @@ const Container = styled.div`
   top: 0;
   right: 0;
   width: 40vw;
-  padding: 3.2rem 5vw 2rem;
+  padding: 10vh 5vw 2rem;
   text-align: justify;
   opacity: ${({ opacity }) => opacity};
   transition: opacity 500ms ease 1500ms;
@@ -54,7 +54,7 @@ const MainTitle = styled.div`
   opacity: ${({ opacity }) => opacity};
   transition: 500ms ease-in-out;
   h1 {
-    margin: 0.7rem 0 0.7rem;
+    margin: 4vh 0 0.7rem;
     font-size: ${window.innerHeight < 350 ? "1.5rem" : "2rem"};
     text-align: right;
     color: #777;

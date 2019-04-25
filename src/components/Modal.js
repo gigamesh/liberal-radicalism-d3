@@ -54,11 +54,6 @@ const WithBtnWrap = styled.div`
 const ContentWrap = styled.div`
   display: ${({ display }) => display};
   width: 100%;
-  h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 0;
-  }
   h2 {
     margin-bottom: 30px;
   }
@@ -69,9 +64,17 @@ const ContentWrap = styled.div`
   p:last-of-type {
     margin-bottom: 2rem;
   }
-  .final p,
+  p:nth-of-type(2) {
+    margin-bottom: 0.5em;
+  }
+  p:first-of-type {
+    margin-top: 0;
+  }
   h1 {
     margin: 2rem 0 2rem;
+  }
+  h1,
+  .final p {
     text-align: center;
   }
   .credits {

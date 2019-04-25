@@ -19,7 +19,7 @@ import {
 import chart from "./chart";
 import { createPubFundNodes } from "./createNodes";
 
-function render({ currentView, donationsGrouped, animDelay }) {
+function render({ currentView, donationsGrouped }) {
   // if view hasn't changed, we just need to toggle the donations
   if (this.currentView === currentView) {
     toggleCheck(donationsGrouped);
@@ -31,7 +31,7 @@ function render({ currentView, donationsGrouped, animDelay }) {
       view0();
       return;
     case 2:
-      view2();
+      view2(currentView > this.currentView);
       break;
     case 3:
       view3(donationsGrouped);
@@ -48,6 +48,7 @@ function render({ currentView, donationsGrouped, animDelay }) {
     default:
   }
 
+  // remember which view was just executed
   this.currentView = currentView;
 }
 
@@ -57,7 +58,7 @@ async function view0() {
   initialRenderTransition();
 }
 
-async function view2() {
+async function view2(forward) {
   const { svg } = chart;
   stopForces();
   hideTierLabels();
@@ -69,7 +70,9 @@ async function view2() {
   svg.classed("downscale", true);
   svg.classed("left-side", true);
 
-  await wait(1500);
+  if (forward) {
+    await wait(1500);
+  }
   if (!chart.candidatesShowing) {
     showCandidates();
   } else {

@@ -10,7 +10,7 @@ import {
   xScale,
   chartHeight,
   legendWidth,
-  wait,
+  topPad,
   chartWidth
 } from "./config";
 
@@ -220,8 +220,6 @@ export function showCandidates() {
   let names = Object.keys(candidates);
   const candidateTitles = chart.svg.selectAll(".candidate").data(names);
 
-  console.log("showCandidates called");
-
   candidateTitles
     .enter()
     .append("text")
@@ -230,7 +228,7 @@ export function showCandidates() {
     .attr("x", function(d) {
       return xScale(d);
     })
-    .attr("y", chartHeight * 0.05)
+    .attr("y", topPad)
     .attr("text-anchor", "middle")
     .text(function(d) {
       return d;
