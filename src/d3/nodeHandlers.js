@@ -11,7 +11,7 @@ import {
   chartHeight,
   legendWidth,
   topPad,
-  chartWidth
+  chartWidth,
 } from "./config";
 
 export function groupAllBubbles(alpha, decay) {
@@ -20,12 +20,9 @@ export function groupAllBubbles(alpha, decay) {
 
   hideTierLabels();
 
-  allForce.velocityDecay(decay).force(
-    "y",
-    forceY()
-      .strength(forceStrength)
-      .y(centerY)
-  );
+  allForce
+    .velocityDecay(decay)
+    .force("y", forceY().strength(forceStrength).y(centerY));
 
   allForce.alpha(alpha).restart();
 }
@@ -34,7 +31,7 @@ export async function splitByDonation() {
   const { tierForce, nodes } = chart;
 
   for (let key in tierForce) {
-    const nodeGroup = nodes.filter(node => {
+    const nodeGroup = nodes.filter((node) => {
       return key === node.tier;
     });
     tierForce[key].nodes(nodeGroup);
@@ -45,7 +42,7 @@ export async function splitByDonation() {
         "y",
         forceY()
           .strength(forceStrength)
-          .y(d => {
+          .y((d) => {
             return tierLevels[d.tier].y;
           })
       )
@@ -53,7 +50,7 @@ export async function splitByDonation() {
         "x",
         forceX()
           .strength(forceStrength)
-          .x(d => {
+          .x((d) => {
             return xScale(d.name);
           })
       );
@@ -62,11 +59,13 @@ export async function splitByDonation() {
   }
 }
 
-export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
+export function splitByCandidate(
+  { alpha, decay, strength } = { alpha: 1, decay: 0.25, strength: 0.07 }
+) {
   const { candidateForce, nodes } = chart;
 
   for (let key in candidateForce) {
-    const nodeGroup = nodes.filter(node => {
+    const nodeGroup = nodes.filter((node) => {
       return key === node.name;
     });
     candidateForce[key].nodes(nodeGroup);
@@ -77,7 +76,7 @@ export function splitByCandidate(alpha = 1, decay = 0.25, strength = 0.07) {
         "x",
         forceX()
           .strength(strength)
-          .x(d => {
+          .x((d) => {
             return xScale(d.name);
           })
       )
@@ -119,9 +118,9 @@ export function showTotals(key) {
     .attr("class", "money-totals")
     .attr("opacity", 0)
     .attr("y", tierLevels.Totals.y)
-    .attr("x", name => xScale(name))
+    .attr("x", (name) => xScale(name))
     .attr("text-anchor", "middle")
-    .text(name => {
+    .text((name) => {
       return `$${candidates[name][key].toLocaleString()}`;
     })
     .transition()
@@ -138,11 +137,11 @@ export function initTierLabels() {
     .enter()
     .append("text")
     .attr("class", "tier-label")
-    .attr("y", key => tierLevels[key].y)
+    .attr("y", (key) => tierLevels[key].y)
     .attr("x", 0)
     .attr("text-anchor", "end")
-    .text(d => tierLevels[d].text)
-    .each(function(d) {
+    .text((d) => tierLevels[d].text)
+    .each(function (d) {
       if (d === "Amounts") {
         select(this)
           .style("text-decoration", "underline")
@@ -180,7 +179,7 @@ export function moveCandidatesAndTotals(speed = 500) {
     .transition()
     .duration(speed)
     .ease(easePolyOut)
-    .attr("x", function(d) {
+    .attr("x", function (d) {
       return xScale(d);
     });
 }
@@ -188,7 +187,7 @@ export function moveCandidatesAndTotals(speed = 500) {
 export function resetTotals() {
   const totalText = chart.svg.selectAll(".money-totals");
 
-  totalText.text(name => {
+  totalText.text((name) => {
     return `$${candidates[name].donationSum.toLocaleString()}`;
   });
 }
@@ -196,19 +195,19 @@ export function resetTotals() {
 export function updateTotals(key) {
   const totalText = chart.svg.selectAll(".money-totals");
 
-  totalText.each(function(d) {
+  totalText.each(function (d) {
     select(this)
       .transition()
-      .tween("text", function() {
+      .tween("text", function () {
         let total = select(this);
         let start, end;
-        total.text(name => {
+        total.text((name) => {
           start = candidates[name].donationSum;
           end = candidates[name][key];
         });
 
         const interpolator = interpolateNumber(start, end);
-        return function(t) {
+        return function (t) {
           total.text("$" + Math.round(interpolator(t)).toLocaleString());
         };
       })
@@ -225,12 +224,12 @@ export function showCandidates() {
     .append("text")
     .attr("class", "candidate")
     .attr("opacity", 0)
-    .attr("x", function(d) {
+    .attr("x", function (d) {
       return xScale(d);
     })
     .attr("y", topPad)
     .attr("text-anchor", "middle")
-    .text(function(d) {
+    .text(function (d) {
       return d;
     })
     .transition()

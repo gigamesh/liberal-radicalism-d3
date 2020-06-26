@@ -1,6 +1,12 @@
 import { rgb } from "d3-color";
 import "d3-transition";
-import { chartWidth, xScale, legendWidth, wait } from "./config";
+import {
+  chartWidth,
+  xScale,
+  legendWidth,
+  wait,
+  bigGroupScaleFactor,
+} from "./config";
 import {
   groupAllBubbles,
   showCandidates,
@@ -14,7 +20,7 @@ import {
   hideTierLabels,
   resetTotals,
   showTierLabels,
-  initTierLabels
+  initTierLabels,
 } from "./nodeHandlers";
 import chart from "./chart";
 import { createPubFundNodes } from "./createNodes";
@@ -22,7 +28,7 @@ import { createPubFundNodes } from "./createNodes";
 function render({ currentView, donationsGrouped }) {
   // if view hasn't changed, we just need to toggle the donations
   if (this.currentView === currentView) {
-    toggleCheck(donationsGrouped);
+    groupNodes(donationsGrouped);
     return;
   }
 
@@ -65,6 +71,7 @@ async function view2(forward) {
 
   xScale.padding(0.4).range([0, chartWidth]);
 
+  updateAndMerge();
   splitByCandidate();
 
   svg.classed("downscale", true);
@@ -132,7 +139,7 @@ async function view6() {
   chart.pubFundsActive = true;
 }
 
-function toggleCheck(donationsGrouped) {
+function groupNodes(donationsGrouped) {
   if (donationsGrouped) {
     stopSplitByDonation();
 
@@ -163,7 +170,7 @@ function restartForces() {
   if (!chart.donationsGrouped) {
     // restart force simulatoin for each group
     for (let key in chart.tierForce) {
-      const nodeGroup = reheatedNodes.filter(node => {
+      const nodeGroup = reheatedNodes.filter((node) => {
         return key === node.tier;
       });
 
@@ -173,7 +180,7 @@ function restartForces() {
     }
   } else {
     for (let name in chart.candidateForce) {
-      const nodeGroup = reheatedNodes.filter(node => {
+      const nodeGroup = reheatedNodes.filter((node) => {
         return name === node.name;
       });
 
@@ -190,16 +197,13 @@ function resetToPreMatch() {
   resetTotals();
 
   //clear public fund nodes
-  chart.nodes = chart.nodes.filter(node => {
+  chart.nodes = chart.nodes.filter((node) => {
     return node.text !== "Public Fund";
   });
 
   restartForces(chart.nodes);
 
-  chart.bubbles
-    .data(chart.nodes)
-    .exit()
-    .remove();
+  chart.bubbles.data(chart.nodes).exit().remove();
 
   chart.pubFundsActive = false;
 }
@@ -207,18 +211,17 @@ function resetToPreMatch() {
 export function updateAndMerge() {
   const bubbles = chart.allBubblesGroup
     .selectAll("circle")
-    .data(chart.nodes, function(d) {
+    .data(chart.nodes, function (d) {
       return d.id;
-    });
+    })
+    .attr("r", (d) => d.radius);
 
   const bubblesE = bubbles
     .enter()
     .append("circle")
-    .attr("r", function(d) {
-      return d.radius;
-    })
-    .attr("fill", d => d.color)
-    .attr("stroke", function(d) {
+    .attr("r", (d) => d.radius)
+    .attr("fill", (d) => d.color)
+    .attr("stroke", function (d) {
       return rgb(d.color).darker([3]);
     })
     .attr("stroke-width", 0.25);
@@ -229,7 +232,7 @@ export function updateAndMerge() {
 function initialRenderTransition() {
   const bubbles = chart.allBubblesGroup
     .selectAll("circle")
-    .data(chart.nodes, function(d) {
+    .data(chart.nodes, function (d) {
       return d.id;
     });
 
@@ -237,8 +240,8 @@ function initialRenderTransition() {
     .enter()
     .append("circle")
     .attr("r", 0)
-    .attr("fill", d => d.color)
-    .attr("stroke", function(d) {
+    .attr("fill", (d) => d.color)
+    .attr("stroke", function (d) {
       return rgb(d.color).darker([3]);
     })
     .attr("stroke-width", 0.25);
@@ -248,7 +251,7 @@ function initialRenderTransition() {
   chart.bubbles
     .transition()
     .duration(1200)
-    .attr("r", function(d) {
+    .attr("r", function (d) {
       return d.radius;
     });
 }
